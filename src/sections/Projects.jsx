@@ -22,9 +22,9 @@ const Projects = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: `+=${totalProjects * 100}vh`,
+          end: `+=${totalProjects * 60}vh`,
           pin: true,
-          scrub: 1,
+          scrub: 0.3,
         }
       });
 

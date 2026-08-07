@@ -33,9 +33,9 @@ const Experience = () => {
         scrollTrigger: {
           trigger: timelineRef.current,
           start: 'center center',
-          end: `+=${totalItems * 400}`,
+          end: `+=${totalItems * 250}`,
           pin: true,
-          scrub: 1,
+          scrub: 0.3,
         }
       });
 

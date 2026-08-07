@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 import Navbar from './components/Navbar';
 import GlowBackground from './components/GlowBackground';
 
@@ -15,27 +18,22 @@ import Footer from './sections/Footer';
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
+      lerp: 0.1,
+      wheelMultiplier: 1,
+      smoothWheel: true,
       smoothTouch: false,
-      touchMultiplier: 2,
-      infinite: false,
     });
 
-    let rafId;
-    function raf(time) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
+    lenis.on('scroll', ScrollTrigger.update);
 
-    rafId = requestAnimationFrame(raf);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      gsap.ticker.remove(lenis.raf);
       lenis.destroy();
     };
   }, []);
