@@ -140,14 +140,26 @@ const About = () => {
               gap: '20px',
               opacity: 0
             }}>
+              <h2 style={{ 
+                fontSize: 'clamp(2rem, 4vw, 3rem)', 
+                color: 'var(--text-primary)', 
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '16px',
+                marginBottom: '8px'
+              }}>
+                About Me
+                <span style={{ display: 'block', width: '40px', height: '2px', background: 'var(--accent-primary)' }}></span>
+              </h2>
               <p>
-                I’m Preetham Anand, a Computer Science undergraduate specializing in Artificial Intelligence and Machine Learning, with a strong interest in building practical software systems that combine intelligent models with usable applications. My work spans Machine Learning, Generative AI, RAG systems, Computer Vision, Full-Stack Development, and AI-powered applications, with Python as my primary language and technologies such as React, FastAPI, Flask, Node.js, TensorFlow/Keras, XGBoost, and vector databases across my projects.
+                I'm Preetham Anand, a Computer Science undergraduate specializing in AI & Machine Learning. I build practical systems that combine intelligent models with usable applications — spanning Machine Learning, Generative AI, RAG systems, Computer Vision, and Full-Stack Development, primarily in Python, React, and FastAPI.
               </p>
               <p>
-                I enjoy taking a problem from an idea to a working technical solution. My projects include NSE Intelligence, an ML-driven stock market analysis and prediction platform; PulseConnect, an AI-powered emergency blood coordination platform; ResearchHub AI, a document-grounded RAG system that answers questions from user-provided research documents; DeepFake Face Detection, a deep learning computer-vision application; Airfare Price Prediction, a machine learning prediction system; and Nirvaha, a full-stack wellness platform developed during my internship. I am also working on TruthLens, an AI-powered content verification browser extension, and PREAK, an AI-native engineering platform, both of which are currently under development.
+                Projects include NSE Intelligence (ML-driven stock analysis), PulseConnect (AI-powered blood coordination), ResearchHub AI (a document-grounded RAG system), DeepFake Face Detection, Airfare Price Prediction, and Nirvaha, where I worked as a Full Stack Developer. Currently building TruthLens (AI content verification) and PREAK (an AI-native engineering platform).
               </p>
               <p>
-                Beyond individual projects, I focus on understanding how different technologies work together to build complete systems — from data processing and machine learning models to APIs, retrieval pipelines, AI agents, databases, frontend interfaces, and deployment architecture. I’m continuously expanding my skills in AI and software engineering while looking for opportunities where I can contribute to meaningful products, solve real-world problems, and grow as an AI/ML and Full-Stack Engineer.
+                Looking for opportunities to build real products as an AI/ML and Full-Stack Engineer.
               </p>
             </div>
 
