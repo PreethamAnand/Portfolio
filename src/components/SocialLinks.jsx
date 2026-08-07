@@ -1,11 +1,11 @@
 import React from 'react';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const SocialLinks = () => {
   const links = [
-    { icon: <Github size={20} />, url: '#', label: 'GitHub' },
-    { icon: <Linkedin size={20} />, url: '#', label: 'LinkedIn' },
-    { icon: <Twitter size={20} />, url: '#', label: 'Twitter' },
+    { icon: <FaGithub size={20} />, url: '#', label: 'GitHub' },
+    { icon: <FaLinkedin size={20} />, url: '#', label: 'LinkedIn' },
+    { icon: <FaTwitter size={20} />, url: '#', label: 'Twitter' },
   ];
 
   return (
