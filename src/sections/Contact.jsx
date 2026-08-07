@@ -1,19 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Button from '../components/Button';
-import SocialLinks from '../components/SocialLinks';
-import { contactData } from '../data/contact';
+import astraImg from '../assets/Astra.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const containerRef = useRef(null);
-  const headingRef = useRef(null);
-  const textRef = useRef(null);
-  const ctaRef = useRef(null);
-  const socialRef = useRef(null);
-  const availabilityRef = useRef(null);
+  const leftColRef = useRef(null);
+  const rightColRef = useRef(null);
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -27,29 +22,14 @@ const Contact = () => {
         }
       });
 
-      tl.fromTo(headingRef.current, 
-        { y: 50, opacity: 0 }, 
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+      tl.fromTo(leftColRef.current, 
+        { x: -50, opacity: 0 }, 
+        { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
       )
-      .fromTo(availabilityRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' },
-        "-=0.4"
-      )
-      .fromTo(textRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
-        "-=0.4"
-      )
-      .fromTo(ctaRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
-        "-=0.4"
-      )
-      .fromTo(socialRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' },
-        "-=0.4"
+      .fromTo(rightColRef.current,
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out' },
+        "-=0.6"
       );
     });
 
@@ -58,109 +38,174 @@ const Contact = () => {
     };
   }, []);
 
-  const hasEmail = contactData.email && contactData.email !== "YOUR_EMAIL_HERE";
-
   return (
     <section 
       id="contact" 
+      className="section"
       ref={containerRef}
-      style={{
+      style={{ 
         position: 'relative',
-        minHeight: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(to bottom, var(--bg-primary) 0%, #010808 50%, var(--bg-primary) 100%)',
+        padding: '25px 24px 100px 24px',
+        background: 'transparent',
         overflow: 'hidden',
-        padding: '25px 24px'
+        display: 'flex',
+        justifyContent: 'center'
       }}
     >
-      {/* Background Ambient Glow */}
       <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: '80vw',
-        height: '80vw',
-        maxWidth: '800px',
-        maxHeight: '800px',
-        background: 'radial-gradient(circle, rgba(16, 191, 195, 0.05) 0%, transparent 60%)',
-        pointerEvents: 'none',
-        zIndex: 0
-      }}></div>
-
-      <div style={{
-        position: 'relative',
-        zIndex: 10,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        maxWidth: '800px',
-        width: '100%'
-      }}>
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gap: '60px',
+        width: '100%',
+        maxWidth: '1200px',
+        alignItems: 'center'
+      }} className="contact-grid">
         
-        {/* Availability Indicator */}
-        {contactData.availability && (
-          <div ref={availabilityRef} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: '1px solid var(--border-subtle)',
-            padding: '8px 16px',
-            borderRadius: '100px',
-            marginBottom: '40px',
-            opacity: 0
-          }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--accent-primary)', boxShadow: '0 0 8px var(--accent-primary)' }}></div>
-            <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', fontWeight: '500' }}>
-              {contactData.availability}
-            </span>
-          </div>
-        )}
-
-        {/* Large Heading */}
-        <h2 ref={headingRef} style={{
-          fontSize: 'clamp(4rem, 12vw, 8rem)',
-          fontWeight: '900',
-          lineHeight: 0.95,
-          color: 'var(--text-primary)',
-          letterSpacing: '-0.03em',
-          marginBottom: '32px',
-          opacity: 0
-        }}>
-          LET'S<br/>CONNECT
-        </h2>
-
-        {/* Supporting Text */}
-        <p ref={textRef} style={{
-          fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-          color: 'var(--text-secondary)',
-          lineHeight: 1.6,
-          maxWidth: '600px',
-          marginBottom: '48px',
-          opacity: 0
-        }}>
-          Have an idea, project, or opportunity in mind? <br/>
-          Let's build something meaningful together.
-        </p>
-
-        {/* CTA */}
-        <div ref={ctaRef} style={{ marginBottom: '60px', opacity: 0 }}>
-          {hasEmail ? (
-            <Button href={`mailto:${contactData.email}`} variant="primary">Get In Touch</Button>
-          ) : (
-            <Button variant="outline" className="disabled" style={{ opacity: 0.5, pointerEvents: 'none' }}>Email Not Configured</Button>
-          )}
+        {/* Left Column: Image */}
+        <div ref={leftColRef} style={{ display: 'flex', justifyContent: 'center', opacity: 0 }}>
+          <img 
+            src={astraImg} 
+            alt="Astronaut" 
+            style={{ 
+              width: '100%', 
+              maxWidth: '500px', 
+              objectFit: 'contain',
+              animation: 'float 6s ease-in-out infinite'
+            }} 
+          />
         </div>
 
-        {/* Social Links */}
-        <div ref={socialRef} style={{ opacity: 0 }}>
-          <SocialLinks />
+        {/* Right Column: Form */}
+        <div ref={rightColRef} style={{ opacity: 0 }}>
+          <div style={{
+            background: '#0d0d0d',
+            border: '1px solid rgba(255, 255, 255, 0.05)',
+            borderRadius: '16px',
+            padding: '40px',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
+          }}>
+            <h2 style={{
+              fontSize: '2rem',
+              color: 'white',
+              fontWeight: '700',
+              marginBottom: '32px'
+            }}>Let's Work Together</h2>
+            
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                  Your Name <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  className="contact-input"
+                />
+              </div>
+              
+              <div>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                  Your Email <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  className="contact-input"
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                  Service Needed <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <select className="contact-input" defaultValue="">
+                    <option value="" disabled hidden>Something in mind?</option>
+                    <option value="web">Web Development</option>
+                    <option value="ai">AI / Machine Learning</option>
+                    <option value="consulting">Consulting</option>
+                  </select>
+                  <div style={{
+                    position: 'absolute',
+                    right: '16px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    pointerEvents: 'none',
+                    color: 'rgba(255, 255, 255, 0.5)'
+                  }}>
+                    ▼
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                  Explain Your Idea <span style={{ color: '#ef4444' }}>*</span>
+                </label>
+                <textarea 
+                  placeholder="Explain your idea..." 
+                  rows="4"
+                  className="contact-input"
+                  style={{ resize: 'vertical' }}
+                ></textarea>
+              </div>
+
+              <button 
+                type="button"
+                style={{
+                  width: '100%',
+                  background: '#2563eb',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  marginTop: '10px',
+                  transition: 'background 0.3s ease'
+                }}
+                onMouseEnter={(e) => e.target.style.background = '#1d4ed8'}
+                onMouseLeave={(e) => e.target.style.background = '#2563eb'}
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .contact-input {
+          width: 100%;
+          background: #1a1a1a;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          padding: 12px 16px;
+          color: white;
+          outline: none;
+          font-size: 1rem;
+          transition: border-color 0.3s ease;
+          appearance: none;
+          font-family: inherit;
+        }
+        .contact-input:focus {
+          border-color: #3b82f6;
+        }
+        .contact-input::placeholder {
+          color: rgba(255, 255, 255, 0.3);
+        }
+        @media (min-width: 1024px) {
+          .contact-grid {
+            grid-template-columns: 1fr 1.2fr !important;
+          }
+        }
+        @keyframes float {
+          0% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(2deg); }
+          100% { transform: translateY(0px) rotate(0deg); }
+        }
+      `}} />
     </section>
   );
 };
