@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import Button from '../components/Button';
 import SocialLinks from '../components/SocialLinks';
 import heroImage from '../assets/hero.png';
+import heroresume from '../assets/Preetham Anand Machine Learning Role.pdf';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -133,7 +134,9 @@ const Hero = () => {
             }}
           >
             <Button href="#projects" variant="primary">View My Work</Button>
-            <Button href="/resume.pdf" variant="secondary">My Resume</Button>
+            <Button href={heroresume} variant="secondary" download>
+              My Resume
+            </Button>
           </div>
 
           <div ref={socialRef} style={{ opacity: 0 }}>
