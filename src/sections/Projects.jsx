@@ -46,8 +46,7 @@ const Projects = () => {
         style={{ 
           position: 'relative', 
           display: 'flex',
-          flexDirection: 'column',
-          opacity: 0 // handled by gsap
+          flexDirection: 'column'
         }}
       >
         <div className="projects-header" style={{ marginBottom: '60px' }}>
