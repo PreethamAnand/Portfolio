@@ -62,7 +62,7 @@ const Contact = () => {
       }} className="contact-grid">
         
         {/* Left Column: Image */}
-        <div ref={leftColRef} style={{ display: 'flex', justifyContent: 'center', opacity: 0 }}>
+        <div ref={leftColRef} style={{ display: 'flex', justifyContent: 'flex-start', opacity: 0, width: '100%' }}>
           <img 
             src={astraImg} 
             alt="Astronaut" 
@@ -76,24 +76,26 @@ const Contact = () => {
         </div>
 
         {/* Right Column: Form */}
-        <div ref={rightColRef} style={{ opacity: 0 }}>
+        <div ref={rightColRef} style={{ opacity: 0, display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
           <div style={{
+            width: '100%',
+            maxWidth: '500px',
             background: '#0d0d0d',
             border: '1px solid rgba(255, 255, 255, 0.05)',
             borderRadius: '16px',
-            padding: '40px',
+            padding: '32px',
             boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)'
           }}>
             <h2 style={{
-              fontSize: '2rem',
+              fontSize: '1.5rem',
               color: 'white',
               fontWeight: '700',
-              marginBottom: '32px'
+              marginBottom: '24px'
             }}>Let's Work Together</h2>
             
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Your Name <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input 
@@ -104,7 +106,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Your Email <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input 
@@ -115,7 +117,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Service Needed <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <div style={{ position: 'relative' }}>
@@ -139,7 +141,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.85rem', marginBottom: '8px', fontWeight: '500' }}>
+                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Explain Your Idea <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <textarea 
@@ -158,8 +160,8 @@ const Contact = () => {
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
-                  padding: '16px',
-                  fontSize: '1rem',
+                  padding: '14px',
+                  fontSize: '0.85rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   marginTop: '10px',
@@ -181,10 +183,10 @@ const Contact = () => {
           background: #1a1a1a;
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 8px;
-          padding: 12px 16px;
+          padding: 10px 14px;
           color: white;
           outline: none;
-          font-size: 1rem;
+          font-size: 0.85rem;
           transition: border-color 0.3s ease;
           appearance: none;
           font-family: inherit;
