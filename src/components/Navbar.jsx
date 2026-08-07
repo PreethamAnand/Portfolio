@@ -66,7 +66,7 @@ export default function Navbar(){
     
     <div className="flex items-center space-x-2 ">
       <img src={logo} alt="Logo" className="h-8 w-8" />
-      <div className="text-2xl font-bold text-white hidden sm:block">Preetham Anand</div>
+      <div className="text-2xl font-bold text-white hidden sm:block">Preetham</div>
 
     </div>
     <div className=" block lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
