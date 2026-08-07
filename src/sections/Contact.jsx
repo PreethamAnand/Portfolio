@@ -72,7 +72,7 @@ const Contact = () => {
         justifyContent: 'center',
         background: 'linear-gradient(to bottom, var(--bg-primary) 0%, #010808 50%, var(--bg-primary) 100%)',
         overflow: 'hidden',
-        padding: '100px 24px'
+        padding: '25px 24px'
       }}
     >
       {/* Background Ambient Glow */}

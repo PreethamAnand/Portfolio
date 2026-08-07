@@ -127,7 +127,7 @@ const Experience = () => {
       id="experience" 
       ref={containerRef} 
       className="section"
-      style={{ position: 'relative', paddingTop: '0', paddingBottom: '100px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      style={{ position: 'relative', paddingTop: '0', paddingBottom: '25px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
     >
       <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '60px' }}>
         <h2 

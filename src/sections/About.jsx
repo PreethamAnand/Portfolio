@@ -48,7 +48,7 @@ const About = () => {
       id="about" 
       ref={containerRef} 
       className="section"
-      style={{ position: 'relative', paddingTop: '100px', paddingBottom: '0' }}
+      style={{ position: 'relative', paddingTop: '25px', paddingBottom: '0' }}
     >
       <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
         

@@ -33,8 +33,8 @@ const Projects = () => {
       className="section"
       style={{ 
         position: 'relative', 
-        paddingTop: '60px',
-        paddingBottom: '100px',
+        paddingTop: '15px',
+        paddingBottom: '25px',
         minHeight: '100vh', 
         background: 'linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-emerald) 20%, var(--bg-emerald) 80%, var(--bg-primary) 100%)',
         overflow: 'hidden'
@@ -49,7 +49,7 @@ const Projects = () => {
           flexDirection: 'column'
         }}
       >
-        <div className="projects-header" style={{ marginBottom: '60px' }}>
+        <div className="projects-header" style={{ marginBottom: '15px' }}>
           <h2 style={{ 
             fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
             color: 'var(--text-primary)', 
