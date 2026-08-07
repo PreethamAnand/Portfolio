@@ -317,6 +317,7 @@ const Experience = () => {
           .timeline-item {
             flex-direction: row !important;
             justify-content: flex-start !important;
+            height: auto !important;
           }
           .exp-card {
             width: 100% !important;
@@ -331,24 +332,25 @@ const Experience = () => {
         }
         @media (min-width: 1024px) {
           .mobile-line { display: none !important; }
+          .timeline-items {
+            height: 600px;
+          }
+          .timeline-item {
+            height: 100%;
+            justify-content: center;
+          }
           .timeline-node {
             top: 50% !important;
             left: 50% !important;
             transform: translate(-50%, -50%) !important;
           }
           .top-card {
-            margin-bottom: 80px;
+            margin-bottom: auto;
+            margin-top: 20px;
           }
           .bottom-card {
-            margin-top: 80px;
-            flex-direction: column-reverse;
-          }
-          /* Visually offset bottom cards below the line */
-          .bottom-card {
-            top: 80px;
-          }
-          .top-card {
-            bottom: 80px;
+            margin-top: auto;
+            margin-bottom: 20px;
           }
         }
       `}} />
