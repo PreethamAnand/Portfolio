@@ -179,6 +179,9 @@ const Projects = () => {
           display: grid;
           gap: 24px;
           align-items: stretch;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 24px;
+          border-radius: 20px;
         }
 
         /* Desktop: 3 Columns */
@@ -206,22 +209,31 @@ const Projects = () => {
         }
 
         /* Accordion Styles */
+        .projects-list {
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          overflow: hidden;
+          background: rgba(25, 211, 209, 0.02);
+        }
+
         .project-list-item {
           padding: 16px;
-          border-bottom: 1px solid var(--border-subtle);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           cursor: pointer;
           transition: all 0.3s ease;
           background: transparent;
-          border-radius: 8px 8px 0 0;
+        }
+
+        .project-list-item:last-child {
+          border-bottom: none;
         }
 
         .project-list-item:hover:not(.active) {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(255, 255, 255, 0.05);
         }
 
         .project-list-item.active {
           background: var(--bg-tertiary);
-          border-bottom-color: var(--accent-primary);
           box-shadow: inset 4px 0 0 var(--accent-primary);
         }
 
@@ -273,7 +285,7 @@ const Projects = () => {
         /* Middle Column Styles */
         .project-info-col {
           background: rgba(25, 211, 209, 0.02);
-          border: 1px solid var(--border-subtle);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 12px;
           padding: 24px;
           display: flex;
@@ -302,7 +314,7 @@ const Projects = () => {
           height: 100%;
           background: #0a0a0a;
           border-radius: 12px;
-          border: 1px solid rgba(25, 211, 209, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
           overflow: hidden;
           display: flex;
