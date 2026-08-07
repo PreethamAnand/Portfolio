@@ -1,15 +1,15 @@
 export const experienceData = [
   {
     id: 1,
-    role: "Full Stack Developer Intern",
-    company: "Nirvaha Wellness LLP",
-    location: "",
+    role: "AI/ML Intern",
+    company: "Edunet Foundation",
+    location: "SAP, Microsoft & AICTE",
     period: "Internship",
     type: "Internship",
-    description: "Worked on full-stack development for a wellness technology platform combining modern web technologies with AI-powered experiences.",
-    technologies: ["React", "Node.js", "REST APIs", "AI integration"]
+    description: "Worked on AI/ML concepts and practical implementations through the Edunet Foundation program.",
+    technologies: ["Artificial Intelligence", "Machine Learning", "Python"]
   },
-  {
+    {
     id: 2,
     role: "AI Intern",
     company: "Cothon Solutions",
@@ -21,12 +21,12 @@ export const experienceData = [
   },
   {
     id: 3,
-    role: "AI/ML Intern",
-    company: "Edunet Foundation",
-    location: "SAP, Microsoft & AICTE",
+    role: "Full Stack Developer Intern",
+    company: "Nirvaha Wellness LLP",
+    location: "",
     period: "Internship",
     type: "Internship",
-    description: "Worked on AI/ML concepts and practical implementations through the Edunet Foundation program.",
-    technologies: ["Artificial Intelligence", "Machine Learning", "Python"]
+    description: "Worked on full-stack development for a wellness technology platform combining modern web technologies with AI-powered experiences.",
+    technologies: ["React", "Node.js", "REST APIs", "AI integration"]
   }
 ];

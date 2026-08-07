@@ -1,16 +1,43 @@
-# React + Vite
+# Preetham Anand - Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Welcome to the personal portfolio of **Preetham Anand**, an AI/ML Engineer and Full Stack Developer.
 
-Currently, two official plugins are available:
+This portfolio showcases my skills, experience, and the practical software systems I've built that combine intelligent models with usable applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies Used
 
-## React Compiler
+- **React** with Vite for fast frontend development
+- **GSAP** & **Lenis** for smooth scrolling and animations
+- **Vanilla CSS** for precise, custom styling
+- **Lucide React** & **React Icons** for modern iconography
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Sections
 
-## Expanding the Oxlint configuration
+- **Hero**: A modern, interactive introduction.
+- **About**: A brief overview of my background and focus areas.
+- **Skills**: A marquee showcase of the technologies I use.
+- **Experience**: An interactive timeline detailing my professional journey.
+- **Projects**: A curated list of my top projects with interactive accordion layouts.
+- **Contact**: A sleek form to get in touch.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Getting Started
+
+To run this project locally:
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. To build for production:
+   ```bash
+   npm run build
+   ```
+
+## Contact
+
+Feel free to reach out via the contact form on the website or connect with me on LinkedIn and GitHub!
