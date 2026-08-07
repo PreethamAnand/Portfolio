@@ -53,7 +53,7 @@ const Hero = () => {
         minHeight: '100vh', 
         display: 'flex', 
         alignItems: 'center', 
-        paddingTop: 'var(--nav-height)' 
+        paddingTop: '0' 
       }}
     >
       <div 

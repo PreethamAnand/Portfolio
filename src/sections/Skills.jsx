@@ -37,11 +37,6 @@ const Skills = () => {
     };
   }, []);
 
-  // Split skills into two rows for the double marquee
-  const half = Math.ceil(skillsData.length / 2);
-  const row1 = skillsData.slice(0, half);
-  const row2 = skillsData.slice(half);
-
   const SkillItem = ({ skill }) => {
     const Icon = skill.icon;
     return (
@@ -105,106 +100,22 @@ const Skills = () => {
         </h2>
       </div>
 
-      {/* Marquee Showcase */}
       <div 
         ref={showcaseRef} 
         style={{ 
           opacity: 0, 
           display: 'flex', 
-          flexDirection: 'column', 
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '24px',
           width: '100%',
+          maxWidth: '1000px',
+          margin: '0 auto',
           position: 'relative'
         }}
       >
-        {/* Fade edges for smooth visual entering/exiting */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '10%',
-          height: '100%',
-          background: 'linear-gradient(to right, var(--bg-primary) 0%, transparent 100%)',
-          zIndex: 2,
-          pointerEvents: 'none'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: '10%',
-          height: '100%',
-          background: 'linear-gradient(to left, var(--bg-primary) 0%, transparent 100%)',
-          zIndex: 2,
-          pointerEvents: 'none'
-        }}></div>
-
-        {/* Row 1 - Left to Right */}
-        <div className="marquee-container" style={{ position: 'relative', display: 'flex', overflow: 'hidden' }}>
-          <div className="marquee-track marquee-left">
-            {row1.map((skill, index) => <SkillItem key={`r1-${index}`} skill={skill} />)}
-            {/* Duplicate for seamless looping */}
-            {row1.map((skill, index) => <SkillItem key={`r1-dup-${index}`} skill={skill} />)}
-          </div>
-        </div>
-
-        {/* Row 2 - Right to Left */}
-        <div className="marquee-container" style={{ position: 'relative', display: 'flex', overflow: 'hidden' }}>
-          <div className="marquee-track marquee-right">
-            {row2.map((skill, index) => <SkillItem key={`r2-${index}`} skill={skill} />)}
-            {row2.map((skill, index) => <SkillItem key={`r2-dup-${index}`} skill={skill} />)}
-          </div>
-        </div>
+        {skillsData.map((skill, index) => <SkillItem key={`skill-${index}`} skill={skill} />)}
       </div>
-
-      <style dangerouslySetInnerHTML={{__html: `
-        .marquee-track {
-          display: flex;
-          width: max-content;
-        }
-
-        .marquee-left {
-          animation: marqueeLeft 35s linear infinite;
-        }
-
-        .marquee-right {
-          animation: marqueeRight 35s linear infinite;
-        }
-
-        .marquee-container:hover .marquee-track {
-          animation-play-state: paused;
-        }
-
-        @keyframes marqueeLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
-        @keyframes marqueeRight {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-left, .marquee-right {
-            animation: none;
-            flex-wrap: wrap;
-            justify-content: center;
-          }
-          .marquee-container {
-            overflow: visible !important;
-          }
-          .marquee-track {
-            width: 100% !important;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 24px;
-          }
-          .skill-item {
-            margin-bottom: 12px;
-          }
-        }
-      `}} />
     </section>
   );
 };

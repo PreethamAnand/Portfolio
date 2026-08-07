@@ -38,7 +38,7 @@ export default function CustomCursor(){
       className="pointer-events-none fixed top-0 left-0 z-[9999]"
       style={{ transform: 'translate3d(-100px, -100px, 0)', willChange: 'transform' }}
     > 
-      <div className="w-20 h-20 rounded-full bg-gradient-to-r from-pink-500 to-blue-300 opacity-80 blur-[20px]" />
+      <div className="w-20 h-20 rounded-full bg-gradient-to-r from-pink-500 to-blue-300 opacity-80" />
     </div>
   )
 }
