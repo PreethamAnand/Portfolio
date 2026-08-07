@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../components/Button';
+import { profileData } from '../data/profile';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,9 +14,10 @@ const About = () => {
   const profileImgRef = useRef(null);
 
   const stats = [
-    { title: 'Experience', value: '1+ yrs' },
-    { title: 'Specialty', value: 'Full Stack' },
-    { title: 'Focus', value: 'Performance & UX' },
+    { title: 'Degree', value: 'B.Tech' },
+    { title: 'Specialty', value: 'AI & ML' },
+    { title: 'College', value: 'Vignan Institute' },
+    { title: 'CGPA', value: profileData.cgpa },
   ];
 
   useEffect(() => {
@@ -145,7 +147,7 @@ const About = () => {
               letterSpacing: '-0.02em',
               opacity: 0
             }}>
-              Gaurav Gupta
+              {profileData.name}
             </h2>
             
             <h3 style={{ 
@@ -157,7 +159,7 @@ const About = () => {
               textTransform: 'uppercase',
               opacity: 0
             }}>
-              Full Stack Developer
+              {profileData.role}
             </h3>
             
             <p style={{ 
@@ -168,7 +170,7 @@ const About = () => {
               maxWidth: '600px',
               opacity: 0
             }}>
-              I build scalable, modern applications with a strong focus on clean architecture, delightful UX, and performance. My toolkit spans Java, React, Next.js, TypeScript, Tailwind CSS, and RESTful APIs—bringing ideas to life from concept to production with robust APIs and smooth interfaces.
+              {profileData.degree} from {profileData.college}. Experienced in {profileData.topSkills.join(', ')}.
             </p>
 
             {/* Stat Cards */}
@@ -248,12 +250,9 @@ const About = () => {
           </h3>
           
           <div style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p>
-              I'm a Software Developer, Content Creator, and Web Developer — passionate about building fast, resilient applications and sharing coding insights on Instagram and YouTube.
-            </p>
-            <p>
-              I love turning ideas into scalable, user-friendly products that make an impact.
-            </p>
+            {profileData.aboutText.map((paragraph, idx) => (
+              <p key={idx}>{paragraph}</p>
+            ))}
           </div>
         </div>
 

@@ -1,32 +1,32 @@
 export const experienceData = [
   {
     id: 1,
-    role: "Senior Software Engineer",
-    company: "TechNova Solutions",
-    location: "San Francisco, CA",
-    period: "2021 - Present",
-    type: "Full-time",
-    description: "Lead the development of scalable microservices architecture. Improved application performance by 40% through code optimization and caching strategies.",
-    technologies: ["Node.js", "React", "TypeScript", "MongoDB", "Docker"]
+    role: "Full Stack Developer Intern",
+    company: "Nirvaha Wellness LLP",
+    location: "",
+    period: "Internship",
+    type: "Internship",
+    description: "Worked on full-stack development for a wellness technology platform combining modern web technologies with AI-powered experiences.",
+    technologies: ["React", "Node.js", "REST APIs", "AI integration"]
   },
   {
     id: 2,
-    role: "Full Stack Developer",
-    company: "Innovate AI",
-    location: "Austin, TX",
-    period: "2019 - 2021",
-    type: "Full-time",
-    description: "Developed end-to-end features for a machine learning dashboard. Integrated RESTful APIs with responsive frontend React components.",
-    technologies: ["Python", "Django", "React", "PostgreSQL", "AWS"]
+    role: "AI Intern",
+    company: "Cothon Solutions",
+    location: "",
+    period: "Internship",
+    type: "Internship",
+    description: "Worked on AI/ML-oriented development and practical machine-learning applications.",
+    technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Data processing"]
   },
   {
     id: 3,
-    role: "Frontend Web Developer",
-    company: "Creative Digital",
-    location: "Remote",
-    period: "2017 - 2019",
-    type: "Contract",
-    description: "Designed and built highly interactive web applications for various high-profile clients, ensuring cross-browser compatibility and accessibility compliance.",
-    technologies: ["JavaScript", "HTML5", "CSS3", "Vue.js", "Git"]
+    role: "AI/ML Intern",
+    company: "Edunet Foundation",
+    location: "SAP, Microsoft & AICTE",
+    period: "Internship",
+    type: "Internship",
+    description: "Worked on AI/ML concepts and practical implementations through the Edunet Foundation program.",
+    technologies: ["Artificial Intelligence", "Machine Learning", "Python"]
   }
 ];

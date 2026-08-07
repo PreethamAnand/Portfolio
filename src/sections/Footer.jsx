@@ -77,10 +77,10 @@ const Footer = () => {
           {/* Identity */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <span style={{ color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: '700', letterSpacing: '1px' }}>
-              Gaurav Gupta
+              Preetham Anand
             </span>
             <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-              Full Stack Developer
+              AI/ML Engineer & Full Stack Developer
             </span>
           </div>
 
@@ -160,7 +160,7 @@ const Footer = () => {
           gap: '16px'
         }}>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            &copy; {currentYear} Gaurav Gupta. All rights reserved.
+            &copy; {currentYear} Preetham Anand. All rights reserved.
           </p>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
             Designed & Developed with precision.

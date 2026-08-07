@@ -80,7 +80,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            Software Developer
+            AI/ML ENGINEER • FULL STACK DEVELOPER
           </span>
           <h2 
             ref={greetingRef} 
@@ -92,7 +92,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            Hello, I'm
+            Hi, I'm
           </h2>
           <h1 
             ref={nameRef} 
@@ -106,7 +106,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            Gaurav Gupta
+            Preetham Anand
           </h1>
           <p 
             ref={descRef} 
@@ -119,7 +119,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            I craft scalable web applications and digital experiences with a focus on modern design, performance, and accessible code.
+            Builds intelligent systems, data-driven applications, and full-stack products using AI/ML and modern web technologies.
           </p>
           
           <div 
@@ -133,7 +133,7 @@ const Hero = () => {
             }}
           >
             <Button href="#projects" variant="primary">View My Work</Button>
-            <Button href="/resume.pdf" variant="secondary">My Resume</Button>
+            <Button href="#contact" variant="secondary">Let's Connect</Button>
           </div>
 
           <div ref={socialRef} style={{ opacity: 0 }}>

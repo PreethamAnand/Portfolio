@@ -1,9 +1,9 @@
 export const contactData = {
-  email: "YOUR_EMAIL_HERE", // Example: "hello@example.com"
-  github: "https://github.com/YOUR_USERNAME",
-  linkedin: "https://linkedin.com/in/YOUR_USERNAME",
-  twitter: "https://twitter.com/YOUR_USERNAME",
-  phone: null,
-  location: "San Francisco, CA",
+  email: "preetham0802@gmail.com",
+  github: "https://github.com/PreethamAnand",
+  linkedin: "https://www.linkedin.com/in/preetham-anand/",
+  twitter: null,
+  phone: "+91 8121078989",
+  location: "Hyderabad, Telangana, India",
   availability: "Available for new opportunities"
 };
