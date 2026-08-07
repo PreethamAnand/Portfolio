@@ -131,7 +131,7 @@ const About = () => {
             
             <div style={{ 
               color: 'var(--text-secondary)', 
-              fontSize: '1.125rem', 
+              fontSize: '1.05rem', 
               lineHeight: 1.7, 
               marginBottom: '40px', 
               maxWidth: '700px',
@@ -141,13 +141,13 @@ const About = () => {
               opacity: 0
             }}>
               <p>
-                I'm a Computer Science student specializing in Artificial Intelligence and Machine Learning, with a strong interest in building practical AI systems and full-stack applications.
+                I’m Preetham Anand, a Computer Science undergraduate specializing in Artificial Intelligence and Machine Learning, with a strong interest in building practical software systems that combine intelligent models with usable applications. My work spans Machine Learning, Generative AI, RAG systems, Computer Vision, Full-Stack Development, and AI-powered applications, with Python as my primary language and technologies such as React, FastAPI, Flask, Node.js, TensorFlow/Keras, XGBoost, and vector databases across my projects.
               </p>
               <p>
-                I enjoy turning ideas into working products — from machine-learning models and data-driven systems to modern web applications and AI-powered tools.
+                I enjoy taking a problem from an idea to a working technical solution. My projects include NSE Intelligence, an ML-driven stock market analysis and prediction platform; PulseConnect, an AI-powered emergency blood coordination platform; ResearchHub AI, a document-grounded RAG system that answers questions from user-provided research documents; DeepFake Face Detection, a deep learning computer-vision application; Airfare Price Prediction, a machine learning prediction system; and Nirvaha, a full-stack wellness platform developed during my internship. I am also working on TruthLens, an AI-powered content verification browser extension, and PREAK, an AI-native engineering platform, both of which are currently under development.
               </p>
               <p>
-                My work spans Python, machine learning, computer vision, full-stack development, generative AI, and intelligent automation. I focus on building projects that solve practical problems rather than just demonstrating a technology.
+                Beyond individual projects, I focus on understanding how different technologies work together to build complete systems — from data processing and machine learning models to APIs, retrieval pipelines, AI agents, databases, frontend interfaces, and deployment architecture. I’m continuously expanding my skills in AI and software engineering while looking for opportunities where I can contribute to meaningful products, solve real-world problems, and grow as an AI/ML and Full-Stack Engineer.
               </p>
             </div>
 
