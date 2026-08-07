@@ -279,12 +279,14 @@ const Projects = () => {
           padding: 32px;
           display: flex;
           flex-direction: column;
+          aspect-ratio: 1 / 1;
         }
 
         .project-info-inner {
           display: flex;
           flex-direction: column;
           height: 100%;
+          justify-content: space-between;
           animation: fadeIn 0.5s ease-out;
         }
 
@@ -293,11 +295,12 @@ const Projects = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          aspect-ratio: 1 / 1;
         }
 
         .browser-frame {
           width: 100%;
-          aspect-ratio: 16/10;
+          height: 100%;
           background: #0a0a0a;
           border-radius: 12px;
           border: 1px solid rgba(25, 211, 209, 0.15);
