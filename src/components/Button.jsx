@@ -32,9 +32,9 @@ const Button = ({
       boxShadow: '0 0 15px var(--glow-cyan)',
     },
     secondary: {
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      color: 'var(--text-primary)',
-      border: '1px solid var(--border-strong)',
+      backgroundColor: '#FFFFFF',
+      color: '#000000',
+      border: '1px solid #FFFFFF',
     },
     outline: {
       backgroundColor: 'transparent',

@@ -2,30 +2,45 @@ import React from 'react';
 
 const GlowBackground = () => {
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1, pointerEvents: 'none', overflow: 'hidden' }}>
       {/* Base black background */}
-      <div className="absolute inset-0 bg-[#050505]"></div>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'var(--bg-primary)' }}></div>
       
       {/* Subtle radial glows */}
       <div 
-        className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full blur-[100px] opacity-20"
-        style={{ background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)' }}
+        style={{ 
+          position: 'absolute', 
+          top: '-10%', 
+          right: '-10%', 
+          width: '50vw', 
+          height: '50vw', 
+          borderRadius: '50%', 
+          filter: 'blur(100px)', 
+          opacity: 0.6,
+          background: 'radial-gradient(circle, var(--bg-emerald) 0%, transparent 70%)' 
+        }}
       ></div>
       
       <div 
-        className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px] opacity-10"
-        style={{ background: 'radial-gradient(circle, var(--glow-blue) 0%, transparent 70%)' }}
-      ></div>
-      
-      <div 
-        className="absolute top-[40%] left-[60%] w-[30vw] h-[30vw] rounded-full blur-[90px] opacity-10"
-        style={{ background: 'radial-gradient(circle, var(--glow-green) 0%, transparent 70%)' }}
+        style={{ 
+          position: 'absolute', 
+          bottom: '-10%', 
+          left: '-10%', 
+          width: '50vw', 
+          height: '50vw', 
+          borderRadius: '50%', 
+          filter: 'blur(120px)', 
+          opacity: 0.2,
+          background: 'radial-gradient(circle, var(--accent-primary) 0%, transparent 70%)' 
+        }}
       ></div>
 
-      {/* Lightweight CSS Stars pattern (Optional based on performance) */}
+      {/* Lightweight CSS Stars pattern */}
       <div 
-        className="absolute inset-0 opacity-30" 
         style={{ 
+          position: 'absolute',
+          top: 0, left: 0, right: 0, bottom: 0,
+          opacity: 0.15,
           backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)', 
           backgroundSize: '40px 40px' 
         }}

@@ -83,7 +83,7 @@ const Projects = () => {
       style={{ 
         position: 'relative', 
         minHeight: '100vh', 
-        background: 'linear-gradient(to bottom, var(--bg-primary) 0%, #02120e 20%, #02120e 80%, var(--bg-primary) 100%)',
+        background: 'linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-emerald) 20%, var(--bg-emerald) 80%, var(--bg-primary) 100%)',
         overflow: 'hidden'
       }}
     >

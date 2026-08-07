@@ -49,39 +49,28 @@ const Skills = () => {
         className="skill-item"
         style={{
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           gap: '12px',
-          padding: '16px 24px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          border: '1px solid var(--border-subtle)',
-          borderRadius: '16px',
+          padding: '16px 40px',
           margin: '0 12px',
-          backdropFilter: 'blur(8px)',
           transition: 'all 0.3s ease',
           whiteSpace: 'nowrap',
           cursor: 'default',
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
-          e.currentTarget.style.borderColor = 'var(--accent-primary)';
-          e.currentTarget.style.boxShadow = '0 8px 20px var(--glow-cyan)';
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-          
           const iconEl = e.currentTarget.querySelector('svg');
-          if(iconEl) iconEl.style.filter = 'drop-shadow(0 0 8px currentColor)';
+          if(iconEl) iconEl.style.filter = 'drop-shadow(0 0 12px var(--glow-cyan))';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'translateY(0) scale(1)';
-          e.currentTarget.style.borderColor = 'var(--border-subtle)';
-          e.currentTarget.style.boxShadow = 'none';
-          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
-          
           const iconEl = e.currentTarget.querySelector('svg');
           if(iconEl) iconEl.style.filter = 'none';
         }}
       >
-        <Icon size={24} color={skill.color || 'var(--text-primary)'} style={{ transition: 'all 0.3s ease' }} aria-hidden="true" />
-        <span style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', fontWeight: '500' }}>
+        <Icon size={48} color={skill.color || 'var(--accent-primary)'} style={{ transition: 'all 0.3s ease' }} aria-hidden="true" />
+        <span style={{ color: 'var(--accent-primary)', fontSize: '0.875rem', fontWeight: '500', letterSpacing: '1px' }}>
           {skill.name}
         </span>
       </div>
@@ -95,7 +84,7 @@ const Skills = () => {
       className="section"
       style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}
     >
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '60px' }}>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '80px' }}>
         <h2 
           ref={headingRef}
           style={{ 
@@ -104,12 +93,15 @@ const Skills = () => {
             fontWeight: '700', 
             opacity: 0,
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             gap: '16px'
           }}
         >
-          Skills
-          <span style={{ display: 'block', width: '60px', height: '2px', background: 'var(--accent-primary)' }}></span>
+          My Skills
+          <span style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', fontWeight: '400', letterSpacing: '2px', textTransform: 'uppercase' }}>
+            Modern Applications | Modern Technologies
+          </span>
         </h2>
       </div>
 

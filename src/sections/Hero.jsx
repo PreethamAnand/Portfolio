@@ -133,7 +133,7 @@ const Hero = () => {
             }}
           >
             <Button href="#projects" variant="primary">View My Work</Button>
-            <Button href="#contact" variant="secondary">Let's Connect</Button>
+            <Button href="/resume.pdf" variant="secondary">My Resume</Button>
           </div>
 
           <div ref={socialRef} style={{ opacity: 0 }}>
