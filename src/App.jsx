@@ -5,7 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 import Navbar from './components/Navbar';
-import GlowBackground from './components/GlowBackground';
+import ParticleBackground from './components/ParticleBackground';
+import CustomCursor from './components/CustomCursor';
 
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -40,7 +41,8 @@ function App() {
 
   return (
     <>
-      <GlowBackground />
+      <ParticleBackground />
+      <CustomCursor />
       <Navbar />
       <main style={{ paddingTop: 'var(--nav-height)' }}>
         <Hero />
