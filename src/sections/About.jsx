@@ -138,15 +138,16 @@ const About = () => {
               maxWidth: '700px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '20px'
+              gap: '20px',
+              opacity: 0
             }}>
-              <p style={{ opacity: 0 }}>
+              <p>
                 I'm a Computer Science student specializing in Artificial Intelligence and Machine Learning, with a strong interest in building practical AI systems and full-stack applications.
               </p>
-              <p style={{ opacity: 0 }}>
+              <p>
                 I enjoy turning ideas into working products — from machine-learning models and data-driven systems to modern web applications and AI-powered tools.
               </p>
-              <p style={{ opacity: 0 }}>
+              <p>
                 My work spans Python, machine learning, computer vision, full-stack development, generative AI, and intelligent automation. I focus on building projects that solve practical problems rather than just demonstrating a technology.
               </p>
             </div>
