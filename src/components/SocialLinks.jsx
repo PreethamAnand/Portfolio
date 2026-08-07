@@ -1,12 +1,13 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { contactData } from '../data/contact';
 
 const SocialLinks = () => {
-  const links = [
-    { icon: <FaGithub size={20} />, url: '#', label: 'GitHub' },
-    { icon: <FaLinkedin size={20} />, url: '#', label: 'LinkedIn' },
-    { icon: <FaTwitter size={20} />, url: '#', label: 'Twitter' },
-  ];
+  const links = [];
+  if (contactData.github) links.push({ icon: <FaGithub size={20} />, url: contactData.github, label: 'GitHub' });
+  if (contactData.linkedin) links.push({ icon: <FaLinkedin size={20} />, url: contactData.linkedin, label: 'LinkedIn' });
+  if (contactData.twitter) links.push({ icon: <FaTwitter size={20} />, url: contactData.twitter, label: 'Twitter' });
+  if (contactData.email && contactData.email !== "YOUR_EMAIL_HERE") links.push({ icon: <FaEnvelope size={20} />, url: `mailto:${contactData.email}`, label: 'Email' });
 
   return (
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
