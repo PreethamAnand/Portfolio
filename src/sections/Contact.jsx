@@ -45,7 +45,7 @@ const Contact = () => {
       ref={containerRef}
       style={{ 
         position: 'relative',
-        padding: '25px 24px 100px 24px',
+        padding: '25px 24px 10px 24px',
         background: 'transparent',
         overflow: 'hidden',
         display: 'flex',

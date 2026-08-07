@@ -34,7 +34,7 @@ const Footer = () => {
       style={{
         position: 'relative',
         background: '#000000', // Black background to match the image
-        padding: '100px 24px 60px',
+        padding: '10px 24px 60px',
         borderTop: 'none',
         display: 'flex',
         flexDirection: 'column',
