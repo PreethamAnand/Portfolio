@@ -48,7 +48,7 @@ const About = () => {
       id="about" 
       ref={containerRef} 
       className="section"
-      style={{ position: 'relative', padding: '100px 0' }}
+      style={{ position: 'relative', paddingTop: '100px', paddingBottom: '20px' }}
     >
       <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
         
@@ -57,7 +57,7 @@ const About = () => {
           display: 'flex', 
           flexWrap: 'wrap', 
           gap: '40px', 
-          alignItems: 'flex-start',
+          alignItems: 'stretch',
           justifyContent: 'space-between'
         }}>
           
@@ -125,8 +125,7 @@ const About = () => {
             style={{ 
               flex: '2 1 400px', 
               display: 'flex', 
-              flexDirection: 'column',
-              justifyContent: 'center'
+              flexDirection: 'column'
             }}
           >
             
@@ -153,7 +152,7 @@ const About = () => {
             </div>
 
             {/* Buttons */}
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0 }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0, marginTop: 'auto' }}>
               <Button href="#projects" variant="primary">View Projects</Button>
               <Button href="#contact" variant="outline">Get In Touch</Button>
             </div>

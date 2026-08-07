@@ -77,7 +77,7 @@ const Skills = () => {
       id="skills" 
       ref={containerRef} 
       className="section"
-      style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}
+      style={{ position: 'relative', paddingTop: '40px', paddingBottom: '100px', overflow: 'hidden' }}
     >
       <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '80px' }}>
         <h2 
