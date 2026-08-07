@@ -115,21 +115,21 @@ const Projects = () => {
               <div style={{ color: 'var(--accent-primary)', fontSize: '0.875rem', fontWeight: '600', marginBottom: '12px', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
                 {activeProject.category} • {activeProject.year}
               </div>
-              <h3 style={{ color: 'var(--text-primary)', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: '800', marginBottom: '24px', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
+              <h3 style={{ color: 'var(--text-primary)', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: '800', marginBottom: '16px', lineHeight: 1.2, letterSpacing: '-0.02em' }}>
                 {activeProject.title}
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '32px' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '24px' }}>
                 {activeProject.description}
               </p>
               
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '40px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
                 {activeProject.technologies.map((tech, i) => (
                   <span key={i} style={{
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '1px solid rgba(25, 211, 209, 0.2)',
-                    padding: '6px 12px',
-                    borderRadius: '8px',
-                    fontSize: '0.875rem',
+                    padding: '4px 10px',
+                    borderRadius: '6px',
+                    fontSize: '0.8rem',
                     color: 'var(--text-secondary)',
                   }}>
                     {tech}
@@ -141,11 +141,11 @@ const Projects = () => {
                 <Button href={activeProject.liveUrl || '#'} variant="primary">View Project</Button>
                 
                 {activeProject.githubUrl && (
-                  <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-subtle)', transition: 'all 0.3s ease' }}
+                  <a href={activeProject.githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-subtle)', transition: 'all 0.3s ease' }}
                      onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
                      onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-primary)'; e.currentTarget.style.borderColor = 'var(--border-subtle)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                   >
-                    <FaGithub size={24} />
+                    <FaGithub size={20} />
                   </a>
                 )}
               </div>
@@ -164,7 +164,7 @@ const Projects = () => {
                 {activeProject.image ? (
                   <img key={activeProject.id} src={activeProject.image} alt={`${activeProject.title} preview`} style={{ width: '100%', height: '100%', objectFit: 'cover', animation: 'fadeIn 0.5s ease-out' }} />
                 ) : (
-                  <div key={activeProject.id} style={{ color: 'var(--accent-primary)', opacity: 0.5, fontSize: '1.25rem', letterSpacing: '2px', textAlign: 'center', padding: '20px', animation: 'fadeIn 0.5s ease-out' }}>
+                  <div key={activeProject.id} style={{ color: 'var(--accent-primary)', opacity: 0.5, fontSize: '1rem', letterSpacing: '2px', textAlign: 'center', padding: '20px', animation: 'fadeIn 0.5s ease-out' }}>
                     [ {activeProject.shortTitle} PREVIEW ]
                   </div>
                 )}
@@ -178,14 +178,14 @@ const Projects = () => {
       <style dangerouslySetInnerHTML={{__html: `
         .projects-grid {
           display: grid;
-          gap: 40px;
+          gap: 24px;
           align-items: stretch;
         }
 
         /* Desktop: 3 Columns */
         @media (min-width: 1024px) {
           .projects-grid {
-            grid-template-columns: 1fr 1.5fr 1.5fr;
+            grid-template-columns: 1fr 1.8fr 1.8fr;
           }
         }
 
@@ -208,7 +208,7 @@ const Projects = () => {
 
         /* Accordion Styles */
         .project-list-item {
-          padding: 24px;
+          padding: 16px;
           border-bottom: 1px solid var(--border-subtle);
           cursor: pointer;
           transition: all 0.3s ease;
@@ -229,13 +229,13 @@ const Projects = () => {
         .project-list-header {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 12px;
         }
 
         .project-list-number {
           color: var(--text-muted);
           font-family: monospace;
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           transition: color 0.3s ease;
         }
 
@@ -245,7 +245,7 @@ const Projects = () => {
 
         .project-list-title {
           color: var(--text-secondary);
-          font-size: 1.25rem;
+          font-size: 1.1rem;
           font-weight: 600;
           flex: 1;
           transition: color 0.3s ease;
@@ -257,7 +257,7 @@ const Projects = () => {
 
         .project-list-icon {
           color: var(--text-muted);
-          font-size: 1rem;
+          font-size: 0.9rem;
           transition: all 0.3s ease;
         }
 
@@ -275,18 +275,18 @@ const Projects = () => {
         .project-info-col {
           background: rgba(25, 211, 209, 0.02);
           border: 1px solid var(--border-subtle);
-          border-radius: 16px;
-          padding: 32px;
+          border-radius: 12px;
+          padding: 24px;
           display: flex;
           flex-direction: column;
-          aspect-ratio: 1 / 1;
+          min-height: 400px;
         }
 
         .project-info-inner {
           display: flex;
           flex-direction: column;
           height: 100%;
-          justify-content: space-between;
+          justify-content: flex-start;
           animation: fadeIn 0.5s ease-out;
         }
 
@@ -295,7 +295,7 @@ const Projects = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          aspect-ratio: 1 / 1;
+          min-height: 400px;
         }
 
         .browser-frame {
