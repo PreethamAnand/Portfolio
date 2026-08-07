@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../components/Button';
 import profilePic from '../assets/p.jpeg';
+import { skillsData } from '../data/skills';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -163,8 +164,56 @@ const About = () => {
               </p>
             </div>
 
+            {/* Core Skills */}
+            <div style={{ marginBottom: '40px', opacity: 0 }} className="about-skills-block">
+              <h3 style={{ 
+                fontSize: '1.25rem', 
+                color: 'var(--text-primary)', 
+                fontWeight: '600',
+                marginBottom: '16px'
+              }}>
+                Core Technologies
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                {skillsData.map((skill, index) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div 
+                      key={index}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        border: '1px solid var(--border-subtle)',
+                        padding: '8px 16px',
+                        borderRadius: '100px',
+                        color: 'var(--text-secondary)',
+                        fontSize: '0.875rem',
+                        transition: 'all 0.2s ease',
+                        cursor: 'default'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--text-primary)';
+                        e.currentTarget.style.borderColor = 'var(--accent-primary)';
+                        e.currentTarget.style.boxShadow = '0 0 10px rgba(16, 191, 195, 0.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--text-secondary)';
+                        e.currentTarget.style.borderColor = 'var(--border-subtle)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      <Icon style={{ color: skill.color }} />
+                      <span>{skill.name}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Buttons */}
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0, marginTop: 'auto' }}>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0, marginTop: 'auto' }} className="about-buttons-block">
               <Button href="#projects" variant="primary">View Projects</Button>
               <Button href="#contact" variant="outline">Get In Touch</Button>
             </div>
