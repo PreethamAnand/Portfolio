@@ -1,12 +1,218 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { skillsData } from '../data/skills';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
-  return (
-    <section id="skills" className="section">
-      <div className="container">
-        <h2 style={{ color: 'var(--accent-primary)', marginBottom: '16px' }}>Skills Section Placeholder</h2>
-        <p style={{ color: 'var(--text-secondary)' }}>Content for Skills will be implemented in future phases.</p>
+  const containerRef = useRef(null);
+  const headingRef = useRef(null);
+  const showcaseRef = useRef(null);
+
+  useEffect(() => {
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 320px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      tl.fromTo(headingRef.current, 
+        { y: 20, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+      )
+      .fromTo(showcaseRef.current, 
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.8, ease: 'power3.out' }, 
+        "-=0.2"
+      );
+    });
+
+    return () => {
+      mm.revert();
+    };
+  }, []);
+
+  // Split skills into two rows for the double marquee
+  const half = Math.ceil(skillsData.length / 2);
+  const row1 = skillsData.slice(0, half);
+  const row2 = skillsData.slice(half);
+
+  const SkillItem = ({ skill }) => {
+    const Icon = skill.icon;
+    return (
+      <div 
+        className="skill-item"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          padding: '16px 24px',
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid var(--border-subtle)',
+          borderRadius: '16px',
+          margin: '0 12px',
+          backdropFilter: 'blur(8px)',
+          transition: 'all 0.3s ease',
+          whiteSpace: 'nowrap',
+          cursor: 'default',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+          e.currentTarget.style.borderColor = 'var(--accent-primary)';
+          e.currentTarget.style.boxShadow = '0 8px 20px var(--glow-cyan)';
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+          
+          const iconEl = e.currentTarget.querySelector('svg');
+          if(iconEl) iconEl.style.filter = 'drop-shadow(0 0 8px currentColor)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'translateY(0) scale(1)';
+          e.currentTarget.style.borderColor = 'var(--border-subtle)';
+          e.currentTarget.style.boxShadow = 'none';
+          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+          
+          const iconEl = e.currentTarget.querySelector('svg');
+          if(iconEl) iconEl.style.filter = 'none';
+        }}
+      >
+        <Icon size={24} color={skill.color || 'var(--text-primary)'} style={{ transition: 'all 0.3s ease' }} aria-hidden="true" />
+        <span style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', fontWeight: '500' }}>
+          {skill.name}
+        </span>
       </div>
+    );
+  };
+
+  return (
+    <section 
+      id="skills" 
+      ref={containerRef} 
+      className="section"
+      style={{ position: 'relative', padding: '100px 0', overflow: 'hidden' }}
+    >
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '60px' }}>
+        <h2 
+          ref={headingRef}
+          style={{ 
+            fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
+            color: 'var(--text-primary)', 
+            fontWeight: '700', 
+            opacity: 0,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px'
+          }}
+        >
+          Skills
+          <span style={{ display: 'block', width: '60px', height: '2px', background: 'var(--accent-primary)' }}></span>
+        </h2>
+      </div>
+
+      {/* Marquee Showcase */}
+      <div 
+        ref={showcaseRef} 
+        style={{ 
+          opacity: 0, 
+          display: 'flex', 
+          flexDirection: 'column', 
+          gap: '24px',
+          width: '100%',
+          position: 'relative'
+        }}
+      >
+        {/* Fade edges for smooth visual entering/exiting */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '10%',
+          height: '100%',
+          background: 'linear-gradient(to right, var(--bg-primary) 0%, transparent 100%)',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}></div>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: '10%',
+          height: '100%',
+          background: 'linear-gradient(to left, var(--bg-primary) 0%, transparent 100%)',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}></div>
+
+        {/* Row 1 - Left to Right */}
+        <div className="marquee-container" style={{ position: 'relative', display: 'flex', overflow: 'hidden' }}>
+          <div className="marquee-track marquee-left">
+            {row1.map((skill, index) => <SkillItem key={`r1-${index}`} skill={skill} />)}
+            {/* Duplicate for seamless looping */}
+            {row1.map((skill, index) => <SkillItem key={`r1-dup-${index}`} skill={skill} />)}
+          </div>
+        </div>
+
+        {/* Row 2 - Right to Left */}
+        <div className="marquee-container" style={{ position: 'relative', display: 'flex', overflow: 'hidden' }}>
+          <div className="marquee-track marquee-right">
+            {row2.map((skill, index) => <SkillItem key={`r2-${index}`} skill={skill} />)}
+            {row2.map((skill, index) => <SkillItem key={`r2-dup-${index}`} skill={skill} />)}
+          </div>
+        </div>
+      </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .marquee-track {
+          display: flex;
+          width: max-content;
+        }
+
+        .marquee-left {
+          animation: marqueeLeft 35s linear infinite;
+        }
+
+        .marquee-right {
+          animation: marqueeRight 35s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes marqueeLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marqueeRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-left, .marquee-right {
+            animation: none;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          .marquee-container {
+            overflow: visible !important;
+          }
+          .marquee-track {
+            width: 100% !important;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 24px;
+          }
+          .skill-item {
+            margin-bottom: 12px;
+          }
+        }
+      `}} />
     </section>
   );
 };
