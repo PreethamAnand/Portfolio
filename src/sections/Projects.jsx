@@ -24,7 +24,7 @@ const Projects = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: `+=${totalProjects * 80}vh`,
+          end: `+=${totalProjects * 100}vh`,
           pin: true,
           scrub: 1,
         }
@@ -62,6 +62,9 @@ const Projects = () => {
           duration: 0.2
         }, "-=0.8");
       }
+
+      // Add a buffer at the end so the last card is readable before unpinning
+      tl.to({}, { duration: 1 });
     });
 
     mm.add("(max-width: 1023px), (prefers-reduced-motion: reduce)", () => {

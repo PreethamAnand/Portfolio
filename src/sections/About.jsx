@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../components/Button';
-import { profileData } from '../data/profile';
 import profilePic from '../assets/p.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -11,15 +10,7 @@ const About = () => {
   const containerRef = useRef(null);
   const leftColRef = useRef(null);
   const rightColRef = useRef(null);
-  const aboutMeRef = useRef(null);
   const profileImgRef = useRef(null);
-
-  const stats = [
-    { title: 'Degree', value: 'B.Tech' },
-    { title: 'Specialty', value: 'AI & ML' },
-    { title: 'College', value: 'Vignan Institute' },
-    { title: 'CGPA', value: profileData.cgpa },
-  ];
 
   useEffect(() => {
     let mm = gsap.matchMedia();
@@ -39,17 +30,11 @@ const About = () => {
         { y: 30, opacity: 0 }, 
         { y: 0, opacity: 1 }
       )
-      // Right Column Content (Name, Role, Desc)
+      // Right Column Content (Text paragraphs and Buttons)
       .fromTo(rightColRef.current.children, 
         { y: 20, opacity: 0 }, 
         { y: 0, opacity: 1, stagger: 0.15 }, 
         "-=0.4"
-      )
-      // About Me Section
-      .fromTo(aboutMeRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1 },
-        "-=0.2"
       );
     });
 
@@ -140,88 +125,30 @@ const About = () => {
             style={{ 
               flex: '2 1 400px', 
               display: 'flex', 
-              flexDirection: 'column'
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}
           >
-            <h2 style={{ 
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
-              color: 'var(--accent-primary)', 
-              fontWeight: '700', 
-              lineHeight: 1.1,
-              marginBottom: '8px',
-              letterSpacing: '-0.02em',
-              opacity: 0
-            }}>
-              {profileData.name}
-            </h2>
             
-            <h3 style={{ 
-              fontSize: '1.25rem', 
-              color: 'var(--text-secondary)', 
-              fontWeight: '500', 
-              marginBottom: '24px',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              opacity: 0
-            }}>
-              {profileData.role}
-            </h3>
-            
-            <p style={{ 
+            <div style={{ 
               color: 'var(--text-secondary)', 
               fontSize: '1.125rem', 
-              lineHeight: 1.6, 
+              lineHeight: 1.7, 
               marginBottom: '40px', 
-              maxWidth: '600px',
-              opacity: 0
+              maxWidth: '700px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px'
             }}>
-              {profileData.degree} from {profileData.college}. Experienced in {profileData.topSkills.join(', ')}.
-            </p>
-
-            {/* Stat Cards */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', 
-              gap: '16px',
-              marginBottom: '40px',
-              opacity: 0
-            }}>
-              {stats.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="stat-card"
-                  style={{
-                    background: 'var(--bg-tertiary)',
-                    border: '1px solid var(--border-subtle)',
-                    borderRadius: '16px',
-                    padding: '20px 16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                    backdropFilter: 'blur(10px)',
-                    transition: 'all 0.3s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.borderColor = 'var(--border-strong)';
-                    e.currentTarget.style.boxShadow = '0 4px 20px var(--glow-cyan)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.borderColor = 'var(--border-subtle)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                    {stat.title}
-                  </span>
-                  <span style={{ color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: '600' }}>
-                    {stat.value}
-                  </span>
-                </div>
-              ))}
+              <p style={{ opacity: 0 }}>
+                I'm a Computer Science student specializing in Artificial Intelligence and Machine Learning, with a strong interest in building practical AI systems and full-stack applications.
+              </p>
+              <p style={{ opacity: 0 }}>
+                I enjoy turning ideas into working products — from machine-learning models and data-driven systems to modern web applications and AI-powered tools.
+              </p>
+              <p style={{ opacity: 0 }}>
+                My work spans Python, machine learning, computer vision, full-stack development, generative AI, and intelligent automation. I focus on building projects that solve practical problems rather than just demonstrating a technology.
+              </p>
             </div>
 
             {/* Buttons */}
@@ -229,35 +156,6 @@ const About = () => {
               <Button href="#projects" variant="primary">View Projects</Button>
               <Button href="#contact" variant="outline">Get In Touch</Button>
             </div>
-          </div>
-        </div>
-
-        {/* About Me Subsection */}
-        <div 
-          ref={aboutMeRef} 
-          style={{ 
-            marginTop: '20px',
-            maxWidth: '800px',
-            opacity: 0 // initial for gsap
-          }}
-        >
-          <h3 style={{ 
-            fontSize: '1.75rem', 
-            color: 'var(--text-primary)', 
-            fontWeight: '600', 
-            marginBottom: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            About Me
-            <span style={{ flex: 1, height: '1px', background: 'var(--border-strong)', display: 'block' }}></span>
-          </h3>
-          
-          <div style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {profileData.aboutText.map((paragraph, idx) => (
-              <p key={idx}>{paragraph}</p>
-            ))}
           </div>
         </div>
 

@@ -31,9 +31,9 @@ const Experience = () => {
       const totalItems = experienceData.length;
       const timelineTl = gsap.timeline({
         scrollTrigger: {
-          trigger: timelineRef.current,
-          start: 'center center',
-          end: `+=${totalItems * 250}`,
+          trigger: containerRef.current,
+          start: 'top top',
+          end: `+=${totalItems * 400}`,
           pin: true,
           scrub: 0.3,
         }
@@ -80,6 +80,9 @@ const Experience = () => {
           );
         }
       });
+
+      // Add a buffer at the end so the last card is readable before unpinning
+      timelineTl.to({}, { duration: 0.5 });
     });
 
     // Mobile/Tablet: Vertical Timeline
