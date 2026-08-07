@@ -34,7 +34,7 @@ const Footer = () => {
       style={{
         position: 'relative',
         background: '#000000', // Black background to match the image
-        padding: '10px 24px 60px',
+        padding: '10px 24px 40px',
         borderTop: 'none',
         display: 'flex',
         flexDirection: 'column',
@@ -74,7 +74,7 @@ const Footer = () => {
         flexDirection: 'column',
         alignItems: 'center',
         textAlign: 'center',
-        gap: '24px'
+        gap: '16px'
       }}>
         {/* Name */}
         <h2 style={{
@@ -92,14 +92,14 @@ const Footer = () => {
           display: 'flex',
           width: '100px',
           height: '2px',
-          marginBottom: '8px'
+          marginBottom: '4px'
         }}>
           <div style={{ flex: 1, background: '#3b82f6' }}></div>
           <div style={{ flex: 1, background: '#10bfc3' }}></div>
         </div>
 
         {/* Social Links */}
-        <div style={{ transform: 'scale(1.2)', margin: '8px 0' }}>
+        <div style={{ transform: 'scale(1.2)', margin: '4px 0' }}>
           <SocialLinks />
         </div>
 
@@ -108,7 +108,7 @@ const Footer = () => {
           color: 'rgba(255, 255, 255, 0.6)',
           fontStyle: 'italic',
           fontSize: '0.95rem',
-          margin: '16px 0 8px 0',
+          margin: '10px 0 4px 0',
           letterSpacing: '0.5px'
         }}>
           "Success is when preparation meets opportunity."
