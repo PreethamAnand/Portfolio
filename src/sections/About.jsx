@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '../components/Button';
 import { profileData } from '../data/profile';
+import profilePic from '../assets/p.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -125,7 +126,11 @@ const About = () => {
                 e.currentTarget.style.boxShadow = '0 0 20px rgba(16, 191, 195, 0.15)';
               }}
             >
-              <span>[ Profile Image ]</span>
+              <img 
+                src={profilePic} 
+                alt="Profile"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
           </div>
 

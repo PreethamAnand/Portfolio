@@ -12,6 +12,8 @@ const Projects = () => {
   const containerRef = useRef(null);
   const projectsRef = useRef([]);
 
+  const dotsRef = useRef([]);
+
   useEffect(() => {
     let mm = gsap.matchMedia();
 
@@ -22,47 +24,54 @@ const Projects = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: `+=${totalProjects * 60}vh`,
+          end: `+=${totalProjects * 80}vh`,
           pin: true,
-          scrub: 0.3,
+          scrub: 1,
         }
       });
 
-      // Initially show first project and hide the rest
-      gsap.set(projectsRef.current[0], { opacity: 1, y: 0, scale: 1 });
+      // Initially set up projects and dots
+      gsap.set(projectsRef.current[0], { xPercent: 0, opacity: 1 });
+      gsap.set(dotsRef.current[0], { background: 'var(--accent-primary)', opacity: 1 });
+      
       for (let i = 1; i < totalProjects; i++) {
-        gsap.set(projectsRef.current[i], { opacity: 0, y: 50, scale: 0.95 });
+        gsap.set(projectsRef.current[i], { xPercent: 50, opacity: 0 });
+        gsap.set(dotsRef.current[i], { background: 'var(--text-muted)', opacity: 0.3 });
       }
 
       for (let i = 0; i < totalProjects - 1; i++) {
         const current = projectsRef.current[i];
         const next = projectsRef.current[i + 1];
+        const nextDot = dotsRef.current[i + 1];
 
         tl.to(current, {
+          xPercent: -50,
           opacity: 0,
-          y: -50,
-          scale: 0.95,
           duration: 1,
           ease: 'power2.inOut'
         })
         .to(next, {
+          xPercent: 0,
           opacity: 1,
-          y: 0,
-          scale: 1,
           duration: 1,
-          ease: 'power2.inOut'
+          ease: 'power2.out'
+        }, "-=0.8")
+        .to(nextDot, {
+          background: 'var(--accent-primary)',
+          opacity: 1,
+          duration: 0.2
         }, "-=0.8");
       }
     });
 
     mm.add("(max-width: 1023px), (prefers-reduced-motion: reduce)", () => {
-      // Clear inline styles from desktop animation
       gsap.set(projectsRef.current, { clearProps: "all" });
+      gsap.set(dotsRef.current, { display: 'none' });
       
       projectsRef.current.forEach(proj => {
         gsap.fromTo(proj, 
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', scrollTrigger: {
+          { opacity: 0, x: 30 },
+          { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', scrollTrigger: {
             trigger: proj,
             start: 'top 85%'
           }}
@@ -155,11 +164,7 @@ const Projects = () => {
                   </div>
 
                   <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                    {project.liveUrl ? (
-                      <Button href={project.liveUrl} variant="primary">View Project</Button>
-                    ) : (
-                      <Button variant="outline" className="disabled" style={{ opacity: 0.5, pointerEvents: 'none' }}>Coming Soon</Button>
-                    )}
+                    <Button href={project.liveUrl || '#'} variant="primary">View Project</Button>
                     
                     {project.githubUrl && (
                       <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '48px', height: '48px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border-subtle)', transition: 'all 0.3s ease' }}
@@ -196,6 +201,32 @@ const Projects = () => {
 
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Pagination Dots */}
+        <div style={{
+          position: 'absolute',
+          bottom: '5vh',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: '12px',
+          zIndex: 20
+        }}>
+          {projectsData.map((_, index) => (
+            <div 
+              key={`dot-${index}`}
+              ref={el => dotsRef.current[index] = el}
+              style={{
+                width: '10px',
+                height: '10px',
+                borderRadius: '50%',
+                background: 'var(--text-muted)',
+                opacity: 0.3,
+                transition: 'all 0.3s ease'
+              }}
+            ></div>
           ))}
         </div>
       </div>

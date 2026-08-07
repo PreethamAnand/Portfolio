@@ -50,21 +50,35 @@ const Experience = () => {
         const progressPoint = index / (totalItems - 1);
         const card = cardsRef.current[index];
 
-        timelineTl.to(node, {
-          backgroundColor: 'var(--accent-primary)',
-          boxShadow: '0 0 15px var(--glow-cyan)',
-          borderColor: 'var(--accent-primary)',
-          duration: 0.1,
-          ease: 'power1.inOut'
-        }, progressPoint - 0.05);
-
-        timelineTl.fromTo(card,
-          { y: index % 2 === 0 ? 30 : -30, opacity: 0.3, scale: 0.95 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.2, ease: 'power2.out',
+        // 1st node is active initially
+        if (index === 0) {
+          gsap.set(node, {
+            backgroundColor: 'var(--accent-primary)',
+            boxShadow: '0 0 15px var(--glow-cyan)',
+            borderColor: 'var(--accent-primary)'
+          });
+          gsap.set(card, {
+            y: 0, opacity: 1, scale: 1,
             boxShadow: '0 10px 30px rgba(16, 191, 195, 0.15)',
             borderColor: 'rgba(16, 191, 195, 0.5)'
-          }, progressPoint - 0.05
-        );
+          });
+        } else {
+          timelineTl.to(node, {
+            backgroundColor: 'var(--accent-primary)',
+            boxShadow: '0 0 15px var(--glow-cyan)',
+            borderColor: 'var(--accent-primary)',
+            duration: 0.1,
+            ease: 'power1.inOut'
+          }, progressPoint - 0.05);
+
+          timelineTl.fromTo(card,
+            { y: index % 2 === 0 ? 30 : -30, opacity: 0, scale: 0.95 },
+            { y: 0, opacity: 1, scale: 1, duration: 0.2, ease: 'power2.out',
+              boxShadow: '0 10px 30px rgba(16, 191, 195, 0.15)',
+              borderColor: 'rgba(16, 191, 195, 0.5)'
+            }, progressPoint - 0.05
+          );
+        }
       });
     });
 

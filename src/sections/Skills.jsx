@@ -100,22 +100,64 @@ const Skills = () => {
         </h2>
       </div>
 
+      {/* Marquee Showcase */}
       <div 
         ref={showcaseRef} 
         style={{ 
           opacity: 0, 
           display: 'flex', 
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          gap: '24px',
           width: '100%',
-          maxWidth: '1000px',
-          margin: '0 auto',
           position: 'relative'
         }}
       >
-        {skillsData.map((skill, index) => <SkillItem key={`skill-${index}`} skill={skill} />)}
+        {/* Fade edges */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '10%', height: '100%', background: 'linear-gradient(to right, var(--bg-primary) 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }}></div>
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '10%', height: '100%', background: 'linear-gradient(to left, var(--bg-primary) 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }}></div>
+
+        <div className="marquee-container" style={{ position: 'relative', display: 'flex', overflow: 'hidden', width: '100%' }}>
+          <div className="marquee-track marquee-left">
+            {skillsData.map((skill, index) => <SkillItem key={`s1-${index}`} skill={skill} />)}
+            {/* Duplicated for seamless loop */}
+            {skillsData.map((skill, index) => <SkillItem key={`s2-${index}`} skill={skill} />)}
+          </div>
+        </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .marquee-track {
+          display: flex;
+          width: max-content;
+        }
+
+        .marquee-left {
+          animation: marqueeLeft 35s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track {
+          animation-play-state: paused;
+        }
+
+        @keyframes marqueeLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-left {
+            animation: none;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          .marquee-container {
+            overflow: visible !important;
+          }
+          .marquee-track {
+            width: 100% !important;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+      `}} />
     </section>
   );
 };
