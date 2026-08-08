@@ -54,13 +54,13 @@ const OrbitalSystem = () => {
 
       if (systemRef.current) {
         // Determine base scale based on screen size
-        let baseScale = 0.65;
+        let baseScale = 0.58;
         if (window.innerWidth <= 767) {
-          baseScale = 0.40;
+          baseScale = 0.38;
         } else if (window.innerWidth <= 1024) {
-          baseScale = 0.50;
-        } else if (window.innerWidth <= 1200) {
-          baseScale = 0.58;
+          baseScale = 0.45;
+        } else if (window.innerWidth <= 1366) {
+          baseScale = 0.52;
         }
         
         systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;

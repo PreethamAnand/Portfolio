@@ -71,7 +71,7 @@ const Hero = () => {
         }}
       >
         {/* Left Side */}
-        <div className="hero-text-col" style={{ flex: '1 1 320px', maxWidth: '650px', zIndex: 20, position: 'relative' }}>
+        <div className="hero-text-col" style={{ flex: '1 1 540px', maxWidth: '540px', zIndex: 20, position: 'relative' }}>
           <span 
             ref={eyebrowRef} 
             className="hero-eyebrow"
