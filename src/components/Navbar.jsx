@@ -65,7 +65,7 @@ export default function Navbar(){
     <nav className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 z-50 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
     
     <div className="flex items-center space-x-2 ">
-      <img src={logo} alt="Logo" className="h-8 w-8" />
+      <img src={logo} alt="Logo" className="h-8 w-8 lg:h-6 lg:w-6" />
       <div className="text-2xl font-bold text-white hidden sm:block">Preetham</div>
 
     </div>
