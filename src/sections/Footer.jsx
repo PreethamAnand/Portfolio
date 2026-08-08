@@ -77,8 +77,7 @@ const Footer = () => {
         gap: '16px'
       }}>
         {/* Name */}
-        <h2 style={{
-          fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+        <h2 className="footer-name" style={{
           fontWeight: '700',
           color: 'white',
           letterSpacing: '1px',
@@ -104,10 +103,9 @@ const Footer = () => {
         </div>
 
         {/* Quote */}
-        <p style={{
+        <p className="footer-quote" style={{
           color: 'rgba(255, 255, 255, 0.6)',
           fontStyle: 'italic',
-          fontSize: '0.95rem',
           margin: '10px 0 4px 0',
           letterSpacing: '0.5px'
         }}>
@@ -124,6 +122,21 @@ const Footer = () => {
           &copy; {currentYear} Preetham Anand. All rights reserved.
         </p>
       </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        .footer-name {
+          font-size: clamp(2.5rem, 6vw, 4rem) !important;
+        }
+        @media (max-width: 767px) {
+          .footer-name {
+            font-size: 2rem !important;
+          }
+          .footer-quote {
+            font-size: 0.85rem !important;
+            padding: 0 16px;
+          }
+        }
+      `}} />
     </footer>
   );
 };

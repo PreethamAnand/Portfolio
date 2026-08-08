@@ -201,10 +201,22 @@ const Projects = () => {
           }
         }
 
-        /* Mobile: 1 Column */
         @media (max-width: 767px) {
           .projects-grid {
             grid-template-columns: 1fr;
+            padding: 16px !important;
+            gap: 16px !important;
+          }
+          .project-info-col, .project-image-col {
+            min-height: auto !important;
+            padding: 16px !important;
+          }
+          .browser-frame {
+            aspect-ratio: 16/9;
+            height: auto;
+          }
+          .projects-header h2 {
+            font-size: 2rem !important;
           }
         }
 

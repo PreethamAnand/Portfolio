@@ -97,3 +97,15 @@ ul {
   border-radius: 16px;
   padding: 32px;
 }
+
+@media (max-width: 767px) {
+  :root {
+    --section-padding: 15px;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .glass-card {
+    padding: 20px;
+  }
+}

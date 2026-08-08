@@ -50,10 +50,10 @@ const About = () => {
       className="section"
       style={{ position: 'relative', paddingTop: '25px', paddingBottom: '0' }}
     >
-      <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
+      <div className="container about-container" style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}>
         
         {/* Main Profile Block */}
-        <div style={{ 
+        <div className="about-flex" style={{ 
           display: 'flex', 
           flexWrap: 'wrap', 
           gap: '40px', 
@@ -64,6 +64,7 @@ const About = () => {
           {/* Left Column: Profile Image */}
           <div 
             ref={leftColRef} 
+            className="about-image-col"
             style={{ 
               flex: '1 1 300px', 
               maxWidth: '400px', 
@@ -122,6 +123,7 @@ const About = () => {
           {/* Right Column: Info & Stats */}
           <div 
             ref={rightColRef} 
+            className="about-info-col"
             style={{ 
               flex: '2 1 400px', 
               display: 'flex', 
@@ -129,7 +131,7 @@ const About = () => {
             }}
           >
             
-            <div style={{ 
+            <div className="about-text" style={{ 
               color: 'var(--text-secondary)', 
               fontSize: '1.05rem', 
               lineHeight: 1.7, 
@@ -140,7 +142,7 @@ const About = () => {
               gap: '20px',
               opacity: 0
             }}>
-              <h2 style={{ 
+              <h2 className="about-heading" style={{ 
                 fontSize: 'clamp(2rem, 4vw, 3rem)', 
                 color: 'var(--text-primary)', 
                 fontWeight: '700',
@@ -150,7 +152,7 @@ const About = () => {
                 marginBottom: '8px'
               }}>
                 About Me
-                <span style={{ display: 'block', width: '40px', height: '2px', background: 'var(--accent-primary)' }}></span>
+                <span className="about-heading-line" style={{ display: 'block', width: '40px', height: '2px', background: 'var(--accent-primary)' }}></span>
               </h2>
               <p>
                 I'm Preetham Anand, a Computer Science undergraduate specializing in AI & Machine Learning. I build practical systems that combine intelligent models with usable applications — spanning Machine Learning, Generative AI, RAG systems, Computer Vision, and Full-Stack Development, primarily in Python, React, and FastAPI.
@@ -164,7 +166,7 @@ const About = () => {
             </div>
 
             {/* Buttons */}
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0, marginTop: 'auto' }}>
+            <div className="about-buttons" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', opacity: 0, marginTop: 'auto' }}>
               <Button href="#projects" variant="primary">View Projects</Button>
               <Button href="#contact" variant="outline">Get In Touch</Button>
             </div>
@@ -172,6 +174,36 @@ const About = () => {
         </div>
 
       </div>
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 767px) {
+          .about-container {
+            gap: 30px !important;
+          }
+          .about-flex {
+            gap: 30px !important;
+            flex-direction: column;
+            align-items: center !important;
+          }
+          .about-image-col {
+            max-width: 250px !important;
+          }
+          .about-text {
+            font-size: 0.95rem !important;
+            gap: 16px !important;
+            margin-bottom: 24px !important;
+            text-align: center;
+          }
+          .about-heading {
+            justify-content: center;
+          }
+          .about-heading-line {
+            display: none !important;
+          }
+          .about-buttons {
+            justify-content: center;
+          }
+        }
+      `}} />
     </section>
   );
 };

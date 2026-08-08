@@ -62,7 +62,7 @@ const Contact = () => {
       }} className="contact-grid">
         
         {/* Left Column: Image */}
-        <div ref={leftColRef} style={{ display: 'flex', justifyContent: 'flex-start', opacity: 0, width: '100%' }}>
+        <div ref={leftColRef} className="contact-image-container" style={{ display: 'flex', justifyContent: 'flex-start', opacity: 0, width: '100%' }}>
           <img 
             src={astraImg} 
             alt="Astronaut" 
@@ -77,7 +77,7 @@ const Contact = () => {
 
         {/* Right Column: Form */}
         <div ref={rightColRef} style={{ opacity: 0, display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-          <div style={{
+          <div className="contact-form-container" style={{
             width: '100%',
             maxWidth: '500px',
             background: '#0d0d0d',
@@ -200,6 +200,17 @@ const Contact = () => {
         @media (min-width: 1024px) {
           .contact-grid {
             grid-template-columns: 1fr 1.2fr !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .contact-grid {
+            gap: 30px !important;
+          }
+          .contact-image-container img {
+            max-width: 250px !important;
+          }
+          .contact-form-container {
+            padding: 24px !important;
           }
         }
         @keyframes float {

@@ -305,8 +305,46 @@ const Experience = () => {
       </div>
 
       <style dangerouslySetInnerHTML={{__html: `
-        /* Desktop/Mobile handling */
+        /* Mobile styles (< 1024px) */
         @media (max-width: 1023px) {
+          .exp-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding-left: 20px;
+          }
+          
+          .timeline-line {
+            width: 2px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+          }
+          
+          .exp-item {
+            display: flex;
+            align-items: flex-start;
+          }
+          
+          .exp-node-container {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0;
+            position: absolute;
+            left: -20px;
+            top: 20px;
+            transform: none;
+          }
+          
+          .exp-card-container {
+            width: 100% !important;
+            padding-left: 30px;
+          }
+
+          .exp-card {
+            padding: 20px;
+          }
+          
           .desktop-line { display: none !important; }
           .mobile-line { display: block !important; }
           .timeline-items {
@@ -330,7 +368,12 @@ const Experience = () => {
             left: -48px !important; 
           }
         }
+        
+        /* Desktop styles (>= 1024px) */
         @media (min-width: 1024px) {
+          .exp-card-container {
+            width: 100% !important; /* Forces the card to stretch to grid column width */
+          }
           .mobile-line { display: none !important; }
           .timeline-items {
             height: 600px;
@@ -351,6 +394,25 @@ const Experience = () => {
           .bottom-card {
             margin-top: auto;
             margin-bottom: 20px;
+          }
+        }
+        
+        /* Small Mobile styles (< 768px) */
+        @media (max-width: 767px) {
+          .exp-card {
+            padding: 16px !important;
+          }
+          .timeline-items {
+            padding: 0 16px 0 40px !important;
+          }
+          .mobile-line {
+            left: 16px !important;
+          }
+          .timeline-node {
+            left: -32px !important;
+          }
+          .exp-card h3 {
+            font-size: 1.1rem !important;
           }
         }
       `}} />

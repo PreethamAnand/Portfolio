@@ -58,19 +58,20 @@ const Hero = () => {
       }}
     >
       <div 
-        className="container" 
+        className="container hero-container" 
         style={{ 
           display: 'flex', 
-          flexWrap: 'wrap-reverse', 
+          flexWrap: 'wrap', 
           alignItems: 'center', 
           justifyContent: 'space-between',
           gap: '40px'
         }}
       >
         {/* Left Side */}
-        <div style={{ flex: '1 1 320px', maxWidth: '650px', zIndex: 10 }}>
+        <div className="hero-text-col" style={{ flex: '1 1 320px', maxWidth: '650px', zIndex: 10 }}>
           <span 
             ref={eyebrowRef} 
+            className="hero-eyebrow"
             style={{ 
               display: 'block', 
               color: 'var(--text-muted)', 
@@ -85,6 +86,7 @@ const Hero = () => {
           </span>
           <h2 
             ref={greetingRef} 
+            className="hero-greeting"
             style={{ 
               fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
               color: 'var(--accent-primary)', 
@@ -97,8 +99,9 @@ const Hero = () => {
           </h2>
           <h1 
             ref={nameRef} 
+            className="hero-name"
             style={{ 
-              fontSize: 'clamp(3rem, 8vw, 5.5rem)', 
+              fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', 
               color: 'var(--text-primary)', 
               fontWeight: '800', 
               lineHeight: 1.1, 
@@ -111,9 +114,10 @@ const Hero = () => {
           </h1>
           <p 
             ref={descRef} 
+            className="hero-desc"
             style={{ 
               color: 'var(--text-secondary)', 
-              fontSize: 'clamp(1rem, 2vw, 1.125rem)', 
+              fontSize: 'clamp(0.95rem, 2vw, 1.125rem)', 
               lineHeight: 1.6, 
               marginBottom: '40px', 
               maxWidth: '540px',
@@ -125,6 +129,7 @@ const Hero = () => {
           
           <div 
             ref={buttonsRef} 
+            className="hero-buttons"
             style={{ 
               display: 'flex', 
               gap: '16px', 
@@ -139,13 +144,14 @@ const Hero = () => {
             </Button>
           </div>
 
-          <div ref={socialRef} style={{ opacity: 0 }}>
+          <div ref={socialRef} className="hero-socials" style={{ opacity: 0 }}>
             <SocialLinks />
           </div>
         </div>
 
         {/* Right Side */}
         <div 
+          className="hero-image-col"
           style={{ 
             flex: '1 1 320px', 
             display: 'flex', 
@@ -156,6 +162,7 @@ const Hero = () => {
         >
           <div 
             ref={charRef}
+            className="hero-image-container"
             style={{ 
               position: 'relative', 
               width: '100%', 
@@ -179,7 +186,7 @@ const Hero = () => {
             <img 
               src={heroImage} 
               alt="Futuristic character illustration" 
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', zIndex: 1 }}
+              style={{ width: '100%', height: 'auto', maxHeight: '60vh', objectFit: 'contain', zIndex: 1 }}
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
@@ -188,8 +195,9 @@ const Hero = () => {
             {/* Fallback if image fails to load */}
             <div style={{
               display: 'none',
-              width: '300px',
-              height: '400px',
+              width: '100%',
+              maxWidth: '300px',
+              aspectRatio: '3/4',
               background: 'rgba(25, 211, 209, 0.05)',
               border: '1px solid var(--border-strong)',
               borderRadius: '16px',
@@ -198,7 +206,7 @@ const Hero = () => {
               alignItems: 'center',
               boxShadow: '0 0 30px var(--glow-cyan)'
             }}>
-              [Character Image Placeholder]
+              [Character Placeholder]
             </div>
           </div>
         </div>
@@ -207,6 +215,32 @@ const Hero = () => {
         @keyframes pulseGlow {
           0% { opacity: 0.4; transform: scale(0.95); }
           100% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        @media (max-width: 767px) {
+          .hero-container {
+            gap: 20px !important;
+            padding-top: 40px;
+          }
+          .hero-text-col {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-buttons {
+            justify-content: center;
+            margin-bottom: 30px !important;
+          }
+          .hero-desc {
+            margin-bottom: 24px !important;
+          }
+          .hero-image-col {
+            order: -1; /* Image on top of text on mobile */
+          }
+          .hero-image-container img {
+            max-height: 40vh !important;
+          }
         }
       `}} />
     </section>
