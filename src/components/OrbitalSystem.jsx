@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { SiLangchain } from 'react-icons/si';
 
 const orbitalData = [
-  // Ring 1 (Inner, Radius 300px)
+  // Ring 1 (Inner, Radius 260px)
   { ring: 1, label: 'PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', angle: 0, glow: 'rgba(51, 103, 145, 0.6)' },
   { ring: 1, label: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', angle: 51.4, glow: 'rgba(97, 218, 251, 0.6)' },
   { ring: 1, label: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', angle: 102.8, glow: 'rgba(49, 120, 198, 0.6)' },
@@ -10,11 +11,11 @@ const orbitalData = [
   { ring: 1, label: 'ChromaDB', text: '🔮', angle: 257.1, glow: 'rgba(139, 92, 246, 0.6)' },
   { ring: 1, label: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', angle: 308.5, glow: 'rgba(36, 150, 237, 0.6)' },
 
-  // Ring 2 (Outer, Radius 420px)
+  // Ring 2 (Outer, Radius 360px)
   { ring: 2, label: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg', angle: 0, glow: 'rgba(0, 150, 136, 0.6)' },
-  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', angle: 51.4, glow: 'rgba(255, 255, 255, 0.6)' },
+  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', invert: true, angle: 51.4, glow: 'rgba(255, 255, 255, 0.6)' },
   { ring: 2, label: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', angle: 102.8, glow: 'rgba(55, 118, 171, 0.6)' },
-  { ring: 2, label: 'LangChain', text: '🦜🔗', angle: 154.2, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 2, label: 'LangChain', icon: <SiLangchain size={28} color="#ffffff" />, angle: 154.2, glow: 'rgba(255, 255, 255, 0.4)' },
   { ring: 2, label: 'LangGraph', text: '🕸️', angle: 205.7, glow: 'rgba(255, 255, 255, 0.4)' },
   { ring: 2, label: 'RAG', text: '🧠', angle: 257.1, glow: 'rgba(236, 72, 153, 0.6)' },
   { ring: 2, label: 'GSAP', text: 'GSAP', isGsap: true, angle: 308.5, glow: 'rgba(136, 206, 2, 0.6)' },
@@ -50,7 +51,7 @@ const OrbitalSystem = () => {
 
       if (systemRef.current) {
         // Determine base scale based on screen size
-        let baseScale = 0.85;
+        let baseScale = 0.80;
         if (window.innerWidth <= 767) {
           baseScale = 0.38;
         } else if (window.innerWidth <= 1024) {
@@ -59,10 +60,7 @@ const OrbitalSystem = () => {
           baseScale = 0.60;
         }
         
-        // Add a base tilt of 65 degrees to create the oval perspective
-        const tiltX = 65 - currentY;
-        
-        systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${tiltX}deg) rotateY(${currentX}deg)`;
+        systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
       }
       requestRef = requestAnimationFrame(animate);
     };
@@ -77,7 +75,7 @@ const OrbitalSystem = () => {
   }, []);
 
   const getRadius = (ring) => {
-    return ring === 1 ? 400 : 550;
+    return ring === 1 ? 260 : 360;
   };
 
   const renderOrbitItems = (ringNumber) => {
@@ -96,26 +94,25 @@ const OrbitalSystem = () => {
             style={{ transform: `translate(${x}px, ${y}px)` }}
           >
             <div className={`orbit-counter-rotate inner-ring-${ringNumber}`}>
-              {/* Counter-rotate the 3D tilt so nodes stand upright */}
-              <div style={{ transform: 'rotateX(-65deg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div 
-                  className="orbit-node" 
-                  style={{ 
-                    boxShadow: `0 0 25px ${item.glow}`, 
-                    border: `1.5px solid ${item.glow}`,
-                    background: 'rgba(5, 5, 10, 0.95)'
-                  }}
-                >
-                  {item.img ? (
-                    <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
-                  ) : item.isGsap ? (
-                    <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
-                  ) : (
-                    <span style={{ fontSize: '24px' }}>{item.text}</span>
-                  )}
-                </div>
-                <span className="orbit-label" style={{ color: '#ffffff', marginTop: '12px' }}>{item.label}</span>
+              <div 
+                className="orbit-node" 
+                style={{ 
+                  boxShadow: `0 0 25px ${item.glow}`, 
+                  border: `1.5px solid ${item.glow}`,
+                  background: 'rgba(5, 5, 10, 0.95)'
+                }}
+              >
+                {item.img ? (
+                  <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain', filter: item.invert ? 'brightness(0) invert(1)' : 'none' }} />
+                ) : item.icon ? (
+                  item.icon
+                ) : item.isGsap ? (
+                  <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
+                ) : (
+                  <span style={{ fontSize: '24px' }}>{item.text}</span>
+                )}
               </div>
+              <span className="orbit-label" style={{ color: '#ffffff' }}>{item.label}</span>
             </div>
           </div>
         );
@@ -150,8 +147,8 @@ const OrbitalSystem = () => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 1200px;
-          height: 1200px;
+          width: 900px;
+          height: 900px;
           pointer-events: none; /* Let clicks pass to the main hero content/character */
           transform-style: preserve-3d;
           z-index: 0;
@@ -167,21 +164,21 @@ const OrbitalSystem = () => {
           box-shadow: 0 0 15px rgba(168, 85, 247, 0.15), inset 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
-        /* 400px Radius */
+        /* 260px Radius */
         .orbit-ring-1 {
-          width: 800px;
-          height: 800px;
-          margin-top: -400px;
-          margin-left: -400px;
+          width: 520px;
+          height: 520px;
+          margin-top: -260px;
+          margin-left: -260px;
           animation: orbit-cw 60s linear infinite;
         }
 
-        /* 550px Radius */
+        /* 360px Radius */
         .orbit-ring-2 {
-          width: 1100px;
-          height: 1100px;
-          margin-top: -550px;
-          margin-left: -550px;
+          width: 720px;
+          height: 720px;
+          margin-top: -360px;
+          margin-left: -360px;
           animation: orbit-ccw 55s linear infinite;
         }
 
@@ -240,6 +237,10 @@ const OrbitalSystem = () => {
 
         /* Always-visible plain text label below the node */
         .orbit-label {
+          position: absolute;
+          top: 74px; /* Right below the node */
+          left: 50%;
+          transform: translateX(-50%);
           white-space: nowrap;
           font-size: 0.9rem;
           font-weight: 500;
