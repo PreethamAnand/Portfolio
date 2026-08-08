@@ -65,13 +65,13 @@ const Hero = () => {
           flexDirection: 'row', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          gap: 'clamp(40px, 8vw, 120px)',
+          gap: 'clamp(80px, 12vw, 200px)',
           flexWrap: 'wrap',
           width: '100%'
         }}
       >
         {/* Left Side */}
-        <div className="hero-text-col" style={{ flex: '1 1 540px', maxWidth: '540px', zIndex: 20, position: 'relative' }}>
+        <div className="hero-text-col" style={{ flex: '1 1 500px', maxWidth: '500px', zIndex: 20, position: 'relative' }}>
           <span 
             ref={eyebrowRef} 
             className="hero-eyebrow"
