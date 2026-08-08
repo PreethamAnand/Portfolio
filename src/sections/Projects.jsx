@@ -98,7 +98,7 @@ const Projects = () => {
                       marginTop: isActive ? '16px' : '0',
                     }}
                   >
-                    <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.85rem', lineHeight: 1.5, paddingLeft: '24px', paddingRight: '8px' }}>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.82rem', lineHeight: 1.5, paddingLeft: '0px', paddingRight: '0px' }}>
                       {project.category} focused implementation delivering robust solutions.
                     </p>
                   </div>
@@ -186,7 +186,7 @@ const Projects = () => {
         /* Desktop: 3 Columns */
         @media (min-width: 1024px) {
           .projects-grid {
-            grid-template-columns: 1.4fr 1.7fr 1.7fr;
+            grid-template-columns: 1.2fr 1.8fr 1.8fr;
           }
         }
 
