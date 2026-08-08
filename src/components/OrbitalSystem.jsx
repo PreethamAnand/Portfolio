@@ -148,7 +148,7 @@ const OrbitalSystem = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%) scale(0.75);
           width: 800px;
           height: 800px;
           pointer-events: none; /* Let clicks pass to the main hero content/character */
@@ -300,16 +300,22 @@ const OrbitalSystem = () => {
           50% { transform: translateY(-15px); }
         }
 
+        @media (max-width: 1200px) {
+          .orbital-system-container {
+            transform: translate(-50%, -50%) scale(0.65);
+          }
+        }
+
         @media (max-width: 1024px) {
           .orbital-system-container {
-            transform: translate(-50%, -50%) scale(0.85);
+            transform: translate(-50%, -50%) scale(0.55);
           }
         }
         
         @media (max-width: 767px) {
           .orbital-system-container {
-            transform: translate(-50%, -50%) scale(0.5);
-            opacity: 0.6; /* reduce visual noise on mobile */
+            transform: translate(-50%, -50%) scale(0.45);
+            opacity: 0.5; /* reduce visual noise on mobile */
           }
         }
 

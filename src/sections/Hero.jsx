@@ -62,14 +62,16 @@ const Hero = () => {
         className="container hero-container" 
         style={{ 
           display: 'flex', 
-          flexWrap: 'wrap', 
+          flexDirection: 'row', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          gap: '40px'
+          gap: '40px',
+          flexWrap: 'wrap',
+          width: '100%'
         }}
       >
         {/* Left Side */}
-        <div className="hero-text-col" style={{ flex: '1 1 320px', maxWidth: '650px', zIndex: 10 }}>
+        <div className="hero-text-col" style={{ flex: '1 1 320px', maxWidth: '650px', zIndex: 20, position: 'relative' }}>
           <span 
             ref={eyebrowRef} 
             className="hero-eyebrow"
