@@ -1,49 +1,48 @@
 import React from 'react';
+import { FaPython, FaReact, FaNodeJs, FaChartLine, FaDocker } from 'react-icons/fa';
+import { SiFastapi, SiTensorflow, SiLangchain, SiLanggraph, SiMongodb, SiThreedotjs, SiGreensock } from 'react-icons/si';
 
 const skillsData = [
-  "🐍 Python",
-  "⚛️ React",
-  "🟢 Node.js",
-  "⚡ FastAPI",
-  "🧠 TensorFlow",
-  "📈 XGBoost",
-  "🔗 LangChain",
-  "🕸️ LangGraph",
-  "🗄️ MongoDB",
-  "🎨 Three.js",
-  "🎬 GSAP",
-  "🐳 Docker"
+  FaPython,
+  FaReact,
+  FaNodeJs,
+  SiFastapi,
+  SiTensorflow,
+  FaChartLine, // Representing XGBoost
+  SiLangchain,
+  SiLanggraph,
+  SiMongodb,
+  SiThreedotjs,
+  SiGreensock,
+  FaDocker
 ];
 
 const SideRibbons = () => {
-  const SkillItem = ({ text }) => {
+  const SkillItem = ({ Icon }) => {
     return (
       <div style={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '20px 0',
+        padding: '25px 0',
         width: '100%',
         opacity: 0.7,
         transition: 'all 0.3s ease',
         cursor: 'default',
-        color: '#ffffff',
-        fontSize: '1rem',
-        fontWeight: '500',
-        whiteSpace: 'nowrap'
+        color: 'var(--accent-primary)'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.opacity = 1;
-        e.currentTarget.style.transform = 'scale(1.1)';
-        e.currentTarget.style.textShadow = '0 0 10px var(--glow-cyan)';
+        e.currentTarget.style.transform = 'scale(1.25)';
+        e.currentTarget.style.filter = 'drop-shadow(0 0 10px var(--glow-cyan))';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.opacity = 0.7;
         e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.textShadow = 'none';
+        e.currentTarget.style.filter = 'none';
       }}
       >
-        {text}
+        <Icon size={32} />
       </div>
     );
   };
@@ -55,8 +54,8 @@ const SideRibbons = () => {
         <div className="ribbon-fade-top"></div>
         <div className="ribbon-fade-bottom"></div>
         <div className="ribbon-track scroll-down">
-          {skillsData.map((text, i) => <SkillItem key={`l1-${i}`} text={text} />)}
-          {skillsData.map((text, i) => <SkillItem key={`l2-${i}`} text={text} />)}
+          {skillsData.map((Icon, i) => <SkillItem key={`l1-${i}`} Icon={Icon} />)}
+          {skillsData.map((Icon, i) => <SkillItem key={`l2-${i}`} Icon={Icon} />)}
         </div>
       </div>
 
@@ -65,8 +64,8 @@ const SideRibbons = () => {
         <div className="ribbon-fade-top"></div>
         <div className="ribbon-fade-bottom"></div>
         <div className="ribbon-track scroll-up">
-          {skillsData.map((text, i) => <SkillItem key={`r1-${i}`} text={text} />)}
-          {skillsData.map((text, i) => <SkillItem key={`r2-${i}`} text={text} />)}
+          {skillsData.map((Icon, i) => <SkillItem key={`r1-${i}`} Icon={Icon} />)}
+          {skillsData.map((Icon, i) => <SkillItem key={`r2-${i}`} Icon={Icon} />)}
         </div>
       </div>
 
@@ -75,12 +74,12 @@ const SideRibbons = () => {
           position: fixed;
           top: 15vh;
           height: 70vh;
-          width: 140px;
+          width: 70px;
           z-index: 50;
           overflow: hidden;
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(255, 255, 255, 0.015);
           border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 20px;
+          border-radius: 35px;
           backdrop-filter: blur(8px);
         }
 
