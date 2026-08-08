@@ -65,7 +65,7 @@ const Hero = () => {
           flexDirection: 'row', 
           alignItems: 'center', 
           justifyContent: 'space-between',
-          gap: '40px',
+          gap: 'clamp(40px, 8vw, 120px)',
           flexWrap: 'wrap',
           width: '100%'
         }}
@@ -115,7 +115,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            Building AI-powered, machine learning and full-stack systems that solve real-world problems.
+            Building AI-powered, machine learning and full-stack<br></br> systems that solve real-world problems.
           </p>
           
           <div 
