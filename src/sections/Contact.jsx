@@ -61,22 +61,8 @@ const Contact = () => {
         alignItems: 'center'
       }} className="contact-grid">
         
-        {/* Left Column: Image */}
-        <div ref={leftColRef} className="contact-image-container" style={{ display: 'flex', justifyContent: 'flex-start', opacity: 0, width: '100%' }}>
-          <img 
-            src={astraImg} 
-            alt="Astronaut" 
-            style={{ 
-              width: '100%', 
-              maxWidth: '500px', 
-              objectFit: 'contain',
-              animation: 'float 6s ease-in-out infinite'
-            }} 
-          />
-        </div>
-
-        {/* Right Column: Form */}
-        <div ref={rightColRef} style={{ opacity: 0, display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        {/* Left Column: Form */}
+        <div ref={leftColRef} style={{ opacity: 0, display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
           <div className="contact-form-container" style={{
             width: '100%',
             maxWidth: '500px',
@@ -174,6 +160,20 @@ const Contact = () => {
               </button>
             </form>
           </div>
+        </div>
+
+        {/* Right Column: Image */}
+        <div ref={rightColRef} className="contact-image-container" style={{ display: 'flex', justifyContent: 'flex-end', opacity: 0, width: '100%' }}>
+          <img 
+            src={astraImg} 
+            alt="Astronaut" 
+            style={{ 
+              width: '100%', 
+              maxWidth: '500px', 
+              objectFit: 'contain',
+              animation: 'float 6s ease-in-out infinite'
+            }} 
+          />
         </div>
       </div>
 
