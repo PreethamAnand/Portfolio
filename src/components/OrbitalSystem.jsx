@@ -59,7 +59,10 @@ const OrbitalSystem = () => {
           baseScale = 0.60;
         }
         
-        systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
+        // Add a base tilt of 65 degrees to create the oval perspective
+        const tiltX = 65 - currentY;
+        
+        systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${tiltX}deg) rotateY(${currentX}deg)`;
       }
       requestRef = requestAnimationFrame(animate);
     };
@@ -93,23 +96,26 @@ const OrbitalSystem = () => {
             style={{ transform: `translate(${x}px, ${y}px)` }}
           >
             <div className={`orbit-counter-rotate inner-ring-${ringNumber}`}>
-              <div 
-                className="orbit-node" 
-                style={{ 
-                  boxShadow: `0 0 25px ${item.glow}`, 
-                  border: `1.5px solid ${item.glow}`,
-                  background: 'rgba(5, 5, 10, 0.95)'
-                }}
-              >
-                {item.img ? (
-                  <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
-                ) : item.isGsap ? (
-                  <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
-                ) : (
-                  <span style={{ fontSize: '24px' }}>{item.text}</span>
-                )}
+              {/* Counter-rotate the 3D tilt so nodes stand upright */}
+              <div style={{ transform: 'rotateX(-65deg)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div 
+                  className="orbit-node" 
+                  style={{ 
+                    boxShadow: `0 0 25px ${item.glow}`, 
+                    border: `1.5px solid ${item.glow}`,
+                    background: 'rgba(5, 5, 10, 0.95)'
+                  }}
+                >
+                  {item.img ? (
+                    <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+                  ) : item.isGsap ? (
+                    <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
+                  ) : (
+                    <span style={{ fontSize: '24px' }}>{item.text}</span>
+                  )}
+                </div>
+                <span className="orbit-label" style={{ color: '#ffffff', marginTop: '12px' }}>{item.label}</span>
               </div>
-              <span className="orbit-label" style={{ color: '#ffffff' }}>{item.label}</span>
             </div>
           </div>
         );
@@ -234,10 +240,6 @@ const OrbitalSystem = () => {
 
         /* Always-visible plain text label below the node */
         .orbit-label {
-          position: absolute;
-          top: 74px; /* Right below the node */
-          left: 50%;
-          transform: translateX(-50%);
           white-space: nowrap;
           font-size: 0.9rem;
           font-weight: 500;
