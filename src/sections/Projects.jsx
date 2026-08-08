@@ -90,7 +90,6 @@ const Projects = () => {
                     )}
                   </div>
                   
-                  {/* Expanded Content */}
                   <div 
                     className="project-list-content"
                     style={{
@@ -99,7 +98,7 @@ const Projects = () => {
                       marginTop: isActive ? '16px' : '0',
                     }}
                   >
-                    <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.95rem', lineHeight: 1.6, paddingLeft: '32px' }}>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.85rem', lineHeight: 1.5, paddingLeft: '24px', paddingRight: '8px' }}>
                       {project.category} focused implementation delivering robust solutions.
                     </p>
                   </div>
@@ -187,7 +186,7 @@ const Projects = () => {
         /* Desktop: 3 Columns */
         @media (min-width: 1024px) {
           .projects-grid {
-            grid-template-columns: 1.8fr 1.6fr 1.6fr;
+            grid-template-columns: 1.4fr 1.7fr 1.7fr;
           }
         }
 
