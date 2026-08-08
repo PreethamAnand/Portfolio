@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import SocialLinks from '../components/SocialLinks';
 import heroImage from '../assets/hero.png';
 import heroresume from '../assets/Preetham Anand Machine Learning Role.pdf';
+import OrbitalSystem from '../components/OrbitalSystem';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -84,19 +85,7 @@ const Hero = () => {
           >
             AI/ML ENGINEER • FULL STACK DEVELOPER
           </span>
-          <h2 
-            ref={greetingRef} 
-            className="hero-greeting"
-            style={{ 
-              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', 
-              color: 'var(--accent-primary)', 
-              fontWeight: '500', 
-              marginBottom: '4px',
-              opacity: 0
-            }}
-          >
-            Hi, I'm
-          </h2>
+          {/* Removed "Hi, I'm" to make it more premium */}
           <h1 
             ref={nameRef} 
             className="hero-name"
@@ -124,7 +113,7 @@ const Hero = () => {
               opacity: 0
             }}
           >
-            Builds intelligent systems, data-driven applications, and full-stack products using AI/ML and modern web technologies.
+            Building AI-powered, machine learning and full-stack systems that solve real-world problems.
           </p>
           
           <div 
@@ -173,6 +162,9 @@ const Hero = () => {
               opacity: 0
             }}
           >
+            {/* The new Orbital System */}
+            <OrbitalSystem />
+            
             {/* Ambient glow behind character */}
             <div style={{
               position: 'absolute',
@@ -180,13 +172,13 @@ const Hero = () => {
               height: '60%',
               background: 'radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%)',
               filter: 'blur(30px)',
-              zIndex: -1,
+              zIndex: 1,
               animation: 'pulseGlow 4s ease-in-out infinite alternate'
             }}></div>
             <img 
               src={heroImage} 
               alt="Futuristic character illustration" 
-              style={{ width: '100%', height: 'auto', maxHeight: '60vh', objectFit: 'contain', zIndex: 1 }}
+              style={{ width: '100%', height: 'auto', maxHeight: '60vh', objectFit: 'contain', zIndex: 10 }}
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';

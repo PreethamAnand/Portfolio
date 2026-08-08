@@ -14,8 +14,6 @@ import Experience from './sections/Experience';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
-import SideRibbons from './components/SideRibbons';
-
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -42,7 +40,6 @@ function App() {
       <ParticleBackground />
       <CustomCursor />
       <Navbar />
-      <SideRibbons />
       <main style={{ paddingTop: 'var(--nav-height)' }}>
         <Hero />
         <About />
