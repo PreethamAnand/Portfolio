@@ -107,12 +107,9 @@ const Contact = () => {
     >
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '1fr',
         gap: '60px',
-        width: '100%',
-        maxWidth: '1200px',
         alignItems: 'center'
-      }} className="contact-grid">
+      }} className="container contact-grid">
         
         {/* Left Column: Form */}
         <div ref={leftColRef} style={{ opacity: 0, display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
