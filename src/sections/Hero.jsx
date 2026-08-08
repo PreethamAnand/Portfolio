@@ -180,7 +180,7 @@ const Hero = () => {
             <img 
               src={heroImage} 
               alt="Futuristic character illustration" 
-              style={{ width: '70%', maxWidth: '320px', height: 'auto', maxHeight: '50vh', objectFit: 'contain', zIndex: 10, position: 'relative' }}
+              style={{ width: '70%', maxWidth: '320px', height: 'auto', maxHeight: '50vh', objectFit: 'contain', zIndex: 10, position: 'relative', transform: 'translateY(-20px)' }}
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
