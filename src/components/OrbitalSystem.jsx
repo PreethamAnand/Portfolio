@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
 const orbitalData = [
-  // Ring 1 (Inner, Radius 260px)
+  // Single Ring (Radius 310px)
   { 
     ring: 1, 
     label: 'AI / ML', 
@@ -14,33 +14,31 @@ const orbitalData = [
     ring: 1, 
     label: 'GenAI', 
     text: '🤖', 
-    angle: 180, 
+    angle: 72, 
     glow: 'rgba(168, 85, 247, 0.6)', // Purple
     skills: 'Generative AI · RAG · AI Agents · Multi-Agent Systems · Semantic Search · Embeddings'
   },
-
-  // Ring 2 (Outer, Radius 360px)
   { 
-    ring: 2, 
+    ring: 1, 
     label: 'Engineering', 
     text: '⚙️', 
-    angle: 90, 
+    angle: 144, 
     glow: 'rgba(59, 130, 246, 0.6)', // Blue
     skills: 'Full-Stack Development · Backend Development · API Development · AI System Design · ML Pipelines'
   },
   { 
-    ring: 2, 
+    ring: 1, 
     label: 'Data', 
     text: '📊', 
-    angle: 210, 
+    angle: 216, 
     glow: 'rgba(16, 185, 129, 0.6)', // Emerald
     skills: 'Data Analysis · Feature Engineering · Time-Series Analysis · Financial Analysis'
   },
   { 
-    ring: 2, 
+    ring: 1, 
     label: 'Advanced Web', 
     text: '🌐', 
-    angle: 330, 
+    angle: 288, 
     glow: 'rgba(6, 182, 212, 0.6)', // Cyan
     skills: '3D Web · WebGL · Interactive UI · Animation Engineering · Scroll-Driven Experiences'
   }
@@ -100,7 +98,7 @@ const OrbitalSystem = () => {
   }, []);
 
   const getRadius = (ring) => {
-    return ring === 1 ? 260 : 360;
+    return 310;
   };
 
   const renderOrbitItems = (ringNumber) => {
@@ -153,14 +151,9 @@ const OrbitalSystem = () => {
         <div className="orbital-particle p4"></div>
         <div className="orbital-particle p5"></div>
 
-        {/* Ring 1 (Inner) */}
+        {/* Single Main Ring */}
         <div className="orbit-ring orbit-ring-1">
           {renderOrbitItems(1)}
-        </div>
-
-        {/* Ring 2 (Outer) */}
-        <div className="orbit-ring orbit-ring-2">
-          {renderOrbitItems(2)}
         </div>
       </div>
 
@@ -187,32 +180,18 @@ const OrbitalSystem = () => {
           box-shadow: 0 0 15px rgba(168, 85, 247, 0.15), inset 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
-        /* 260px Radius */
+        /* 310px Radius */
         .orbit-ring-1 {
-          width: 520px;
-          height: 520px;
-          margin-top: -260px;
-          margin-left: -260px;
-          animation: orbit-cw 75s linear infinite;
-        }
-
-        /* 360px Radius */
-        .orbit-ring-2 {
-          width: 720px;
-          height: 720px;
-          margin-top: -360px;
-          margin-left: -360px;
-          animation: orbit-ccw 65s linear infinite;
+          width: 620px;
+          height: 620px;
+          margin-top: -310px;
+          margin-left: -310px;
+          animation: orbit-cw 70s linear infinite;
         }
 
         @keyframes orbit-cw {
           0% { transform: rotateZ(0deg); }
           100% { transform: rotateZ(360deg); }
-        }
-
-        @keyframes orbit-ccw {
-          0% { transform: rotateZ(360deg); }
-          100% { transform: rotateZ(0deg); }
         }
 
         /* Items on the rings */
@@ -319,8 +298,7 @@ const OrbitalSystem = () => {
         }
 
         /* Counter-rotation to keep icons upright */
-        .inner-ring-1 { animation: counter-cw 75s linear infinite; }
-        .inner-ring-2 { animation: counter-ccw 65s linear infinite; }
+        .inner-ring-1 { animation: counter-cw 70s linear infinite; }
 
         @keyframes counter-cw {
           0% { transform: rotateZ(0deg); }
