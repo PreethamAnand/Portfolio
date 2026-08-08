@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { FaPython, FaReact, FaNodeJs, FaDocker, FaGithub, FaDatabase } from 'react-icons/fa';
-import { SiJavascript, SiTypescript, SiTensorflow, SiFastapi, SiThreejs, SiGreensock } from 'react-icons/si';
+import { SiTensorflow, SiFastapi } from 'react-icons/si';
 
 const orbitalData = [
   // Inner Ring (radius 160px)
@@ -19,8 +19,8 @@ const orbitalData = [
   // Outer Ring (radius 360px)
   { ring: 3, label: 'LangChain', text: '🔗', color: '#fff', angle: 0 },
   { ring: 3, label: 'LangGraph', text: '🕸️', color: '#fff', angle: 51 },
-  { ring: 3, label: 'Three.js', icon: <SiThreejs size={18} color="#ffffff" />, angle: 102 },
-  { ring: 3, label: 'GSAP', icon: <SiGreensock size={18} color="#88CE02" />, angle: 153 },
+  { ring: 3, label: 'Three.js', text: '3D', color: '#ffffff', angle: 102 },
+  { ring: 3, label: 'GSAP', text: 'GSAP', color: '#88CE02', angle: 153 },
   { ring: 3, label: 'ChromaDB', icon: <FaDatabase size={18} color="#2563EB" />, angle: 204 },
   { ring: 3, label: 'Docker', icon: <FaDocker size={18} color="#2496ED" />, angle: 255 },
   { ring: 3, label: 'GitHub', icon: <FaGithub size={18} color="#ffffff" />, angle: 306 },
