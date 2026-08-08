@@ -96,8 +96,8 @@ const OrbitalSystem = () => {
               <div 
                 className="orbit-node" 
                 style={{ 
-                  boxShadow: \`0 0 25px \${item.glow}\`, 
-                  border: \`1.5px solid \${item.glow}\`,
+                  boxShadow: `0 0 25px ${item.glow}`, 
+                  border: `1.5px solid ${item.glow}`,
                   background: 'rgba(5, 5, 10, 0.9)'
                 }}
               >
@@ -143,7 +143,7 @@ const OrbitalSystem = () => {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{__html: \`
+      <style dangerouslySetInnerHTML={{__html: `
         .orbital-system-container {
           position: absolute;
           top: 50%;
@@ -318,7 +318,7 @@ const OrbitalSystem = () => {
             animation: none !important;
           }
         }
-      \`}} />
+      `}} />
     </>
   );
 };

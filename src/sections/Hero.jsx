@@ -178,12 +178,37 @@ const Hero = () => {
             <img 
               src={heroImage} 
               alt="Futuristic character illustration" 
-              style={{ width: '100%', height: 'auto', maxHeight: '60vh', objectFit: 'contain', zIndex: 10 }}
+              style={{ width: '100%', height: 'auto', maxHeight: '60vh', objectFit: 'contain', zIndex: 10, position: 'relative' }}
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextSibling.style.display = 'flex';
               }}
             />
+            {/* Glowing Base Pedestal */}
+            <div style={{
+              position: 'absolute',
+              bottom: '5%',
+              left: '50%',
+              marginLeft: '-125px', /* Half of 250px */
+              width: '250px',
+              height: '60px',
+              borderRadius: '50%',
+              background: 'radial-gradient(ellipse at center, rgba(22, 217, 208, 0.3) 0%, rgba(22, 217, 208, 0) 60%)',
+              border: '2px solid rgba(22, 217, 208, 0.6)',
+              boxShadow: '0 0 25px rgba(22, 217, 208, 0.5), inset 0 0 15px rgba(22, 217, 208, 0.4)',
+              zIndex: 5,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <div style={{
+                width: '180px',
+                height: '40px',
+                borderRadius: '50%',
+                border: '1.5px solid rgba(22, 217, 208, 0.8)',
+                boxShadow: '0 0 20px rgba(22, 217, 208, 0.6), inset 0 0 10px rgba(22, 217, 208, 0.3)'
+              }}></div>
+            </div>
             {/* Fallback if image fails to load */}
             <div style={{
               display: 'none',
