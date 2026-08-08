@@ -1,24 +1,49 @@
 import React, { useEffect, useRef } from 'react';
-import { SiLangchain } from 'react-icons/si';
 
 const orbitalData = [
   // Ring 1 (Inner, Radius 260px)
-  { ring: 1, label: 'PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', angle: 0, glow: 'rgba(51, 103, 145, 0.6)' },
-  { ring: 1, label: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', angle: 51.4, glow: 'rgba(97, 218, 251, 0.6)' },
-  { ring: 1, label: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', angle: 102.8, glow: 'rgba(49, 120, 198, 0.6)' },
-  { ring: 1, label: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', angle: 154.2, glow: 'rgba(83, 158, 67, 0.6)' },
-  { ring: 1, label: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg', angle: 205.7, glow: 'rgba(255, 111, 0, 0.6)' },
-  { ring: 1, label: 'ChromaDB', text: '🔮', angle: 257.1, glow: 'rgba(139, 92, 246, 0.6)' },
-  { ring: 1, label: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', angle: 308.5, glow: 'rgba(36, 150, 237, 0.6)' },
+  { 
+    ring: 1, 
+    label: 'AI / ML', 
+    text: '🧠', 
+    angle: 0, 
+    glow: 'rgba(236, 72, 153, 0.6)', // Pink
+    skills: 'Machine Learning · Deep Learning · Computer Vision · Predictive Modeling · Explainable AI'
+  },
+  { 
+    ring: 1, 
+    label: 'GenAI', 
+    text: '🤖', 
+    angle: 180, 
+    glow: 'rgba(168, 85, 247, 0.6)', // Purple
+    skills: 'Generative AI · RAG · AI Agents · Multi-Agent Systems · Semantic Search · Embeddings'
+  },
 
   // Ring 2 (Outer, Radius 360px)
-  { ring: 2, label: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg', angle: 0, glow: 'rgba(0, 150, 136, 0.6)' },
-  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', invert: true, angle: 51.4, glow: 'rgba(255, 255, 255, 0.6)' },
-  { ring: 2, label: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', angle: 102.8, glow: 'rgba(55, 118, 171, 0.6)' },
-  { ring: 2, label: 'LangChain', icon: <SiLangchain size={28} color="#ffffff" />, angle: 154.2, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 2, label: 'LangGraph', text: '🕸️', angle: 205.7, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 2, label: 'RAG', text: '🧠', angle: 257.1, glow: 'rgba(236, 72, 153, 0.6)' },
-  { ring: 2, label: 'GSAP', text: 'GSAP', isGsap: true, angle: 308.5, glow: 'rgba(136, 206, 2, 0.6)' },
+  { 
+    ring: 2, 
+    label: 'Engineering', 
+    text: '⚙️', 
+    angle: 90, 
+    glow: 'rgba(59, 130, 246, 0.6)', // Blue
+    skills: 'Full-Stack Development · Backend Development · API Development · AI System Design · ML Pipelines'
+  },
+  { 
+    ring: 2, 
+    label: 'Data', 
+    text: '📊', 
+    angle: 210, 
+    glow: 'rgba(16, 185, 129, 0.6)', // Emerald
+    skills: 'Data Analysis · Feature Engineering · Time-Series Analysis · Financial Analysis'
+  },
+  { 
+    ring: 2, 
+    label: 'Advanced Web', 
+    text: '🌐', 
+    angle: 330, 
+    glow: 'rgba(6, 182, 212, 0.6)', // Cyan
+    skills: '3D Web · WebGL · Interactive UI · Animation Engineering · Scroll-Driven Experiences'
+  }
 ];
 
 const OrbitalSystem = () => {
@@ -95,22 +120,20 @@ const OrbitalSystem = () => {
           >
             <div className={`orbit-counter-rotate inner-ring-${ringNumber}`}>
               <div 
-                className="orbit-node" 
+                className="orbit-node group" 
                 style={{ 
                   boxShadow: `0 0 25px ${item.glow}`, 
                   border: `1.5px solid ${item.glow}`,
                   background: 'rgba(5, 5, 10, 0.95)'
                 }}
               >
-                {item.img ? (
-                  <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain', filter: item.invert ? 'brightness(0) invert(1)' : 'none' }} />
-                ) : item.icon ? (
-                  item.icon
-                ) : item.isGsap ? (
-                  <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
-                ) : (
-                  <span style={{ fontSize: '24px' }}>{item.text}</span>
-                )}
+                <span style={{ fontSize: '28px' }}>{item.text}</span>
+                
+                {/* Hover Tooltip */}
+                <div className="orbit-tooltip">
+                  <div className="tooltip-title" style={{ color: item.glow }}>{item.label}</div>
+                  <div className="tooltip-skills">{item.skills}</div>
+                </div>
               </div>
               <span className="orbit-label" style={{ color: '#ffffff' }}>{item.label}</span>
             </div>
@@ -170,7 +193,7 @@ const OrbitalSystem = () => {
           height: 520px;
           margin-top: -260px;
           margin-left: -260px;
-          animation: orbit-cw 60s linear infinite;
+          animation: orbit-cw 75s linear infinite;
         }
 
         /* 360px Radius */
@@ -179,7 +202,7 @@ const OrbitalSystem = () => {
           height: 720px;
           margin-top: -360px;
           margin-left: -360px;
-          animation: orbit-ccw 55s linear infinite;
+          animation: orbit-ccw 65s linear infinite;
         }
 
         @keyframes orbit-cw {
@@ -197,10 +220,10 @@ const OrbitalSystem = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 64px;
-          height: 64px;
-          margin-top: -32px;
-          margin-left: -32px;
+          width: 72px;
+          height: 72px;
+          margin-top: -36px;
+          margin-left: -36px;
           pointer-events: auto; /* Re-enable pointer events for hover */
         }
 
@@ -224,35 +247,80 @@ const OrbitalSystem = () => {
           align-items: center;
           border-radius: 50%;
           backdrop-filter: blur(8px);
-          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           cursor: pointer;
           position: relative;
           z-index: 5;
         }
 
         .orbit-node:hover {
-          transform: scale(1.2);
+          transform: scale(1.15);
           z-index: 10;
         }
 
         /* Always-visible plain text label below the node */
         .orbit-label {
           position: absolute;
-          top: 74px; /* Right below the node */
+          top: 80px; /* Right below the node */
           left: 50%;
           transform: translateX(-50%);
           white-space: nowrap;
-          font-size: 0.9rem;
-          font-weight: 500;
+          font-size: 0.95rem;
+          font-weight: 600;
           letter-spacing: 0.5px;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+          text-shadow: 0 2px 5px rgba(0,0,0,0.9);
           pointer-events: none;
           z-index: 6;
+          transition: opacity 0.3s ease;
+        }
+
+        /* Hide label on hover to make room for tooltip if needed */
+        .orbit-node:hover + .orbit-label {
+          opacity: 0;
+        }
+
+        /* Tooltip */
+        .orbit-tooltip {
+          position: absolute;
+          top: 110%;
+          left: 50%;
+          transform: translateX(-50%) translateY(15px);
+          width: 220px;
+          padding: 14px;
+          background: rgba(10, 10, 15, 0.95);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          text-align: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          z-index: 20;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+          backdrop-filter: blur(12px);
+        }
+
+        .orbit-node:hover .orbit-tooltip {
+          opacity: 1;
+          transform: translateX(-50%) translateY(5px);
+        }
+
+        .tooltip-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          margin-bottom: 6px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+
+        .tooltip-skills {
+          color: #a3a3a3;
+          font-size: 0.75rem;
+          line-height: 1.5;
         }
 
         /* Counter-rotation to keep icons upright */
-        .inner-ring-1 { animation: counter-cw 60s linear infinite; }
-        .inner-ring-2 { animation: counter-ccw 55s linear infinite; }
+        .inner-ring-1 { animation: counter-cw 75s linear infinite; }
+        .inner-ring-2 { animation: counter-ccw 65s linear infinite; }
 
         @keyframes counter-cw {
           0% { transform: rotateZ(0deg); }

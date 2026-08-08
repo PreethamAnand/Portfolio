@@ -1,9 +1,22 @@
 import React from 'react';
-import { skillsData } from '../data/skills';
+
+const skillsData = [
+  "🐍 Python",
+  "⚛️ React",
+  "🟢 Node.js",
+  "⚡ FastAPI",
+  "🧠 TensorFlow",
+  "📈 XGBoost",
+  "🔗 LangChain",
+  "🕸️ LangGraph",
+  "🗄️ MongoDB",
+  "🎨 Three.js",
+  "🎬 GSAP",
+  "🐳 Docker"
+];
 
 const SideRibbons = () => {
-  const SkillIcon = ({ skill }) => {
-    const Icon = skill.icon;
+  const SkillItem = ({ text }) => {
     return (
       <div style={{
         display: 'flex',
@@ -11,23 +24,26 @@ const SideRibbons = () => {
         alignItems: 'center',
         padding: '20px 0',
         width: '100%',
-        opacity: 0.6,
+        opacity: 0.7,
         transition: 'all 0.3s ease',
-        cursor: 'default'
+        cursor: 'default',
+        color: '#ffffff',
+        fontSize: '1rem',
+        fontWeight: '500',
+        whiteSpace: 'nowrap'
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.opacity = 1;
-        e.currentTarget.style.transform = 'scale(1.2)';
-        e.currentTarget.style.filter = 'drop-shadow(0 0 10px var(--glow-cyan))';
+        e.currentTarget.style.transform = 'scale(1.1)';
+        e.currentTarget.style.textShadow = '0 0 10px var(--glow-cyan)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.opacity = 0.6;
+        e.currentTarget.style.opacity = 0.7;
         e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.filter = 'none';
+        e.currentTarget.style.textShadow = 'none';
       }}
-      title={skill.name}
       >
-        <Icon size={28} color={skill.color || 'var(--accent-primary)'} />
+        {text}
       </div>
     );
   };
@@ -39,8 +55,8 @@ const SideRibbons = () => {
         <div className="ribbon-fade-top"></div>
         <div className="ribbon-fade-bottom"></div>
         <div className="ribbon-track scroll-down">
-          {skillsData.map((skill, i) => <SkillIcon key={`l1-${i}`} skill={skill} />)}
-          {skillsData.map((skill, i) => <SkillIcon key={`l2-${i}`} skill={skill} />)}
+          {skillsData.map((text, i) => <SkillItem key={`l1-${i}`} text={text} />)}
+          {skillsData.map((text, i) => <SkillItem key={`l2-${i}`} text={text} />)}
         </div>
       </div>
 
@@ -49,8 +65,8 @@ const SideRibbons = () => {
         <div className="ribbon-fade-top"></div>
         <div className="ribbon-fade-bottom"></div>
         <div className="ribbon-track scroll-up">
-          {skillsData.map((skill, i) => <SkillIcon key={`r1-${i}`} skill={skill} />)}
-          {skillsData.map((skill, i) => <SkillIcon key={`r2-${i}`} skill={skill} />)}
+          {skillsData.map((text, i) => <SkillItem key={`r1-${i}`} text={text} />)}
+          {skillsData.map((text, i) => <SkillItem key={`r2-${i}`} text={text} />)}
         </div>
       </div>
 
@@ -59,12 +75,12 @@ const SideRibbons = () => {
           position: fixed;
           top: 15vh;
           height: 70vh;
-          width: 60px;
+          width: 140px;
           z-index: 50;
           overflow: hidden;
           background: rgba(255, 255, 255, 0.02);
           border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 30px;
+          border-radius: 20px;
           backdrop-filter: blur(8px);
         }
 
@@ -113,11 +129,11 @@ const SideRibbons = () => {
         }
 
         .scroll-down {
-          animation: ribbonScrollDown 25s linear infinite;
+          animation: ribbonScrollDown 35s linear infinite;
         }
 
         .scroll-up {
-          animation: ribbonScrollUp 25s linear infinite;
+          animation: ribbonScrollUp 35s linear infinite;
         }
 
         .side-ribbon:hover .ribbon-track {
