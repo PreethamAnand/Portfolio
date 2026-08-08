@@ -140,7 +140,9 @@ const About = () => {
               display: 'flex',
               flexDirection: 'column',
               gap: '20px',
-              opacity: 0
+              opacity: 0,
+              textAlign: 'justify',
+              textJustify: 'inter-word'
             }}>
               <h2 className="about-heading" style={{ 
                 fontSize: 'clamp(2rem, 4vw, 3rem)', 
