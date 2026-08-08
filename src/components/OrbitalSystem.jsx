@@ -1,27 +1,23 @@
 import React, { useEffect, useRef } from 'react';
-import { FaPython, FaReact, FaNodeJs, FaDocker, FaGithub, FaDatabase } from 'react-icons/fa';
-import { SiTensorflow, SiFastapi } from 'react-icons/si';
 
 const orbitalData = [
-  // Inner Ring (radius 180px)
+  // Ring 1 (Inner, Radius 300px)
   { ring: 1, label: 'PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', angle: 0, glow: 'rgba(51, 103, 145, 0.6)' },
-  { ring: 1, label: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', angle: 90, glow: 'rgba(97, 218, 251, 0.6)' },
-  { ring: 1, label: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', angle: 180, glow: 'rgba(49, 120, 198, 0.6)' },
-  { ring: 1, label: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', angle: 270, glow: 'rgba(83, 158, 67, 0.6)' },
+  { ring: 1, label: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', angle: 51.4, glow: 'rgba(97, 218, 251, 0.6)' },
+  { ring: 1, label: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', angle: 102.8, glow: 'rgba(49, 120, 198, 0.6)' },
+  { ring: 1, label: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', angle: 154.2, glow: 'rgba(83, 158, 67, 0.6)' },
+  { ring: 1, label: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg', angle: 205.7, glow: 'rgba(255, 111, 0, 0.6)' },
+  { ring: 1, label: 'ChromaDB', text: '🔮', angle: 257.1, glow: 'rgba(139, 92, 246, 0.6)' },
+  { ring: 1, label: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', angle: 308.5, glow: 'rgba(36, 150, 237, 0.6)' },
 
-  // Middle Ring (radius 280px)
-  { ring: 2, label: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg', angle: 30, glow: 'rgba(255, 111, 0, 0.6)' },
-  { ring: 2, label: 'ChromaDB', text: '🔮', angle: 102, glow: 'rgba(139, 92, 246, 0.6)' },
-  { ring: 2, label: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', angle: 174, glow: 'rgba(36, 150, 237, 0.6)' },
-  { ring: 2, label: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg', angle: 246, glow: 'rgba(0, 150, 136, 0.6)' },
-  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', angle: 318, glow: 'rgba(255, 255, 255, 0.6)' },
-
-  // Outer Ring (radius 380px)
-  { ring: 3, label: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', angle: 0, glow: 'rgba(55, 118, 171, 0.6)' },
-  { ring: 3, label: 'LangChain', text: '🦜🔗', angle: 51, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 3, label: 'LangGraph', text: '🕸️', angle: 102, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 3, label: 'RAG', text: '🧠', angle: 153, glow: 'rgba(236, 72, 153, 0.6)' },
-  { ring: 3, label: 'GSAP', text: 'GSAP', isGsap: true, angle: 204, glow: 'rgba(136, 206, 2, 0.6)' },
+  // Ring 2 (Outer, Radius 420px)
+  { ring: 2, label: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg', angle: 0, glow: 'rgba(0, 150, 136, 0.6)' },
+  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', angle: 51.4, glow: 'rgba(255, 255, 255, 0.6)' },
+  { ring: 2, label: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', angle: 102.8, glow: 'rgba(55, 118, 171, 0.6)' },
+  { ring: 2, label: 'LangChain', text: '🦜🔗', angle: 154.2, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 2, label: 'LangGraph', text: '🕸️', angle: 205.7, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 2, label: 'RAG', text: '🧠', angle: 257.1, glow: 'rgba(236, 72, 153, 0.6)' },
+  { ring: 2, label: 'GSAP', text: 'GSAP', isGsap: true, angle: 308.5, glow: 'rgba(136, 206, 2, 0.6)' },
 ];
 
 const OrbitalSystem = () => {
@@ -56,11 +52,11 @@ const OrbitalSystem = () => {
         // Determine base scale based on screen size
         let baseScale = 0.85;
         if (window.innerWidth <= 767) {
-          baseScale = 0.45;
+          baseScale = 0.38;
         } else if (window.innerWidth <= 1024) {
-          baseScale = 0.55;
+          baseScale = 0.45;
         } else if (window.innerWidth <= 1366) {
-          baseScale = 0.70;
+          baseScale = 0.60;
         }
         
         systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
@@ -78,7 +74,7 @@ const OrbitalSystem = () => {
   }, []);
 
   const getRadius = (ring) => {
-    return ring === 1 ? 180 : ring === 2 ? 280 : 380;
+    return ring === 1 ? 300 : 420;
   };
 
   const renderOrbitItems = (ringNumber) => {
@@ -136,14 +132,9 @@ const OrbitalSystem = () => {
           {renderOrbitItems(1)}
         </div>
 
-        {/* Ring 2 (Middle) */}
+        {/* Ring 2 (Outer) */}
         <div className="orbit-ring orbit-ring-2">
           {renderOrbitItems(2)}
-        </div>
-
-        {/* Ring 3 (Outer) */}
-        <div className="orbit-ring orbit-ring-3">
-          {renderOrbitItems(3)}
         </div>
       </div>
 
@@ -152,9 +143,9 @@ const OrbitalSystem = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%) scale(0.75);
-          width: 800px;
-          height: 800px;
+          transform: translate(-50%, -50%);
+          width: 900px;
+          height: 900px;
           pointer-events: none; /* Let clicks pass to the main hero content/character */
           transform-style: preserve-3d;
           z-index: 0;
@@ -165,35 +156,27 @@ const OrbitalSystem = () => {
           top: 50%;
           left: 50%;
           border-radius: 50%;
-          border: 1px solid rgba(139, 92, 246, 0.25); /* Purple tint like the image */
+          border: 1.5px solid rgba(168, 85, 247, 0.35); /* Pink/purple base */
           transform-style: preserve-3d;
-          box-shadow: inset 0 0 30px rgba(139, 92, 246, 0.05), 0 0 15px rgba(22, 217, 208, 0.1);
+          box-shadow: 0 0 15px rgba(168, 85, 247, 0.15), inset 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
+        /* 300px Radius */
         .orbit-ring-1 {
-          width: 360px;
-          height: 360px;
-          margin-top: -180px;
-          margin-left: -180px;
+          width: 600px;
+          height: 600px;
+          margin-top: -300px;
+          margin-left: -300px;
           animation: orbit-cw 60s linear infinite;
         }
 
+        /* 420px Radius */
         .orbit-ring-2 {
-          width: 560px;
-          height: 560px;
-          margin-top: -280px;
-          margin-left: -280px;
-          animation: orbit-ccw 50s linear infinite;
-          border: 1px dashed rgba(22, 217, 208, 0.3); /* Cyan dashed */
-        }
-
-        .orbit-ring-3 {
-          width: 760px;
-          height: 760px;
-          margin-top: -380px;
-          margin-left: -380px;
-          animation: orbit-cw 40s linear infinite;
-          border: 1px dotted rgba(139, 92, 246, 0.4);
+          width: 840px;
+          height: 840px;
+          margin-top: -420px;
+          margin-left: -420px;
+          animation: orbit-ccw 55s linear infinite;
         }
 
         @keyframes orbit-cw {
@@ -211,10 +194,10 @@ const OrbitalSystem = () => {
           position: absolute;
           top: 50%;
           left: 50%;
-          width: 60px;
-          height: 60px;
-          margin-top: -30px;
-          margin-left: -30px;
+          width: 64px;
+          height: 64px;
+          margin-top: -32px;
+          margin-left: -32px;
           pointer-events: auto; /* Re-enable pointer events for hover */
         }
 
@@ -252,11 +235,11 @@ const OrbitalSystem = () => {
         /* Always-visible plain text label below the node */
         .orbit-label {
           position: absolute;
-          top: 70px; /* Right below the 60px node */
+          top: 74px; /* Right below the node */
           left: 50%;
           transform: translateX(-50%);
           white-space: nowrap;
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           font-weight: 500;
           letter-spacing: 0.5px;
           text-shadow: 0 2px 4px rgba(0,0,0,0.8);
@@ -266,8 +249,7 @@ const OrbitalSystem = () => {
 
         /* Counter-rotation to keep icons upright */
         .inner-ring-1 { animation: counter-cw 60s linear infinite; }
-        .inner-ring-2 { animation: counter-ccw 50s linear infinite; }
-        .inner-ring-3 { animation: counter-cw 40s linear infinite; }
+        .inner-ring-2 { animation: counter-ccw 55s linear infinite; }
 
         @keyframes counter-cw {
           0% { transform: rotateZ(0deg); }
@@ -302,25 +284,6 @@ const OrbitalSystem = () => {
         @keyframes float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-15px); }
-        }
-
-        @media (max-width: 1200px) {
-          .orbital-system-container {
-            transform: translate(-50%, -50%) scale(0.65);
-          }
-        }
-
-        @media (max-width: 1024px) {
-          .orbital-system-container {
-            transform: translate(-50%, -50%) scale(0.55);
-          }
-        }
-        
-        @media (max-width: 767px) {
-          .orbital-system-container {
-            transform: translate(-50%, -50%) scale(0.45);
-            opacity: 0.5; /* reduce visual noise on mobile */
-          }
         }
 
         @media (prefers-reduced-motion: reduce) {
