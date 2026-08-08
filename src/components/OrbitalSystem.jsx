@@ -77,7 +77,7 @@ const OrbitalSystem = () => {
   }, []);
 
   const getRadius = (ring) => {
-    return ring === 1 ? 300 : 420;
+    return ring === 1 ? 400 : 550;
   };
 
   const renderOrbitItems = (ringNumber) => {
@@ -150,8 +150,8 @@ const OrbitalSystem = () => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 900px;
-          height: 900px;
+          width: 1200px;
+          height: 1200px;
           pointer-events: none; /* Let clicks pass to the main hero content/character */
           transform-style: preserve-3d;
           z-index: 0;
@@ -167,21 +167,21 @@ const OrbitalSystem = () => {
           box-shadow: 0 0 15px rgba(168, 85, 247, 0.15), inset 0 0 15px rgba(168, 85, 247, 0.15);
         }
 
-        /* 300px Radius */
+        /* 400px Radius */
         .orbit-ring-1 {
-          width: 600px;
-          height: 600px;
-          margin-top: -300px;
-          margin-left: -300px;
+          width: 800px;
+          height: 800px;
+          margin-top: -400px;
+          margin-left: -400px;
           animation: orbit-cw 60s linear infinite;
         }
 
-        /* 420px Radius */
+        /* 550px Radius */
         .orbit-ring-2 {
-          width: 840px;
-          height: 840px;
-          margin-top: -420px;
-          margin-left: -420px;
+          width: 1100px;
+          height: 1100px;
+          margin-top: -550px;
+          margin-left: -550px;
           animation: orbit-ccw 55s linear infinite;
         }
 
