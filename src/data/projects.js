@@ -35,8 +35,20 @@ export const projectsData = [
     liveUrl: null,
     image: null
   },
+{
+  id: 4,
+  title: "TransitFlow — 3D Interactive Bus Scrolling Experience",
+  shortTitle: "TransitFlow",
+  category: "3D Web / Frontend",
+  year: "2026",
+  description: "Built an interactive 3D scrolling web experience centered around a dynamically animated bus. The website combines scroll-driven storytelling with 3D visuals, smooth transitions, and interactive sections to create a cinematic user experience. Implemented the experience using React, Three.js, GSAP, ScrollTrigger, and Lenis for 3D rendering, animation sequencing, and smooth scroll-based interactions.",
+  technologies: ["React",    "JavaScript",    "Three.js",    "GSAP",    "ScrollTrigger",    "Lenis",    "WebGL",    "3D Animation",    "Smooth Scrolling",    "Interactive UI"  ],
+  githubUrl: "YOUR_GITHUB_REPO_URL",
+  liveUrl: "3d-bus-scrolling.vercel.app",
+  image: null
+},
   {
-    id: 4,
+    id: 5,
     title: "DeepFake Face Detection — Deep Learning-Based Fake Face Detector",
     shortTitle: "DeepFake",
     category: "Computer Vision",
@@ -48,7 +60,7 @@ export const projectsData = [
     image: null
   },
   {
-    id: 5,
+    id: 6,
     title: "Airfare Price Prediction — Machine Learning Flight Price Predictor",
     shortTitle: "Airfare Predictor",
     category: "Machine Learning",
@@ -60,7 +72,7 @@ export const projectsData = [
     image: null
   },
   {
-    id: 6,
+    id: 7,
     title: "Nirvaha — Full-Stack Spiritual Wellness Platform",
     shortTitle: "Nirvaha",
     category: "Full Stack",
@@ -72,7 +84,7 @@ export const projectsData = [
     image: null
   },
   {
-    id: 7,
+    id: 8,
     title: "TruthLens — AI-Powered Content Verification Browser Extension",
     shortTitle: "TruthLens",
     category: "AI Browser Extension",
@@ -84,7 +96,7 @@ export const projectsData = [
     image: null
   },
   {
-    id: 8,
+    id: 9,
     title: "PREAK AI — AI-Native Engineering Platform",
     shortTitle: "PREAK AI",
     category: "AI Engineering Platform",
