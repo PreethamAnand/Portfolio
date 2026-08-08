@@ -4,26 +4,24 @@ import { SiTensorflow, SiFastapi } from 'react-icons/si';
 
 const orbitalData = [
   // Inner Ring (radius 180px)
-  { ring: 1, label: 'Python', icon: <FaPython size={28} color="#3776AB" />, angle: 0, glow: 'rgba(55, 118, 171, 0.6)' },
-  { ring: 1, label: 'React', icon: <FaReact size={28} color="#61DAFB" />, angle: 90, glow: 'rgba(97, 218, 251, 0.6)' },
-  { ring: 1, label: 'ML', text: 'ML', color: '#FF6F00', angle: 180, glow: 'rgba(255, 111, 0, 0.6)' },
-  { ring: 1, label: 'Node.js', icon: <FaNodeJs size={28} color="#339933" />, angle: 270, glow: 'rgba(51, 153, 51, 0.6)' },
+  { ring: 1, label: 'PostgreSQL', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg', angle: 0, glow: 'rgba(51, 103, 145, 0.6)' },
+  { ring: 1, label: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg', angle: 90, glow: 'rgba(97, 218, 251, 0.6)' },
+  { ring: 1, label: 'TypeScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg', angle: 180, glow: 'rgba(49, 120, 198, 0.6)' },
+  { ring: 1, label: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg', angle: 270, glow: 'rgba(83, 158, 67, 0.6)' },
 
   // Middle Ring (radius 280px)
-  { ring: 2, label: 'GenAI', text: 'GenAI', color: '#10B981', angle: 30, glow: 'rgba(16, 185, 129, 0.6)' },
-  { ring: 2, label: 'RAG', text: 'RAG', color: '#8B5CF6', angle: 102, glow: 'rgba(139, 92, 246, 0.6)' },
-  { ring: 2, label: 'FastAPI', icon: <SiFastapi size={26} color="#009688" />, angle: 174, glow: 'rgba(0, 150, 136, 0.6)' },
-  { ring: 2, label: 'TensorFlow', icon: <SiTensorflow size={26} color="#FF6F00" />, angle: 246, glow: 'rgba(255, 111, 0, 0.6)' },
-  { ring: 2, label: 'XGBoost', text: 'XGB', color: '#F39C12', angle: 318, glow: 'rgba(243, 156, 18, 0.6)' },
+  { ring: 2, label: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg', angle: 30, glow: 'rgba(255, 111, 0, 0.6)' },
+  { ring: 2, label: 'ChromaDB', text: '🔮', angle: 102, glow: 'rgba(139, 92, 246, 0.6)' },
+  { ring: 2, label: 'Docker', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg', angle: 174, glow: 'rgba(36, 150, 237, 0.6)' },
+  { ring: 2, label: 'FastAPI', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg', angle: 246, glow: 'rgba(0, 150, 136, 0.6)' },
+  { ring: 2, label: 'Three.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/threejs/threejs-original.svg', angle: 318, glow: 'rgba(255, 255, 255, 0.6)' },
 
   // Outer Ring (radius 380px)
-  { ring: 3, label: 'LangChain', text: '🔗', color: '#fff', angle: 0, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 3, label: 'LangGraph', text: '🕸️', color: '#fff', angle: 51, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 3, label: 'Three.js', text: '3D', color: '#ffffff', angle: 102, glow: 'rgba(255, 255, 255, 0.4)' },
-  { ring: 3, label: 'GSAP', text: 'GSAP', color: '#88CE02', angle: 153, glow: 'rgba(136, 206, 2, 0.6)' },
-  { ring: 3, label: 'ChromaDB', icon: <FaDatabase size={24} color="#2563EB" />, angle: 204, glow: 'rgba(37, 99, 235, 0.6)' },
-  { ring: 3, label: 'Docker', icon: <FaDocker size={24} color="#2496ED" />, angle: 255, glow: 'rgba(36, 150, 237, 0.6)' },
-  { ring: 3, label: 'GitHub', icon: <FaGithub size={24} color="#ffffff" />, angle: 306, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 3, label: 'Python', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg', angle: 0, glow: 'rgba(55, 118, 171, 0.6)' },
+  { ring: 3, label: 'LangChain', text: '🦜🔗', angle: 51, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 3, label: 'LangGraph', text: '🕸️', angle: 102, glow: 'rgba(255, 255, 255, 0.4)' },
+  { ring: 3, label: 'RAG', text: '🧠', angle: 153, glow: 'rgba(236, 72, 153, 0.6)' },
+  { ring: 3, label: 'GSAP', text: 'GSAP', isGsap: true, angle: 204, glow: 'rgba(136, 206, 2, 0.6)' },
 ];
 
 const OrbitalSystem = () => {
@@ -55,7 +53,17 @@ const OrbitalSystem = () => {
       currentY += (targetY - currentY) * 0.1;
 
       if (systemRef.current) {
-        systemRef.current.style.transform = `translate(-50%, -50%) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
+        // Determine base scale based on screen size
+        let baseScale = 0.65;
+        if (window.innerWidth <= 767) {
+          baseScale = 0.40;
+        } else if (window.innerWidth <= 1024) {
+          baseScale = 0.50;
+        } else if (window.innerWidth <= 1200) {
+          baseScale = 0.58;
+        }
+        
+        systemRef.current.style.transform = `translate(-50%, -50%) scale(${baseScale}) rotateX(${-currentY}deg) rotateY(${currentX}deg)`;
       }
       requestRef = requestAnimationFrame(animate);
     };
@@ -86,30 +94,26 @@ const OrbitalSystem = () => {
           <div 
             key={`${ringNumber}-${index}`}
             className="orbit-item"
-            style={{ 
-              transform: `translate(${x}px, ${y}px)`,
-            }}
+            style={{ transform: `translate(${x}px, ${y}px)` }}
           >
-            {/* The wrapper that counter-rotates to keep the icon and label upright */}
             <div className={`orbit-counter-rotate inner-ring-${ringNumber}`}>
-              
               <div 
                 className="orbit-node" 
                 style={{ 
                   boxShadow: `0 0 25px ${item.glow}`, 
                   border: `1.5px solid ${item.glow}`,
-                  background: 'rgba(5, 5, 10, 0.9)'
+                  background: 'rgba(5, 5, 10, 0.95)'
                 }}
               >
-                {item.icon ? (
-                  item.icon
+                {item.img ? (
+                  <img src={item.img} alt={item.label} style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+                ) : item.isGsap ? (
+                  <span style={{ color: '#88CE02', fontWeight: '900', fontStyle: 'italic', fontSize: '14px', textShadow: '0 0 5px #88CE02' }}>{item.text}</span>
                 ) : (
-                  <span style={{ color: item.color, fontWeight: 'bold', fontSize: '1rem' }}>{item.text}</span>
+                  <span style={{ fontSize: '24px' }}>{item.text}</span>
                 )}
               </div>
-              
               <span className="orbit-label" style={{ color: '#ffffff' }}>{item.label}</span>
-              
             </div>
           </div>
         );
