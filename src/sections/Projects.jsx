@@ -187,7 +187,7 @@ const Projects = () => {
         /* Desktop: 3 Columns */
         @media (min-width: 1024px) {
           .projects-grid {
-            grid-template-columns: 1fr 1.8fr 1.8fr;
+            grid-template-columns: 1.3fr 1.6fr 1.6fr;
           }
         }
 
