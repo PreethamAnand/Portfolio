@@ -38,6 +38,59 @@ const Contact = () => {
     };
   }, []);
 
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  const [status, setStatus] = React.useState(''); // 'idle', 'loading', 'success', 'error'
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Fallback if user hasn't added API key yet
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+      alert("Please add your Web3Forms Access Key to the .env file (VITE_WEB3FORMS_KEY).");
+      return;
+    }
+
+    setStatus('loading');
+    
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          ...formData,
+          subject: `New Portfolio Contact from ${formData.name}`,
+        }),
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', service: '', message: '' }); // reset form
+        setTimeout(() => setStatus('idle'), 5000); // clear success message after 5s
+      } else {
+        console.error("Form submission error", result);
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error("Form fetch error", error);
+      setStatus('error');
+    }
+  };
+
   return (
     <section 
       id="contact" 
@@ -79,35 +132,64 @@ const Contact = () => {
               marginBottom: '24px'
             }}>Let's Work Together</h2>
             
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {status === 'success' && (
+              <div style={{ padding: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid #10b981', color: '#10b981', borderRadius: '8px', marginBottom: '20px', fontSize: '0.85rem' }}>
+                Your message has been sent successfully! I'll get back to you soon.
+              </div>
+            )}
+            
+            {status === 'error' && (
+              <div style={{ padding: '12px', background: 'rgba(239, 68, 68, 0.1)', border: '1px solid #ef4444', color: '#ef4444', borderRadius: '8px', marginBottom: '20px', fontSize: '0.85rem' }}>
+                Oops! Something went wrong. Please try again later.
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
+                <label htmlFor="name" style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Your Name <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input 
                   type="text" 
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
                   placeholder="Your Name" 
                   className="contact-input"
                 />
               </div>
               
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
+                <label htmlFor="email" style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Your Email <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <input 
                   type="email" 
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="Your Email" 
                   className="contact-input"
                 />
               </div>
 
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
+                <label htmlFor="service" style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Service Needed <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <select className="contact-input" defaultValue="">
+                  <select 
+                    id="service"
+                    name="service"
+                    required
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="contact-input"
+                  >
                     <option value="" disabled hidden>Something in mind?</option>
                     <option value="web">Web Development</option>
                     <option value="ai">AI / Machine Learning</option>
@@ -127,10 +209,15 @@ const Contact = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
+                <label htmlFor="message" style={{ display: 'block', color: 'white', fontSize: '0.75rem', marginBottom: '6px', fontWeight: '500' }}>
                   Explain Your Idea <span style={{ color: '#ef4444' }}>*</span>
                 </label>
                 <textarea 
+                  id="message"
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Explain your idea..." 
                   rows="4"
                   className="contact-input"
@@ -139,24 +226,25 @@ const Contact = () => {
               </div>
 
               <button 
-                type="button"
+                type="submit"
+                disabled={status === 'loading'}
                 style={{
                   width: '100%',
-                  background: '#2563eb',
+                  background: status === 'loading' ? '#4b5563' : '#2563eb',
                   color: 'white',
                   border: 'none',
                   borderRadius: '8px',
                   padding: '14px',
                   fontSize: '0.85rem',
                   fontWeight: '600',
-                  cursor: 'pointer',
+                  cursor: status === 'loading' ? 'not-allowed' : 'pointer',
                   marginTop: '10px',
                   transition: 'background 0.3s ease'
                 }}
-                onMouseEnter={(e) => e.target.style.background = '#1d4ed8'}
-                onMouseLeave={(e) => e.target.style.background = '#2563eb'}
+                onMouseEnter={(e) => { if (status !== 'loading') e.target.style.background = '#1d4ed8' }}
+                onMouseLeave={(e) => { if (status !== 'loading') e.target.style.background = '#2563eb' }}
               >
-                Send Message
+                {status === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
