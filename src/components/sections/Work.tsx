@@ -9,6 +9,19 @@ export function Work() {
   const { ref: sectionRef, inView } = useInView({ threshold: 0.1 });
   const [activeId, setActiveId] = useState<string>(PROJECTS[0].id);
 
+  const activeProject = PROJECTS.find((p) => p.id === activeId) || PROJECTS[0];
+  const activeIndex = PROJECTS.findIndex((p) => p.id === activeId);
+
+  const goToPrev = () => {
+    const prevIdx = (activeIndex - 1 + PROJECTS.length) % PROJECTS.length;
+    setActiveId(PROJECTS[prevIdx].id);
+  };
+
+  const goToNext = () => {
+    const nextIdx = (activeIndex + 1) % PROJECTS.length;
+    setActiveId(PROJECTS[nextIdx].id);
+  };
+
   return (
     <section
       id="work"
@@ -17,182 +30,241 @@ export function Work() {
     >
       <div className="section-container">
         {/* Section Header */}
-        <div className={`mb-12 rv ${inView ? "is-in" : ""}`} style={{ "--i": 0 } as React.CSSProperties}>
+        <div
+          className={`mb-8 rv ${inView ? "is-in" : ""}`}
+          style={{ "--i": 0 } as React.CSSProperties}
+        >
           <div className="font-mono-tag mb-2">03 — Selected Work</div>
           <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[#0d0d0d]">
-            Things I've <span className="font-serif-italic">built.</span>
+            Things I&apos;ve <span className="font-serif-italic">built.</span>
           </h2>
-          <p className="mt-3 text-sm text-[#77756f] max-w-xl">
+          <p className="mt-3 text-sm sm:text-base text-[#77756f] max-w-2xl leading-relaxed">
             Real-world systems, AI architectures, and full-stack platforms engineered with production requirements, strict data flows, and modern UX standards.
           </p>
         </div>
 
-        {/* Accordion Gallery (Horizontal on Desktop, Vertical on Mobile) */}
-        <div className="flex flex-col lg:flex-row gap-3 min-h-[580px] lg:h-[min(78svh,620px)] w-full">
-          {PROJECTS.map((project, idx) => {
-            const isOpen = activeId === project.id;
+        {/* Project Selector Rail: 6 Cards with Index, Title, and Domain Tag */}
+        <div
+          className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mb-6 rv ${
+            inView ? "is-in" : ""
+          }`}
+          style={{ "--i": 1 } as React.CSSProperties}
+        >
+          {PROJECTS.map((project) => {
+            const isSelected = activeId === project.id;
 
             return (
               <div
                 key={project.id}
                 onClick={() => setActiveId(project.id)}
-                onFocus={() => setActiveId(project.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveId(project.id);
+                  }
+                }}
                 tabIndex={0}
                 role="button"
-                aria-expanded={isOpen}
+                aria-expanded={isSelected}
                 aria-label={`Project ${project.index}: ${project.title}`}
-                className={`card-base relative overflow-hidden transition-all duration-500 ease-[var(--ease)] cursor-pointer focus:outline-none flex flex-col ${
-                  isOpen
-                    ? "lg:flex-[8] bg-white shadow-xl ring-1 ring-[rgba(13,13,13,0.08)] p-6 sm:p-8"
-                    : "lg:flex-[1] bg-[#f9f8f6] hover:bg-white p-4 sm:p-6 justify-between items-center"
+                className={`card-base relative p-3.5 sm:p-4 text-left transition-all duration-300 cursor-pointer focus:outline-none flex flex-col justify-between min-h-[96px] sm:min-h-[108px] select-none ${
+                  isSelected
+                    ? "bg-[#0d0d0d] text-white shadow-xl -translate-y-1 ring-2 ring-[#0d0d0d]"
+                    : "bg-white hover:bg-[#f9f8f6] text-[#0d0d0d] border border-[rgba(13,13,13,0.08)] hover:-translate-y-0.5"
                 }`}
               >
-                {/* COLLAPSED SPINE (Desktop) */}
-                {!isOpen && (
-                  <div className="hidden lg:flex flex-col justify-between items-center h-full w-full py-4 select-none group">
-                    <span className="font-mono text-xs text-[#77756f]">
-                      {project.index}
-                    </span>
+                <div className="flex items-center justify-between w-full mb-1">
+                  <span
+                    className={`font-mono text-xs font-bold ${
+                      isSelected ? "text-white/70" : "text-[#77756f]"
+                    }`}
+                  >
+                    {project.index}
+                  </span>
+                  <span
+                    className={`w-2 h-2 rounded-full transition-transform duration-300 ${
+                      isSelected
+                        ? "bg-white scale-125"
+                        : "bg-[rgba(13,13,13,0.15)]"
+                    }`}
+                  />
+                </div>
 
-                    <div className="[writing-mode:vertical-rl] rotate-180 font-bold text-sm tracking-tight text-[#0d0d0d] whitespace-nowrap my-auto group-hover:text-[#77756f] transition-colors">
-                      {project.title}
-                    </div>
-
-                    <div className="w-8 h-8 rounded-full border border-[rgba(13,13,13,0.15)] flex items-center justify-center text-[#0d0d0d] group-hover:rotate-90 group-hover:bg-[#0d0d0d] group-hover:text-white transition-all duration-300">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                      </svg>
-                    </div>
+                <div>
+                  <div className="font-bold text-xs sm:text-sm tracking-tight line-clamp-1">
+                    {project.title}
                   </div>
-                )}
-
-                {/* COLLAPSED BAR (Mobile) */}
-                {!isOpen && (
-                  <div className="flex lg:hidden items-center justify-between w-full py-2">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs text-[#77756f]">
-                        {project.index}
-                      </span>
-                      <span className="font-bold text-base text-[#0d0d0d]">
-                        {project.title}
-                      </span>
-                    </div>
-                    <div className="w-7 h-7 rounded-full border border-[rgba(13,13,13,0.15)] flex items-center justify-center text-xs">
-                      +
-                    </div>
+                  <div
+                    className={`text-[10px] font-mono tracking-wide mt-0.5 line-clamp-1 ${
+                      isSelected ? "text-white/60" : "text-[#77756f]"
+                    }`}
+                  >
+                    {project.kicker}
                   </div>
-                )}
-
-                {/* EXPANDED CONTENT */}
-                {isOpen && (
-                  <div className="w-full h-full flex flex-col lg:flex-row gap-8 justify-between animate-fadeIn">
-                    {/* Left Column: Details, Features, Tech, CTAs */}
-                    <div className="flex-1 flex flex-col justify-between overflow-y-auto pr-2">
-                      <div>
-                        {/* Kicker + Index */}
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="font-mono text-xs text-[#77756f]">
-                            {project.index}
-                          </span>
-                          <span className="text-xs text-[#a9a6a0]">/</span>
-                          <span className="font-mono text-xs text-[#77756f] uppercase tracking-wider">
-                            {project.kicker}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="heading-display text-2xl sm:text-3xl font-bold text-[#0d0d0d]">
-                          {project.title}
-                        </h3>
-
-                        {/* Date */}
-                        <span className="text-xs font-mono text-[#a9a6a0] block mt-1">
-                          {project.date}
-                        </span>
-
-                        {/* Description verbatim from Resume */}
-                        <p className="mt-4 text-sm sm:text-base text-[#3a3a3a] leading-relaxed">
-                          {project.description}
-                        </p>
-
-                        {/* 2-Column Feature List */}
-                        <div className="mt-6 pt-5 border-t border-[rgba(13,13,13,0.06)]">
-                          <h4 className="font-mono text-[11px] uppercase tracking-wider text-[#77756f] mb-3">
-                            Key Capabilities & Architecture
-                          </h4>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#3a3a3a]">
-                            {project.features.map((feat, i) => (
-                              <div key={i} className="flex items-start gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
-                                <span>{feat}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Bottom Tech Chips & Action Buttons */}
-                      <div className="mt-6 pt-5 border-t border-[rgba(13,13,13,0.06)] flex flex-wrap items-center justify-between gap-4">
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          {project.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-[#f4f2ee] text-[#3a3a3a]"
-                            >
-                              <TechLogo name={t} size={14} />
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Project Links (Strictly only if they exist in résumé) */}
-                        <div className="flex items-center gap-3">
-                          {project.github && (
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="btn-pill-primary text-xs py-2 px-4 inline-flex items-center gap-1.5"
-                            >
-                              <span>View Project</span>
-                              <span>↗</span>
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right Column: Illustrative Mini-UI (Pure Grayscale CSS/JSX) */}
-                    <div className="w-full lg:w-[360px] xl:w-[420px] h-[260px] lg:h-full bg-[#f4f2ee] rounded-2xl border border-[rgba(13,13,13,0.08)] p-5 flex flex-col justify-between relative overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]">
-                      {/* Illustrative UI Disclaimer Tag */}
-                      <div className="flex items-center justify-between z-10">
-                        <span className="font-mono text-[10px] tracking-widest uppercase bg-[#0d0d0d] text-white px-2 py-0.5 rounded">
-                          Illustrative UI
-                        </span>
-                        <div className="flex items-center gap-1">
-                          <span className="w-2 h-2 rounded-full bg-[#a9a6a0]" />
-                          <span className="w-2 h-2 rounded-full bg-[#a9a6a0]" />
-                          <span className="w-2 h-2 rounded-full bg-[#a9a6a0]" />
-                        </div>
-                      </div>
-
-                      {/* Dynamic Mock Interface per project */}
-                      <div className="my-auto py-2 z-10">
-                        {renderMiniUI(project.id)}
-                      </div>
-
-                      {/* Mock Footer Status Bar */}
-                      <div className="z-10 pt-2 border-t border-[rgba(13,13,13,0.08)] flex justify-between text-[10px] font-mono text-[#77756f]">
-                        <span>SYSTEM: OPERATIONAL</span>
-                        <span>LATENCY: 18ms</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Featured Project Showcase Stage Card */}
+        <div
+          className={`card-base bg-white border border-[rgba(13,13,13,0.08)] shadow-2xl p-6 sm:p-8 lg:p-10 rounded-[28px] overflow-hidden rv ${
+            inView ? "is-in" : ""
+          }`}
+          style={{ "--i": 2 } as React.CSSProperties}
+        >
+          <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-10 justify-between items-stretch">
+            {/* Left Column: Full Unobstructed Project Details */}
+            <div className="flex-1 min-w-0 flex flex-col justify-between">
+              <div>
+                {/* Kicker + Index Badge */}
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <span className="font-mono text-xs font-bold text-[#0d0d0d] bg-[#f4f2ee] px-2 py-0.5 rounded">
+                    PROJECT {activeProject.index}
+                  </span>
+                  <span className="text-xs text-[#a9a6a0]">/</span>
+                  <span className="font-mono text-xs text-[#77756f] uppercase tracking-wider">
+                    {activeProject.kicker}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="heading-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0d0d0d] tracking-tight">
+                  {activeProject.title}
+                </h3>
+
+                {/* Date */}
+                <span className="text-xs font-mono text-[#77756f] block mt-1.5 mb-5">
+                  Timeline: {activeProject.date}
+                </span>
+
+                {/* Description verbatim from Resume with generous line height and contrast */}
+                <div className="bg-[#f9f8f6] border border-[rgba(13,13,13,0.06)] rounded-xl p-4 sm:p-5 mb-6">
+                  <div className="font-mono text-[11px] uppercase tracking-wider text-[#77756f] mb-2 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d]" />
+                    <span>Project Scope &amp; Architecture</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-[#1a1a1a] leading-relaxed font-normal">
+                    {activeProject.description}
+                  </p>
+                </div>
+
+                {/* 2-Column Key Capabilities & Architecture */}
+                <div className="mb-6">
+                  <h4 className="font-mono text-[11px] uppercase tracking-wider text-[#77756f] mb-3 flex items-center gap-2">
+                    <span>Key Capabilities &amp; System Highlights</span>
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#2a2a2a]">
+                    {activeProject.features.map((feat, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-2.5 bg-[#fcfbfa] border border-[rgba(13,13,13,0.06)] rounded-lg p-3"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
+                        <span className="leading-snug">{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom: Tech Badges & View Project Link */}
+              <div className="pt-6 border-t border-[rgba(13,13,13,0.08)] flex flex-wrap items-center justify-between gap-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeProject.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#f4f2ee] text-[#2a2a2a] border border-[rgba(13,13,13,0.04)]"
+                    >
+                      <TechLogo name={t} size={14} />
+                      <span>{t}</span>
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {activeProject.github && (
+                    <a
+                      href={activeProject.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-pill-primary text-xs sm:text-sm py-2.5 px-5 inline-flex items-center gap-2"
+                    >
+                      <span>View Project Repository</span>
+                      <span>↗</span>
+                    </a>
+                  )}
+                  {activeProject.liveUrl && activeProject.liveUrl !== activeProject.github && (
+                    <a
+                      href={activeProject.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-pill-secondary text-xs sm:text-sm py-2.5 px-5 inline-flex items-center gap-2"
+                    >
+                      <span>Live Site</span>
+                      <span>↗</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Illustrative UI Preview */}
+            <div className="w-full lg:w-[380px] xl:w-[440px] flex-shrink-0 min-h-[320px] lg:min-h-[460px] bg-[#f4f2ee] rounded-2xl border border-[rgba(13,13,13,0.08)] p-6 flex flex-col justify-between shadow-inner relative overflow-hidden">
+              {/* Illustrative UI Header */}
+              <div className="flex items-center justify-between z-10 pb-4 border-b border-[rgba(13,13,13,0.06)]">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[10px] tracking-widest uppercase bg-[#0d0d0d] text-white px-2 py-0.5 rounded font-bold">
+                    Illustrative UI
+                  </span>
+                  <span className="font-mono text-[10px] text-[#77756f]">
+                    {activeProject.index} / 06
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
+                  <span className="font-mono text-[10px] text-[#0d0d0d] font-semibold">LIVE MOCK</span>
+                </div>
+              </div>
+
+              {/* Dynamic Mock Interface per project */}
+              <div className="my-auto py-6 z-10">
+                {renderMiniUI(activeProject.id)}
+              </div>
+
+              {/* Mock Footer Status Bar */}
+              <div className="z-10 pt-3 border-t border-[rgba(13,13,13,0.08)] flex justify-between items-center text-[10px] font-mono text-[#77756f]">
+                <span>SYSTEM: OPERATIONAL</span>
+                <span>MATCH PIPELINE: OPTIMAL</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Stage Pagination Footer */}
+          <div className="mt-8 pt-5 border-t border-[rgba(13,13,13,0.08)] flex items-center justify-between text-xs font-mono text-[#77756f]">
+            <button
+              onClick={goToPrev}
+              className="inline-flex items-center gap-1.5 hover:text-[#0d0d0d] transition-colors py-2 px-3.5 rounded-lg bg-[#f9f8f6] hover:bg-white border border-[rgba(13,13,13,0.08)] cursor-pointer"
+              aria-label="Previous Project"
+            >
+              <span>←</span>
+              <span>Previous</span>
+            </button>
+
+            <span className="font-bold text-[#0d0d0d]">
+              {activeIndex + 1} of {PROJECTS.length} Selected Projects
+            </span>
+
+            <button
+              onClick={goToNext}
+              className="inline-flex items-center gap-1.5 hover:text-[#0d0d0d] transition-colors py-2 px-3.5 rounded-lg bg-[#f9f8f6] hover:bg-white border border-[rgba(13,13,13,0.08)] cursor-pointer"
+              aria-label="Next Project"
+            >
+              <span>Next</span>
+              <span>→</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
