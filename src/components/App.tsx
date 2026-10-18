@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { ScrollProvider } from "@/lib/scroll";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/hero/Hero";
 import { About } from "@/components/sections/About";
@@ -36,18 +37,20 @@ export function App() {
   }, []);
 
   return (
-    <div className="relative w-full bg-[#f4f2ee] text-[#0d0d0d] min-h-screen">
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Work />
-        <Certifications />
-        <Experience />
-        <Achievements />
-      </main>
-      <Contact />
-    </div>
+    <ScrollProvider>
+      <div className="relative w-full bg-[#f4f2ee] text-[#0d0d0d] min-h-screen">
+        <Navigation />
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Work />
+          <Certifications />
+          <Experience />
+          <Achievements />
+        </main>
+        <Contact />
+      </div>
+    </ScrollProvider>
   );
 }

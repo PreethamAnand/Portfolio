@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 
 export const BRAND_MAP: Record<string, string> = {
   python: "/logos/python.svg",
@@ -208,13 +207,13 @@ export function TechLogo({
         className={`inline-flex items-center justify-center transition-transform ${className}`}
         style={{ width: size, height: size, ...glowStyle }}
       >
-        <Image
+        <img
           src={brandSrc}
           alt={`${name} logo`}
           width={size}
           height={size}
           className="object-contain w-full h-full"
-          unoptimized
+          loading="lazy"
         />
       </div>
     );

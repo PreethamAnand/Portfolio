@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ScrollProvider } from "@/lib/scroll";
 import { PROFILE } from "@/lib/data";
 
 const interTight = localFont({
@@ -95,7 +94,7 @@ export default function RootLayout({
       className={`${interTight.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body className="antialiased selection:bg-[#0d0d0d] selection:text-[#f4f2ee]">
-        <ScrollProvider>{children}</ScrollProvider>
+        {children}
       </body>
     </html>
   );
