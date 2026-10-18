@@ -237,6 +237,7 @@ export function About() {
                         alt={PROFILE.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="128px"
                         priority
                       />
                     </div>
