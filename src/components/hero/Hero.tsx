@@ -10,6 +10,8 @@ export function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [soundBlocked, setSoundBlocked] = useState(true);
+  const [hasEnded, setHasEnded] = useState(false);
+  const hasEndedRef = useRef(false);
 
   // Video autoplay & sound unlocking logic
   useEffect(() => {
@@ -42,7 +44,7 @@ export function Hero() {
         video.muted = false;
         setIsMuted(false);
         setSoundBlocked(false);
-        if (video.paused) {
+        if (video.paused && !hasEndedRef.current) {
           video.play();
         }
       }
@@ -79,7 +81,8 @@ export function Hero() {
               setIsPlaying(false);
             }
           } else {
-            if (video.paused) {
+            // Only resume if it hasn't reached the end
+            if (video.paused && !hasEndedRef.current) {
               video.play().catch(() => {});
               setIsPlaying(true);
             }
@@ -95,15 +98,46 @@ export function Hero() {
     return () => observer.disconnect();
   }, []);
 
+  const handleEnded = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.pause();
+    }
+    setIsPlaying(false);
+    setHasEnded(true);
+    hasEndedRef.current = true;
+  };
+
+  const replayVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.currentTime = 0;
+    video.muted = false;
+    setIsMuted(false);
+    setSoundBlocked(false);
+    setHasEnded(false);
+    hasEndedRef.current = false;
+    video
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {});
+  };
+
   const toggleSound = () => {
     const video = videoRef.current;
     if (!video) return;
+
+    if (hasEnded) {
+      replayVideo();
+      return;
+    }
 
     if (isMuted) {
       video.muted = false;
       setIsMuted(false);
       setSoundBlocked(false);
-      if (video.paused) {
+      if (video.paused && !hasEndedRef.current) {
         video.play();
         setIsPlaying(true);
       }
@@ -143,9 +177,9 @@ export function Hero() {
         <div className="relative flex items-center justify-center">
           <video
             ref={videoRef}
-            loop
             playsInline
             preload="auto"
+            onEnded={handleEnded}
             className="w-auto h-[60svh] sm:h-[70svh] lg:h-[min(94svh,1000px)] aspect-[768/960] object-contain transition-opacity duration-500"
             style={{
               mixBlendMode: "multiply",
@@ -155,20 +189,39 @@ export function Hero() {
             <source src="/hero/hero.mp4" type="video/mp4" />
           </video>
 
-          {/* Sound Control: 46px round solid ink button */}
+          {/* Sound & Replay Control: 46px round solid ink button */}
           <div className="absolute bottom-6 right-4 sm:right-8 z-20">
             <div className="relative flex items-center justify-center">
-              {soundBlocked && (
+              {soundBlocked && !hasEnded && (
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0d0d0d] opacity-25" />
               )}
               <button
                 onClick={toggleSound}
                 className="relative w-[46px] h-[46px] rounded-full bg-[#0d0d0d] text-white flex items-center justify-center shadow-lg transition-transform hover:scale-105 active:scale-95 cursor-pointer focus:outline-none"
                 aria-label={
-                  isMuted ? "Unmute introductory video" : "Mute introductory video"
+                  hasEnded
+                    ? "Replay introductory video"
+                    : isMuted
+                    ? "Unmute introductory video"
+                    : "Mute introductory video"
                 }
               >
-                {isMuted ? (
+                {hasEnded ? (
+                  // Replay icon
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                  </svg>
+                ) : isMuted ? (
                   // ▶ Triangle (sound off)
                   <svg
                     width="14"
