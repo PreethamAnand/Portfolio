@@ -53,6 +53,7 @@ export interface SkillItem {
   logo: string;
   isBrand: boolean;
   glow?: string;
+  color?: string;
 }
 
 export interface ProjectItem {
@@ -145,63 +146,63 @@ export const NAV: NavItem[] = [
 
 export const SKILL_GROUPS: SkillItem[] = [
   // Programming Languages
-  { atomic: 1, symbol: "Py", name: "Python", family: "Languages", projects: ["PulseConnect 2.0", "Enterprise ATS Resume Analyzer", "NSE Intelligence", "ResearchPilot AI", "DeepFake Face Detection", "Airfare Price Prediction"], logo: "python", isBrand: true, glow: "rgba(55,118,171,0.25)" },
-  { atomic: 2, symbol: "Ja", name: "Java", family: "Languages", projects: ["Data Structures & Algorithms", "Object-Oriented Programming"], logo: "java", isBrand: true, glow: "rgba(234,45,46,0.2)" },
-  { atomic: 3, symbol: "Js", name: "JavaScript", family: "Languages", projects: ["Nirvaha Wellness Platform", "Interactive Frontends"], logo: "javascript", isBrand: true, glow: "rgba(247,223,30,0.25)" },
-  { atomic: 4, symbol: "Ts", name: "TypeScript", family: "Languages", projects: ["Full Stack Features", "Typed API Contracts"], logo: "typescript", isBrand: true, glow: "rgba(49,120,198,0.25)" },
-  { atomic: 5, symbol: "Ht", name: "HTML 5", family: "Languages", projects: ["Responsive Interfaces", "Semantic Web Layouts"], logo: "html5", isBrand: true, glow: "rgba(227,76,38,0.2)" },
-  { atomic: 6, symbol: "Cs", name: "CSS3", family: "Languages", projects: ["User Experience", "Modern Styling & Systems"], logo: "css3", isBrand: true, glow: "rgba(38,77,228,0.2)" },
+  { atomic: 1, symbol: "Py", name: "Python", family: "Languages", projects: ["PulseConnect 2.0", "Enterprise ATS Resume Analyzer", "NSE Intelligence", "ResearchPilot AI", "DeepFake Face Detection", "Airfare Price Prediction"], logo: "python", isBrand: true, glow: "rgba(55,118,171,0.25)", color: "#3776AB" },
+  { atomic: 2, symbol: "Ja", name: "Java", family: "Languages", projects: ["Data Structures & Algorithms", "Object-Oriented Programming"], logo: "java", isBrand: true, glow: "rgba(234,45,46,0.25)", color: "#EA2D2E" },
+  { atomic: 3, symbol: "Js", name: "JavaScript", family: "Languages", projects: ["Nirvaha Wellness Platform", "Interactive Frontends"], logo: "javascript", isBrand: true, glow: "rgba(247,223,30,0.25)", color: "#F7DF1E" },
+  { atomic: 4, symbol: "Ts", name: "TypeScript", family: "Languages", projects: ["Full Stack Features", "Typed API Contracts"], logo: "typescript", isBrand: true, glow: "rgba(49,120,198,0.25)", color: "#3178C6" },
+  { atomic: 5, symbol: "Ht", name: "HTML 5", family: "Languages", projects: ["Responsive Interfaces", "Semantic Web Layouts"], logo: "html5", isBrand: true, glow: "rgba(227,76,38,0.25)", color: "#E34F26" },
+  { atomic: 6, symbol: "Cs", name: "CSS3", family: "Languages", projects: ["User Experience", "Modern Styling & Systems"], logo: "css3", isBrand: true, glow: "rgba(38,77,228,0.25)", color: "#1572B6" },
 
   // AI & Machine Learning
-  { atomic: 7, symbol: "Ml", name: "Machine Learning", family: "AI & ML", projects: ["PulseConnect 2.0", "Airfare Price Prediction", "NSE Intelligence"], logo: "ml", isBrand: false },
-  { atomic: 8, symbol: "Dl", name: "Deep Learning", family: "AI & ML", projects: ["DeepFake Face Detection"], logo: "dl", isBrand: false },
-  { atomic: 9, symbol: "Nl", name: "Natural Language Processing (NLP)", family: "AI & ML", projects: ["ResearchPilot AI", "Enterprise ATS Resume Analyzer"], logo: "nlp", isBrand: false },
-  { atomic: 10, symbol: "Cv", name: "Computer Vision", family: "AI & ML", projects: ["DeepFake Face Detection"], logo: "opencv", isBrand: true, glow: "rgba(92,168,231,0.25)" },
-  { atomic: 11, symbol: "Fe", name: "Feature Engineering", family: "AI & ML", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "feature", isBrand: false },
-  { atomic: 12, symbol: "Me", name: "Model Evaluation", family: "AI & ML", projects: ["Airfare Price Prediction", "NSE Intelligence"], logo: "eval", isBrand: false },
+  { atomic: 7, symbol: "Ml", name: "Machine Learning", family: "AI & ML", projects: ["PulseConnect 2.0", "Airfare Price Prediction", "NSE Intelligence"], logo: "ml", isBrand: false, glow: "rgba(99,102,241,0.25)", color: "#6366F1" },
+  { atomic: 8, symbol: "Dl", name: "Deep Learning", family: "AI & ML", projects: ["DeepFake Face Detection"], logo: "dl", isBrand: false, glow: "rgba(139,92,246,0.25)", color: "#8B5CF6" },
+  { atomic: 9, symbol: "Nl", name: "Natural Language Processing (NLP)", family: "AI & ML", projects: ["ResearchPilot AI", "Enterprise ATS Resume Analyzer"], logo: "nlp", isBrand: false, glow: "rgba(13,148,136,0.25)", color: "#0D9488" },
+  { atomic: 10, symbol: "Cv", name: "Computer Vision", family: "AI & ML", projects: ["DeepFake Face Detection"], logo: "opencv", isBrand: true, glow: "rgba(92,168,231,0.25)", color: "#5CA8E7" },
+  { atomic: 11, symbol: "Fe", name: "Feature Engineering", family: "AI & ML", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "feature", isBrand: false, glow: "rgba(2,132,199,0.25)", color: "#0284C7" },
+  { atomic: 12, symbol: "Me", name: "Model Evaluation", family: "AI & ML", projects: ["Airfare Price Prediction", "NSE Intelligence"], logo: "eval", isBrand: false, glow: "rgba(225,29,72,0.25)", color: "#E11D48" },
 
   // Python Libraries & Data Science
-  { atomic: 13, symbol: "Pd", name: "Pandas", family: "Data Science", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "pandas", isBrand: true, glow: "rgba(19,7,84,0.2)" },
-  { atomic: 14, symbol: "Np", name: "NumPy", family: "Data Science", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "numpy", isBrand: true, glow: "rgba(77,171,207,0.2)" },
-  { atomic: 15, symbol: "Sk", name: "Scikit-learn", family: "Data Science", projects: ["Airfare Price Prediction", "NSE Intelligence"], logo: "ml", isBrand: false },
-  { atomic: 16, symbol: "Xg", name: "XGBoost", family: "Data Science", projects: ["NSE Intelligence"], logo: "xgboost", isBrand: true, glow: "rgba(255,107,53,0.25)" },
-  { atomic: 17, symbol: "Tf", name: "TensorFlow", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "tensorflow", isBrand: true, glow: "rgba(255,111,0,0.25)" },
-  { atomic: 18, symbol: "Ke", name: "Keras", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "keras", isBrand: true, glow: "rgba(208,0,0,0.25)" },
-  { atomic: 19, symbol: "Oc", name: "OpenCV", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "opencv", isBrand: true, glow: "rgba(92,168,231,0.25)" },
+  { atomic: 13, symbol: "Pd", name: "Pandas", family: "Data Science", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "pandas", isBrand: true, glow: "rgba(19,7,84,0.25)", color: "#130754" },
+  { atomic: 14, symbol: "Np", name: "NumPy", family: "Data Science", projects: ["NSE Intelligence", "Airfare Price Prediction"], logo: "numpy", isBrand: true, glow: "rgba(77,171,207,0.25)", color: "#4DABCF" },
+  { atomic: 15, symbol: "Sk", name: "Scikit-learn", family: "Data Science", projects: ["Airfare Price Prediction", "NSE Intelligence"], logo: "scikit-learn", isBrand: true, glow: "rgba(248,153,57,0.25)", color: "#F89939" },
+  { atomic: 16, symbol: "Xg", name: "XGBoost", family: "Data Science", projects: ["NSE Intelligence"], logo: "xgboost", isBrand: true, glow: "rgba(255,107,53,0.25)", color: "#FF6B35" },
+  { atomic: 17, symbol: "Tf", name: "TensorFlow", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "tensorflow", isBrand: true, glow: "rgba(255,111,0,0.25)", color: "#FF6F00" },
+  { atomic: 18, symbol: "Ke", name: "Keras", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "keras", isBrand: true, glow: "rgba(208,0,0,0.25)", color: "#D00000" },
+  { atomic: 19, symbol: "Oc", name: "OpenCV", family: "Data Science", projects: ["DeepFake Face Detection"], logo: "opencv", isBrand: true, glow: "rgba(92,168,231,0.25)", color: "#5CA8E7" },
 
   // Generative AI & LLM Applications
-  { atomic: 20, symbol: "Rg", name: "RAG", family: "Generative AI", projects: ["ResearchPilot AI"], logo: "rag", isBrand: false },
-  { atomic: 21, symbol: "Ag", name: "AI Agents", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer", "ResearchPilot AI"], logo: "agents", isBrand: false },
-  { atomic: 22, symbol: "Lc", name: "LangChain", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer", "ResearchPilot AI"], logo: "langchain", isBrand: true, glow: "rgba(28,100,242,0.2)" },
-  { atomic: 23, symbol: "Lg", name: "LangGraph", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer"], logo: "agents", isBrand: false },
-  { atomic: 24, symbol: "Cb", name: "ChromaDB", family: "Generative AI", projects: ["ResearchPilot AI"], logo: "chromadb", isBrand: true, glow: "rgba(255,94,98,0.2)" },
-  { atomic: 25, symbol: "Ga", name: "Generative AI Tools", family: "Generative AI", projects: ["AI-Assisted Workflow", "Prompt Grounding"], logo: "prompt", isBrand: false },
-  { atomic: 26, symbol: "Pe", name: "Prompt Engineering", family: "Generative AI", projects: ["LLM Grounding & Prompt Templates"], logo: "prompt", isBrand: false },
+  { atomic: 20, symbol: "Rg", name: "RAG", family: "Generative AI", projects: ["ResearchPilot AI"], logo: "rag", isBrand: false, glow: "rgba(168,85,247,0.25)", color: "#A855F7" },
+  { atomic: 21, symbol: "Ag", name: "AI Agents", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer", "ResearchPilot AI"], logo: "agents", isBrand: false, glow: "rgba(245,158,11,0.25)", color: "#F59E0B" },
+  { atomic: 22, symbol: "Lc", name: "LangChain", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer", "ResearchPilot AI"], logo: "langchain", isBrand: true, glow: "rgba(16,185,129,0.25)", color: "#10B981" },
+  { atomic: 23, symbol: "Lg", name: "LangGraph", family: "Generative AI", projects: ["Enterprise ATS Resume Analyzer"], logo: "agents", isBrand: false, glow: "rgba(217,70,239,0.25)", color: "#D946EF" },
+  { atomic: 24, symbol: "Cb", name: "ChromaDB", family: "Generative AI", projects: ["ResearchPilot AI"], logo: "chromadb", isBrand: true, glow: "rgba(255,94,98,0.25)", color: "#FF5E62" },
+  { atomic: 25, symbol: "Ga", name: "Generative AI Tools", family: "Generative AI", projects: ["AI-Assisted Workflow", "Prompt Grounding"], logo: "prompt", isBrand: false, glow: "rgba(192,38,211,0.25)", color: "#C026D3" },
+  { atomic: 26, symbol: "Pe", name: "Prompt Engineering", family: "Generative AI", projects: ["LLM Grounding & Prompt Templates"], logo: "prompt", isBrand: false, glow: "rgba(6,182,212,0.25)", color: "#06B6D4" },
 
   // Frontend & Full-Stack
-  { atomic: 27, symbol: "Re", name: "React", family: "Frontend", projects: ["PulseConnect 2.0", "Nirvaha Wellness Platform"], logo: "react", isBrand: true, glow: "rgba(97,218,251,0.25)" },
-  { atomic: 28, symbol: "St", name: "Streamlit", family: "Frontend", projects: ["Enterprise ATS", "DeepFake Detection", "Airfare Prediction"], logo: "streamlit", isBrand: true, glow: "rgba(255,75,75,0.25)" },
+  { atomic: 27, symbol: "Re", name: "React", family: "Frontend", projects: ["PulseConnect 2.0", "Nirvaha Wellness Platform"], logo: "react", isBrand: true, glow: "rgba(97,218,251,0.25)", color: "#61DAFB" },
+  { atomic: 28, symbol: "St", name: "Streamlit", family: "Frontend", projects: ["Enterprise ATS", "DeepFake Detection", "Airfare Prediction"], logo: "streamlit", isBrand: true, glow: "rgba(255,75,75,0.25)", color: "#FF4B4B" },
 
   // Backend Development & APIs
-  { atomic: 29, symbol: "Fa", name: "FastAPI", family: "Backend & APIs", projects: ["Model Inference Endpoints", "Microservices"], logo: "fastapi", isBrand: true, glow: "rgba(5,153,139,0.25)" },
-  { atomic: 30, symbol: "Fl", name: "Flask", family: "Backend & APIs", projects: ["DeepFake Face Detection Web App"], logo: "flask", isBrand: true, glow: "rgba(0,0,0,0.15)" },
-  { atomic: 31, symbol: "Ra", name: "REST API", family: "Backend & APIs", projects: ["PulseConnect 2.0", "Backend Service Integration"], logo: "rest", isBrand: false },
-  { atomic: 32, symbol: "Gq", name: "GraphQL", family: "Backend & APIs", projects: ["API Schemas & Queries"], logo: "graphql", isBrand: true, glow: "rgba(229,53,171,0.2)" },
+  { atomic: 29, symbol: "Fa", name: "FastAPI", family: "Backend & APIs", projects: ["Model Inference Endpoints", "Microservices"], logo: "fastapi", isBrand: true, glow: "rgba(5,153,139,0.25)", color: "#05998B" },
+  { atomic: 30, symbol: "Fl", name: "Flask", family: "Backend & APIs", projects: ["DeepFake Face Detection Web App"], logo: "flask", isBrand: true, glow: "rgba(5,150,105,0.25)", color: "#059669" },
+  { atomic: 31, symbol: "Ra", name: "REST API", family: "Backend & APIs", projects: ["PulseConnect 2.0", "Backend Service Integration"], logo: "rest", isBrand: false, glow: "rgba(16,185,129,0.25)", color: "#10B981" },
+  { atomic: 32, symbol: "Gq", name: "GraphQL", family: "Backend & APIs", projects: ["API Schemas & Queries"], logo: "graphql", isBrand: true, glow: "rgba(229,53,171,0.25)", color: "#E535AB" },
 
   // Databases
-  { atomic: 33, symbol: "Sq", name: "SQL", family: "Databases", projects: ["PulseConnect 2.0", "Database Querying"], logo: "sql", isBrand: true, glow: "rgba(0,117,143,0.2)" },
-  { atomic: 34, symbol: "My", name: "MySQL", family: "Databases", projects: ["Application Data Storage"], logo: "mysql", isBrand: true, glow: "rgba(0,117,143,0.2)" },
+  { atomic: 33, symbol: "Sq", name: "SQL", family: "Databases", projects: ["PulseConnect 2.0", "Database Querying"], logo: "sql", isBrand: true, glow: "rgba(0,117,143,0.25)", color: "#00758F" },
+  { atomic: 34, symbol: "My", name: "MySQL", family: "Databases", projects: ["Application Data Storage"], logo: "mysql", isBrand: true, glow: "rgba(0,117,143,0.25)", color: "#00758F" },
 
   // Developer Tools & Platforms
-  { atomic: 35, symbol: "Gt", name: "Git", family: "Tools", projects: ["Version Control Across All Projects"], logo: "git", isBrand: true, glow: "rgba(240,80,50,0.25)" },
-  { atomic: 36, symbol: "Gh", name: "GitHub", family: "Tools", projects: ["Source Repositories & Collaboration"], logo: "github", isBrand: true, glow: "rgba(13,13,13,0.2)" },
-  { atomic: 37, symbol: "Vs", name: "VS Code", family: "Tools", projects: ["Primary Development IDE"], logo: "vscode", isBrand: true, glow: "rgba(0,122,204,0.25)" },
-  { atomic: 38, symbol: "Cr", name: "Cursor (GenAI)", family: "Tools", projects: ["AI-Assisted Engineering Workflow"], logo: "cursor", isBrand: false },
-  { atomic: 39, symbol: "Cp", name: "GitHub Copilot (GenAI)", family: "Tools", projects: ["Code Synthesis & Acceleration"], logo: "github", isBrand: true, glow: "rgba(13,13,13,0.2)" },
+  { atomic: 35, symbol: "Gt", name: "Git", family: "Tools", projects: ["Version Control Across All Projects"], logo: "git", isBrand: true, glow: "rgba(240,80,50,0.25)", color: "#F05032" },
+  { atomic: 36, symbol: "Gh", name: "GitHub", family: "Tools", projects: ["Source Repositories & Collaboration"], logo: "github", isBrand: true, glow: "rgba(36,41,46,0.2)", color: "#24292E" },
+  { atomic: 37, symbol: "Vs", name: "VS Code", family: "Tools", projects: ["Primary Development IDE"], logo: "vscode", isBrand: true, glow: "rgba(0,122,204,0.25)", color: "#007ACC" },
+  { atomic: 38, symbol: "Cr", name: "Cursor (GenAI)", family: "Tools", projects: ["AI-Assisted Engineering Workflow"], logo: "cursor", isBrand: false, glow: "rgba(124,58,237,0.25)", color: "#7C3AED" },
+  { atomic: 39, symbol: "Cp", name: "GitHub Copilot (GenAI)", family: "Tools", projects: ["Code Synthesis & Acceleration"], logo: "github", isBrand: true, glow: "rgba(110,64,201,0.25)", color: "#6E40C9" },
 
   // Computer Science Fundamentals
-  { atomic: 40, symbol: "Ds", name: "Data Structures & Algorithms", family: "CS Fundamentals", projects: ["315+ CodeChef Problem Solving", "HackerRank Practice"], logo: "systems", isBrand: false },
-  { atomic: 41, symbol: "Oo", name: "Object-Oriented Programming", family: "CS Fundamentals", projects: ["Java Modular Design", "Production Architecture"], logo: "academic", isBrand: false },
+  { atomic: 40, symbol: "Ds", name: "Data Structures & Algorithms", family: "CS Fundamentals", projects: ["315+ CodeChef Problem Solving", "HackerRank Practice"], logo: "systems", isBrand: false, glow: "rgba(37,99,235,0.25)", color: "#2563EB" },
+  { atomic: 41, symbol: "Oo", name: "Object-Oriented Programming", family: "CS Fundamentals", projects: ["Java Modular Design", "Production Architecture"], logo: "academic", isBrand: false, glow: "rgba(5,150,105,0.25)", color: "#059669" },
 ];
 
 export const PROJECTS: ProjectItem[] = [
