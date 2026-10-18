@@ -322,7 +322,7 @@ export function About() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">04</span>
-                      <p>Engineered PulseConnect 2.0, Multi-Agent ATS &amp; ResearchPilot.</p>
+                      <p>Engineered VisionForgeX, PulseConnect 2.0 &amp; Multi-Agent ATS.</p>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">05</span>

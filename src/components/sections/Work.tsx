@@ -43,9 +43,9 @@ export function Work() {
           </p>
         </div>
 
-        {/* Project Selector Rail: 6 Cards with Index, Title, and Domain Tag */}
+        {/* Project Selector Rail: 7 Cards with Index, Title, and Domain Tag */}
         <div
-          className={`grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 mb-6 rv ${
+          className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3 mb-6 rv ${
             inView ? "is-in" : ""
           }`}
           style={{ "--i": 1 } as React.CSSProperties}
@@ -219,7 +219,7 @@ export function Work() {
                     Illustrative UI
                   </span>
                   <span className="font-mono text-[10px] text-[#77756f]">
-                    {activeProject.index} / 06
+                    {activeProject.index} / {String(PROJECTS.length).padStart(2, "0")}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -273,6 +273,41 @@ export function Work() {
 
 function renderMiniUI(projectId: string) {
   switch (projectId) {
+    case "visionforgex":
+      return (
+        <div className="space-y-2.5 font-mono text-xs">
+          <div className="bg-white p-3 rounded-xl border border-[rgba(13,13,13,0.08)] shadow-sm">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[11px] text-[#77756f]">DINOv2 ANOMALY DETECTOR</span>
+              <span className="text-[10px] font-bold text-white bg-[#0d0d0d] px-1.5 py-0.5 rounded">
+                DEFECT LOCATED
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-[11px] mb-1.5">
+              <span className="text-[#0d0d0d] font-bold">PatchCore: 0.842</span>
+              <span className="text-[#77756f]">BBox: [42, 88, 64, 52]</span>
+            </div>
+            <div className="h-2 bg-[#f4f2ee] rounded-full overflow-hidden">
+              <div className="h-full bg-[#0d0d0d] w-[84%]" />
+            </div>
+          </div>
+          <div className="space-y-1.5 text-[10px]">
+            <div className="flex items-center justify-between bg-white px-2.5 py-1.5 rounded border border-[rgba(13,13,13,0.06)]">
+              <span className="text-[#3a3a3a]">Telemetry Fusion ([-10s, +2s])</span>
+              <span className="font-bold text-[#0d0d0d]">+3.8σ Spindle Spike</span>
+            </div>
+            <div className="flex items-center justify-between bg-white px-2.5 py-1.5 rounded border border-[rgba(13,13,13,0.06)]">
+              <span className="text-[#3a3a3a]">Qualcomm Cloud AI 100</span>
+              <span className="text-[#77756f]">tool_wear_chatter (~2.2s)</span>
+            </div>
+            <div className="flex items-center justify-between bg-white px-2.5 py-1.5 rounded border border-[rgba(13,13,13,0.06)]">
+              <span className="text-[#3a3a3a]">ISO Audit Report &amp; Tests</span>
+              <span className="font-bold text-[#10b981]">105 Passed ✓</span>
+            </div>
+          </div>
+        </div>
+      );
+
     case "pulseconnect":
       return (
         <div className="space-y-3 font-mono text-xs">

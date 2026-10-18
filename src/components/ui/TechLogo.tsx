@@ -32,6 +32,7 @@ export const BRAND_MAP: Record<string, string> = {
   hackerrank: "/logos/hackerrank.svg",
   "scikit-learn": "/logos/scikit-learn.svg",
   sklearn: "/logos/scikit-learn.svg",
+  pytorch: "/logos/pytorch.svg",
 };
 
 export const CONCEPT_COLORS: Record<string, string> = {
