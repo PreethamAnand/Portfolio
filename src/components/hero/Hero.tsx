@@ -199,12 +199,14 @@ export function Hero() {
       {/* Bottom Hero Info & CTAs */}
       <div className="relative z-10 w-full max-w-[1320px] mx-auto pt-4 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
         <div>
-          <div className="font-mono-tag mb-2">00 — Introduction</div>
+          <div className="font-mono-tag mb-2">00 — Student &amp; Engineer</div>
           <h1 className="heading-display text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-[#0d0d0d]">
-            {PROFILE.role}
-            <span className="font-serif-italic ml-2">.</span>
+            {PROFILE.headingMain} <span className="font-serif-italic">{PROFILE.headingAccent}</span>
           </h1>
-          <p className="mt-3 max-w-xl text-sm sm:text-base text-[#77756f] leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base font-semibold text-[#0d0d0d] tracking-tight">
+            {PROFILE.secondaryRole}
+          </p>
+          <p className="mt-2 max-w-xl text-sm sm:text-base text-[#77756f] leading-relaxed">
             {PROFILE.shortAbout}
           </p>
         </div>

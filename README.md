@@ -1,6 +1,6 @@
 # Preetham Anand — Personal Portfolio
 
-A clean, light, smooth, and production-ready portfolio website engineered for **Preetham Anand** (Full Stack Developer & AI/ML Engineer). Built strictly following modern front-end design principles inspired by quiet Awwwards "Site of the Day" showcases: white, black, and warm gray surfaces, continuous scroll, self-hosted typography, and zero fabricated data.
+A clean, light, smooth, and production-ready portfolio website engineered for **Preetham Anand** (AI & ML Engineer · Full-Stack Developer). Built strictly following modern front-end design principles inspired by quiet Awwwards "Site of the Day" showcases: white, black, and warm gray surfaces, continuous scroll, self-hosted typography, and zero fabricated data.
 
 ---
 

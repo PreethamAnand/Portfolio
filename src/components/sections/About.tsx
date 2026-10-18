@@ -88,9 +88,9 @@ export function About() {
       <div className="section-container">
         {/* Section Header */}
         <div className={`mb-16 rv ${inView ? "is-in" : ""}`} style={{ "--i": 0 } as React.CSSProperties}>
-          <div className="font-mono-tag mb-2">01 — About Identity</div>
+          <div className="font-mono-tag mb-2">01 — Identity &amp; Engineering Focus</div>
           <h2 className="heading-display text-3xl sm:text-4xl lg:text-5xl text-[#0d0d0d]">
-            Profile & Developer <span className="font-serif-italic">ID.</span>
+            Academic Profile &amp; Developer <span className="font-serif-italic">ID.</span>
           </h2>
         </div>
 
@@ -110,12 +110,38 @@ export function About() {
               <h3 className="heading-display text-2xl sm:text-3xl font-bold mt-2 text-[#0d0d0d]">
                 Hi, I'm {PROFILE.name}.
               </h3>
+              <p className="mt-1 text-xs font-mono font-medium text-[#77756f]">
+                Computer Science &amp; Engineering (AI &amp; ML) Undergraduate
+              </p>
+              
               <p className="mt-4 text-[#3a3a3a] text-sm sm:text-base leading-relaxed">
                 {PROFILE.resumeSummary}
               </p>
-              <p className="mt-4 text-[#77756f] text-sm leading-relaxed border-l-2 border-[#0d0d0d] pl-4 italic">
-                Experienced with building applications involving ML, DL, LLMs, RAG, AI Agents, Computer Vision, and full-stack development.
-              </p>
+
+              {/* Stated Interests based strictly on Resume evidence */}
+              <div className="mt-6 pt-5 border-t border-[rgba(13,13,13,0.08)]">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#77756f] block mb-2.5">
+                  Core Engineering Focus
+                </span>
+                <ul className="space-y-2 text-xs text-[#3a3a3a]">
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
+                    <span><strong>Artificial Intelligence &amp; Machine Learning:</strong> Predictive modeling, deep neural networks, and computer vision classification.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
+                    <span><strong>Python &amp; Problem Solving:</strong> 315+ verified algorithmic solutions on CodeChef across data structures and core algorithms.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
+                    <span><strong>Full-Stack Web Development:</strong> End-to-end architectures utilizing React, FastAPI, Flask, Streamlit, and modern database systems.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0d0d0d] mt-1.5 flex-shrink-0" />
+                    <span><strong>AI-Powered Applications:</strong> Retrieval-Augmented Generation (RAG) with ChromaDB and multi-agent coordination pipelines.</span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Resume Links (Only existing links) */}
@@ -135,16 +161,6 @@ export function About() {
                   className="btn-pill-secondary text-xs"
                 >
                   GitHub ↗
-                </a>
-              )}
-              {PROFILE.linkedin && (
-                <a
-                  href={PROFILE.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-pill-secondary text-xs"
-                >
-                  LinkedIn ↗
                 </a>
               )}
             </div>
@@ -168,9 +184,9 @@ export function About() {
               <div className="w-[30px] h-[56px] bg-[#141414] text-[#f4f2ee] overflow-hidden relative shadow-md flex items-center justify-center border-x border-[#333]">
                 <div className="absolute inset-0 flex flex-col items-center animate-[marquee_4s_linear_infinite] whitespace-nowrap text-[8px] font-mono tracking-widest uppercase opacity-85">
                   <span className="py-1">PREETHAM</span>
-                  <span className="py-1">DEV</span>
+                  <span className="py-1">AI &amp; DEV</span>
                   <span className="py-1">PREETHAM</span>
-                  <span className="py-1">DEV</span>
+                  <span className="py-1">AI &amp; DEV</span>
                 </div>
               </div>
 
@@ -209,7 +225,7 @@ export function About() {
 
                   {/* Top Black Header Band */}
                   <div className="mt-2 bg-[#0d0d0d] text-white py-1.5 px-3 rounded-lg flex items-center justify-between text-[10px] font-mono tracking-widest">
-                    <span>DEVELOPER ID</span>
+                    <span>AI &amp; ML ENGINEERING ID</span>
                     <span className="w-2 h-2 rounded-full bg-[#00ff66] animate-pulse" />
                   </div>
 
@@ -232,7 +248,7 @@ export function About() {
                       {PROFILE.name}
                     </h4>
                     <p className="text-[11px] font-medium text-[#77756f]">
-                      {PROFILE.role}
+                      AI &amp; ML · Full-Stack Developer
                     </p>
                   </div>
 
@@ -282,22 +298,22 @@ export function About() {
                   {/* Header */}
                   <div>
                     <span className="font-mono text-[10px] tracking-widest text-[#a9a6a0] uppercase block">
-                      Security Clearance
+                      Engineering Record
                     </span>
                     <h4 className="heading-display text-lg font-bold tracking-tight text-white mt-1">
                       What I Am.
                     </h4>
                   </div>
 
-                  {/* 4-5 Lines Drawn strictly from Resume */}
+                  {/* 5 Lines Drawn strictly from Resume */}
                   <div className="space-y-2 text-xs text-[#cfceca]">
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">01</span>
-                      <p>Full Stack & AI Engineer building scalable systems.</p>
+                      <p>Computer Science (AI &amp; ML) undergrad &amp; Full-Stack Developer.</p>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">02</span>
-                      <p>B.Tech CSE (AI & ML) • CGPA 8.66 / 10</p>
+                      <p>B.Tech CSE (AI &amp; ML) • CGPA 8.66 / 10 at Vignan Institute.</p>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">03</span>
@@ -305,7 +321,7 @@ export function About() {
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">04</span>
-                      <p>PulseConnect 2.0, ATS Analyzer & ResearchPilot AI.</p>
+                      <p>Engineered PulseConnect 2.0, Multi-Agent ATS &amp; ResearchPilot.</p>
                     </div>
                     <div className="flex items-start gap-2">
                       <span className="text-[#888] font-mono">05</span>
@@ -346,17 +362,18 @@ export function About() {
 
               <div className="mt-6 space-y-4">
                 <div className="border-b border-[rgba(13,13,13,0.06)] pb-3">
-                  <span className="text-xs font-mono text-[#77756f] block">LOCATION</span>
-                  <span className="text-sm font-medium text-[#0d0d0d]">{PROFILE.location}</span>
+                  <span className="text-xs font-mono text-[#77756f] block">SPECIALIZATION</span>
+                  <span className="text-sm font-semibold text-[#0d0d0d]">Artificial Intelligence &amp; Machine Learning</span>
                 </div>
                 <div className="border-b border-[rgba(13,13,13,0.06)] pb-3">
-                  <span className="text-xs font-mono text-[#77756f] block">EDUCATION</span>
+                  <span className="text-xs font-mono text-[#77756f] block">DEGREE &amp; INSTITUTION</span>
                   <span className="text-sm font-medium text-[#0d0d0d]">{PROFILE.college}</span>
-                  <span className="text-xs text-[#77756f] block">{PROFILE.degree} (2023 - 2027)</span>
+                  <span className="text-xs text-[#77756f] block">B.Tech (2023 - 2027) • CGPA: {PROFILE.cgpa}</span>
                 </div>
                 <div className="border-b border-[rgba(13,13,13,0.06)] pb-3">
-                  <span className="text-xs font-mono text-[#77756f] block">RECENT ROLE</span>
-                  <span className="text-sm font-medium text-[#0d0d0d]">Full Stack Developer • Nirvaha Wellness</span>
+                  <span className="text-xs font-mono text-[#77756f] block">INDUSTRY INTERNSHIPS</span>
+                  <span className="text-sm font-medium text-[#0d0d0d]">AI/ML Intern &amp; Full Stack Developer</span>
+                  <span className="text-xs text-[#77756f] block">Nirvaha Wellness · Cothon Solutions · Edunet</span>
                 </div>
                 <div>
                   <span className="text-xs font-mono text-[#77756f] block">DIRECT INQUIRIES</span>

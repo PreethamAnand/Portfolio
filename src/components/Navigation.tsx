@@ -127,13 +127,18 @@ export function Navigation() {
               {PROFILE.initials}
             </div>
 
-            <span
-              className={`font-semibold text-sm tracking-tight text-[#0d0d0d] transition-all duration-300 ${
+            <div
+              className={`flex flex-col text-left transition-all duration-300 ${
                 scrolled ? "opacity-0 -translate-x-3 pointer-events-none" : "opacity-100 translate-x-0"
               }`}
             >
-              {PROFILE.name}
-            </span>
+              <span className="font-semibold text-sm tracking-tight text-[#0d0d0d] leading-none">
+                {PROFILE.name}
+              </span>
+              <span className="text-[10px] font-mono text-[#77756f] tracking-tight mt-0.5">
+                AI/ML &amp; Full-Stack
+              </span>
+            </div>
           </button>
 
           {/* Centre/Right: Desktop navigation pill */}

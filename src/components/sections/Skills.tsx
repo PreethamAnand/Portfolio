@@ -5,7 +5,18 @@ import { SKILL_GROUPS, SkillItem } from "@/lib/data";
 import { TechLogo } from "@/components/ui/TechLogo";
 import { useInView } from "@/lib/hooks";
 
-const FAMILIES = ["All", "Languages", "Frontend", "Backend", "AI & ML", "Tools"] as const;
+const FAMILIES = [
+  "All",
+  "Languages",
+  "AI & ML",
+  "Data Science",
+  "Generative AI",
+  "Frontend",
+  "Backend & APIs",
+  "Databases",
+  "Tools",
+  "CS Fundamentals",
+] as const;
 
 export function Skills() {
   const { ref: sectionRef, inView } = useInView({ threshold: 0.1 });
@@ -26,7 +37,7 @@ export function Skills() {
             The Periodic Table of my <span className="font-serif-italic">Stack.</span>
           </h2>
           <p className="mt-3 text-sm text-[#77756f] max-w-xl">
-            36 core technologies, frameworks, and engineering methodologies drawn directly from production deployments and machine learning workflows.
+            Core technologies, machine learning frameworks, data science libraries, and system architectures verified from production deployments, internships, and algorithmic practice.
           </p>
         </div>
 
@@ -43,7 +54,7 @@ export function Skills() {
               <button
                 key={family}
                 onClick={() => setActiveFamily(family)}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium tracking-tight transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-tight transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#0d0d0d] text-white shadow-sm"
                     : "bg-white border border-[rgba(13,13,13,0.1)] text-[#3a3a3a] hover:border-[#0d0d0d]"
@@ -151,7 +162,7 @@ export function Skills() {
                 {/* Projects using this skill */}
                 <div className="mt-6 pt-6 border-t border-[rgba(13,13,13,0.08)] text-left w-full">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-[#77756f] block mb-2">
-                    Used In Projects & Domains
+                    Used In Projects &amp; Domains
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {selectedSkill.projects.map((proj) => (
