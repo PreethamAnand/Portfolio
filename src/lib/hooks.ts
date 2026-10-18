@@ -22,7 +22,8 @@ export function usePrefersReducedMotion(): boolean {
 
 export function useInView(
   options: IntersectionObserverInit & { triggerOnce?: boolean } = {
-    threshold: 0.15,
+    threshold: 0.02,
+    rootMargin: "150px 0px",
     triggerOnce: true,
   }
 ) {
@@ -33,16 +34,34 @@ export function useInView(
     const node = ref.current;
     if (!node) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true);
-        if (options.triggerOnce !== false) {
-          observer.unobserve(node);
+    // Immediate check if element is already within or near viewport
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight + 150 && rect.bottom > -150) {
+      setInView(true);
+      if (options.triggerOnce !== false) return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          if (options.triggerOnce !== false) {
+            observer.unobserve(node);
+          }
+        } else if (options.triggerOnce === false) {
+          setInView(false);
         }
-      } else if (options.triggerOnce === false) {
-        setInView(false);
+      },
+      {
+        threshold: options.threshold ?? 0.02,
+        rootMargin: options.rootMargin ?? "150px 0px",
       }
-    }, options);
+    );
 
     observer.observe(node);
 
