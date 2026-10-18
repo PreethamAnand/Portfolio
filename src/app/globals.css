@@ -51,6 +51,11 @@
   a:focus-visible, button:focus-visible {
     outline: 2px solid var(--ink);
   }
+
+  /* Hide Next.js development tools badge / indicator */
+  nextjs-portal {
+    display: none !important;
+  }
 }
 
 @layer components {
